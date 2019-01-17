@@ -21,9 +21,9 @@
 |avatar_image|string||
 
 ### Association
-- has_one :credit_card
-- has_many :social_profiles
-- has_many :items
+- has_one :credit_card, dependent: :destroy
+- has_many :social_profiles, dependent: :destroy
+- has_many :items, dependent: :destroy
 - has_many :buyed_items, foreign_key: buyer_id, class_name: 'Item'
 - has_many :sell_items, foreign_key: seller_id, class_name: 'Item'
 - has_many :sold_items, foreign_key: seller_id, class_name: 'Item'
