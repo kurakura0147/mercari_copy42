@@ -12,13 +12,9 @@
 |first_name|string|null: false|
 |last_name_kana|string|null: false|
 |first_name_kana|string|null: false|
-|postal_code|string||
-|prefecture|string|null: false|
-|city|string|null: false|
-|house_number|string|null: false|
-|building_name|string||
 |birthday|date|null: false|
 |avatar_image|string||
+|phone_number|string||
 
 ### Association
 - has_one :credit_card, dependent: :destroy
@@ -29,6 +25,20 @@
 - has_many :sold_items, foreign_key: seller_id, class_name: 'Item'
 - has_many :comments, dependent: :destroy
 - has_many :favorites, dependent: :destroy
+- has_one :address, dependent: destroy
+
+## Addressesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|postal_code|string|null: false|
+|prefecture|string|null: false|
+|city|string|null: false|
+|house_number|string|null: false|
+|building_name|string||
+
+### Association
+- belongs_to :user
+
 
 ## credit_cardsテーブル
 
