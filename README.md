@@ -101,7 +101,9 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|ancestry|string|null: false|
+|parent_id|integer|null: false, index: true|
+|lft|integer|null: false, index: true|
+|rgt|integer|null: false, index: true|
 
 ### Association
 - has_many :items
