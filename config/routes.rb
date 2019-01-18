@@ -1,5 +1,3 @@
 Rails.application.routes.draw do
-  get 'items/index'
-
-  root 'application#hello'
+  root 'items#index'
 end
