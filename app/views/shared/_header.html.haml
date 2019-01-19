@@ -1,0 +1,43 @@
+%header
+  .header__inner
+    .header__innner__upper.clearfix
+      .header__inner__upper--icon
+        = image_tag("logo.svg", alt: "mercari", width: "134", height: "36")
+      .header__inner__upper--form
+        %input{ type: "text", placeholder: "キーワードから探す"}
+        = fa_icon "search", class: "keyword__search"
+
+    .header__nav.clearfix
+      .header__nav__left
+        %ul.header__nav__box
+          %li
+            = link_to "カテゴリーから探す", "/", class: "header__search__btn"
+          %li
+            = link_to "ブランドから探す", "/", class: "header__search__btn"
+      .header__nav__right
+        / ログイン前のview if文で分岐
+        / %ul
+        /   %li
+        /     = link_to "ログイン", "/", class: "header__login__btn btn-red"
+        /   %li
+        /     = link_to "新規会員登録", "/", class: "header__login__btn header-signup"
+        / ログイン後のview
+        %ul
+          %li
+            = link_to "/" do
+              %figure
+                %p.header__nav__root
+                  = fa_icon "user-circle-o", class: "fa-2x"
+                %span.header__nav__user-mypage マイページ
+          %li
+            = link_to "/", class: "header__nav__root" do
+              %figure
+                %p.header__nav__root
+                  = fa_icon "bell-o", class: "fa-lg"
+                %span.header__nav__user-info お知らせ
+          %li
+            = link_to "/", class: "header__nav__root" do
+              %figure
+                %p.header__nav__root
+                  = fa_icon "check", class: "fa-lg"
+                %span.header__nav__user-todo やることリスト
