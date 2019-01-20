@@ -1,0 +1,103 @@
+%main
+  %section.top__carousel
+    .top__carousel__item
+      = image_tag('top-banner.png', alt: 'banner', class: "top__banner")
+      / %a.top__banner{href: "/"}
+
+  %section.pickup__container
+    %h2.pickup__head ピックアップカテゴリー
+    %section.items__pickup__container.clearfix
+      %h3.items__box__container
+        %section.text-center
+          = link_to "/", class: "text-center__name clear-decoration" do
+            レディース新着アイテム
+      .items__box__content.clearfix
+        %section.items__box
+          = link_to "/", class: "clear-decoration"  do
+            %figure.items__box__photo
+              = image_tag("m15186317597_1.jpg", alt: "uniqlo", class: "items__box__photo--size")
+            .items__box__body
+              %h3.items__box__name ユニクロフリース
+              .items__box__num
+                .items__box__num__price ¥4,200
+                %p.items__box__num__tax (税込)
+
+        %section.items__box
+          = link_to "/", class: "clear-decoration" do
+            %figure.items__box__photo
+              = image_tag("m15186317597_1.jpg", alt: "uniqlo", class: "items__box__photo--size")
+            .items__box__body
+              %h3.items__box__name ユニクロフリース
+              .items__box__num
+                .items__box__num__price ¥4,200
+                %p.items__box__num__tax (税込)
+
+        %section.items__box
+          = link_to "/", class: "clear-decoration" do
+            %figure.items__box__photo
+              = image_tag("m15186317597_1.jpg", alt: "uniqlo", class: "items__box__photo--size")
+            .items__box__body
+              %h3.items__box__name ユニクロフリース
+              .items__box__num
+                .items__box__num__price ¥4,200
+                %p.items__box__num__tax (税込)
+
+        %section.items__box
+          = link_to "/", class: "clear-decoration" do
+            %figure.items__box__photo
+              = image_tag("m15186317597_1.jpg", alt: "uniqlo", class: "items__box__photo--size")
+            .items__box__body
+              %h3.items__box__name ユニクロフリースユニクロフリースユニクロフリース
+              .items__box__num
+                .items__box__num__price ¥4,200
+                %p.items__box__num__tax (税込)
+      .view--all すべての商品を見る
+  / ブランド
+  %section.pickup__container
+    %h2.pickup__head ピックアップブランド
+    %section.items__pickup__container.clearfix
+      %h3.items__box__container
+        %section.text-center
+          = link_to "/", class: "text-center__name clear-decoration" do
+            ナイキ新着アイテム
+      .items__box__content.clearfix
+        %section.items__box
+          = link_to "/", class: "clear-decoration"  do
+            %figure.items__box__photo
+              = image_tag("m16732427995_1.jpg", alt: "NIKE", class: "items__box__photo--size")
+            .items__box__body
+              %h3.items__box__name  NIKEスニーカー
+              .items__box__num
+                .items__box__num__price ¥10,800
+                %p.items__box__num__tax (税込)
+
+        %section.items__box
+          = link_to "/", class: "clear-decoration" do
+            %figure.items__box__photo
+              = image_tag("m16732427995_1.jpg", alt: "NIKE", class: "items__box__photo--size")
+            .items__box__body
+              %h3.items__box__name NIKEスニーカー
+              .items__box__num
+                .items__box__num__price ¥10,800
+                %p.items__box__num__tax (税込)
+
+        %section.items__box
+          = link_to "/", class: "clear-decoration" do
+            %figure.items__box__photo
+              = image_tag("m16732427995_1.jpg", alt: "NIKE", class: "items__box__photo--size")
+            .items__box__body
+              %h3.items__box__name NIKEスニーカー
+              .items__box__num
+                .items__box__num__price ¥10,800
+                %p.items__box__num__tax (税込)
+
+        %section.items__box
+          = link_to "/", class: "clear-decoration" do
+            %figure.items__box__photo
+              = image_tag("m16732427995_1.jpg", alt: "NIKE", class: "items__box__photo--size")
+            .items__box__body
+              %h3.items__box__name NIKEスニーカー
+              .items__box__num
+                .items__box__num__price ¥10,800
+                %p.items__box__num__tax (税込)
+      .view--all すべての商品を見る

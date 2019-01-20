@@ -1,0 +1,98 @@
+@import "./mixin/clearfix";
+@import "variable";
+
+.clear-decoration {
+  text-decoration: none;
+}
+
+.top__carousel {
+  height: 390px;
+  background-color: gray;
+}
+
+.top__banner {
+  height: 390px;
+}
+
+.pickup__container {
+  background-color: $off-white;
+  padding: 40px 0;
+}
+
+.pickup__head {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.items__pickup__container {
+  width: 940px;
+  margin: 0 250px;
+}
+
+.items__box__container {
+  font-size: 22px;
+  text-align: center;
+  margin: 26px 11px;
+}
+
+.text-center__name {
+  color: $sky-blue;
+  font-weight: bold;
+}
+
+.items__box__content {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.items__box {
+  background-color: $white;
+  margin: 0 0 0 20px;
+    &__photo {
+      height: 220px;
+        &--size {
+          height: 213px;
+          width: 213px;
+        }
+    }
+    &__body {
+      height: 110px;
+      box-sizing: border-box;
+      padding: 16px;
+    }
+}
+
+.items__box__name {
+  color: $black;
+  overflow: hidden;
+  position: relative;
+  font-weight: 400;
+  height: 3em;
+  line-height: 1.5;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.items__box__num {
+  @include clearfix;
+  margin: 8px 0 0;
+    &__price {
+      color: $black;
+      font-weight: 600;
+      float: left;
+    }
+    &__tax {
+      color: $black;
+      font-size: 10px;
+      clear: both;
+    }
+}
+
+.view--all {
+  color: $sky-blue;
+  text-align: right;
+  padding: 20px 0 30px;
+  font-size: 14px;
+}
