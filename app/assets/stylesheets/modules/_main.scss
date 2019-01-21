@@ -1,4 +1,4 @@
-@import "./mixin/clearfix";
+@import "./mixin/mixin";
 @import "variable";
 
 .clear-decoration {
@@ -12,6 +12,8 @@
 
 .top__banner {
   height: 390px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .pickup__container {
@@ -26,7 +28,6 @@
 }
 
 .items__pickup__container {
-  width: 940px;
   margin: 0 250px;
 }
 
@@ -44,7 +45,6 @@
 .items__box__content {
   display: flex;
   justify-content: center;
-  margin: 0 auto;
 }
 
 .items__box {

@@ -4,5 +4,6 @@
 
 .app__banner {
   height: 260px;
-  width: 1440px;
+  width: 100%;
+  box-sizing: border-box;
 }

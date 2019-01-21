@@ -1,4 +1,4 @@
-@import "./mixin/clearfix";
+@import "./mixin/mixin";
 @import "variable";
 
 header {
@@ -71,17 +71,11 @@ figure {
 }
 
 .header__search__btn {
-  text-decoration: none;
-  color: $black;
-  font-size: 14px;
-  font-weight: 400px;
+  @include header-btn();
 }
 
 .header__login__btn {
-  text-decoration: none;
-  color: $black;
-  font-size: 14px;
-  font-weight: 400px;
+  @include header-btn();
 }
 
 .btn-red {
@@ -110,22 +104,18 @@ figure {
 }
 
 .header__nav__user-mypage {
-  font-size: 14px;
-  line-height: 33px;
-  margin-left: 8px;
-  float: right;
+  @include header-nav();
 }
 
 .header__nav__user-info {
-  font-size: 14px;
-  line-height: 33px;
-  margin-left: 8px;
-  float: right;
+  @include header-nav();
 }
 
 .header__nav__user-todo {
-  font-size: 14px;
-  line-height: 33px;
-  margin-left: 8px;
-  float: right;
+  @include header-nav();
+}
+
+.header__user-icon {
+  border-radius: 50%;
+  width: 32px;
 }
