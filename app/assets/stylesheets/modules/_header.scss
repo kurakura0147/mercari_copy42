@@ -1,0 +1,121 @@
+@import "./mixin/mixin";
+@import "variable";
+
+header {
+  display: block;
+  height: 90px;
+  width: 100%;
+}
+
+figure {
+  margin: 0;
+}
+
+.clearfix {
+  @include clearfix();
+}
+
+.header__inner {
+  padding-top: 8px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  width: 1020px;
+    &__upper {
+      height: 36px;
+        &--icon {
+          height: 36px;
+          width: 134px;
+          float: left;
+        }
+        &--form {
+          position: relative;
+          width: calc(100% - 150px);
+          float: right;
+            input {
+              box-sizing: border-box;
+              width: 100%;
+              height: 36px;
+              padding: 9px 32px 9px 8px;
+            }
+        }
+    }
+}
+
+.keyword__search {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 14px;
+  width: 36px;
+  line-height: 36px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.header__nav {
+  margin-top: 8px;
+  &__left {
+    float: left;
+      & li {
+        display: inline-block;
+        padding-left: 10px;
+      }
+  }
+  &__right {
+    float: right;
+      & li {
+        display: inline-block;
+        padding-left: 10px;
+      }
+  }
+}
+
+.header__search__btn {
+  @include header-btn();
+}
+
+.header__login__btn {
+  @include header-btn();
+}
+
+.btn-red {
+  background-color: $red-btn;
+  border: 1px solid $red-btn;
+  color: $white;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.header-signup {
+  background-color: $white;
+  border: 1px solid $sky-blue;
+  color: $sky-blue;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.header__nav__root {
+  text-decoration: none;
+  height: 33px;
+  color: $black;
+  float: left;
+}
+
+.header__nav__user-mypage {
+  @include header-nav();
+}
+
+.header__nav__user-info {
+  @include header-nav();
+}
+
+.header__nav__user-todo {
+  @include header-nav();
+}
+
+.header__user-icon {
+  border-radius: 50%;
+  width: 32px;
+}

@@ -1,0 +1,25 @@
+@import 'variable';
+
+.footer__sell-btn {
+  text-decoration: none;
+  color: $white;
+  background-color: $red-btn;
+  text-align: center;
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 160px;
+  height: 160px;
+  font-size: 22px;
+  border-radius: 50%;
+  z-index: 1000;
+}
+
+.sell-btn-text {
+  margin: 32px 0 0;
+}
+
+.icon__camera {
+  font-size: 54px;
+  margin: 8px 0 0;
+}

@@ -1,0 +1,61 @@
+@import 'variable';
+
+.footer__container {
+  display: block;
+  background-color: $footer-black;
+  padding: 60px 0;
+  text-align: center;
+    &__nav {
+      width: 1020px;
+      margin: 0 auto;
+    }
+}
+
+.footer__cell {
+  display: inline-block;
+  width: 22%;
+  margin: 0 2% 0 0;
+  vertical-align: top;
+}
+
+.footer__head {
+  font-size: 16px;
+  color: $white;
+}
+
+.footer__cell li:first-child {
+  margin: 24px 0 0;
+}
+
+.footer__cell li {
+  line-height: 14px;
+  margin: 16px 0 0;
+}
+
+.footer__cell a {
+  color: $white;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.footer__nav__root {
+  display: block;
+  font-size: 14px;
+  color: $white;
+  text-decoration: none;
+}
+
+.footer_country {
+  opacity: 0.5;
+}
+
+.footer__logo {
+  display: block;
+  margin: 40px auto 0;
+}
+
+.footer__copyright {
+  color: $white;
+  text-align: center;
+  margin: 8px 0 0;
+}
