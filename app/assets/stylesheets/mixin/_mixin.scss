@@ -20,3 +20,21 @@
   margin-left: 8px;
   float: right;
 }
+
+@mixin btn-default() {
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+}
+
+@mixin btn-icon() {
+  position: absolute;
+  top: 15px;
+  left: 16px;
+  font-size: 20px;
+}
