@@ -1,10 +1,11 @@
 FactoryGirl.define do
 
   factory :user do
-    nickname               "ハリーポッター"
-    email                  "aaaa@gmail.com"
-    password               "12345678"
-    password_confirmation  "12345678"
+    password = Faker::Internet.password(8)
+    nickname               Faker::Pokemon.name
+    email                  Faker::Internet.free_email
+    password               password
+    password_confirmation  password
   end
 
 end
