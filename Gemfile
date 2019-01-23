@@ -43,6 +43,9 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails', '~> 4.4.1'
+  gem 'faker'
 end
 
 group :development do
@@ -60,3 +63,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :production do
   gem 'unicorn'
 end
+
+gem 'haml-rails'
+gem 'erb2haml'
+gem 'font-awesome-rails'
+gem 'devise'
