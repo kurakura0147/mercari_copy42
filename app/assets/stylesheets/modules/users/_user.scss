@@ -80,7 +80,6 @@
 .user__container__footer {
   display: block;
   height: 140px;
-  width: 456px;
   padding: 40px 0;
   margin: 0 auto;
 }
@@ -88,6 +87,7 @@
 .user__container__footer {
   @include clearfix;
   text-align: center;
+  background-color: $off-white;
 }
 
 .user__container__footer li:first-child {
