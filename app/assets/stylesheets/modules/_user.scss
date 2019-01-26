@@ -166,7 +166,7 @@
           .time {
             float: left;
             margin-right: 8px;
-            color: #888;
+            color: $time;
             font-size: 16px;
             line-height: 16px;
             & span {
@@ -175,7 +175,7 @@
           }
         }
           &:hover {
-            background: rgba(238, 238, 238 , 0.2); //背景のみ透過.(色は#eeeeee)
+            background: rgba(238, 238, 238 , 0.2); //背景のみ透過.(色は$list-btn)
           }
       }
         //リストの最後の一覧を見るのcss
@@ -185,7 +185,7 @@
           width: 100%;
           text-align: center;
           line-height: 48px;
-          background-color: #eeeeee;
+          background-color: $list-btn;
           text-decoration: none;
           color: black;
           &:hover {
@@ -198,7 +198,7 @@
       margin-top: 40px;
       .mypage-tab-head {
         padding: 0 16px;
-        background-color: #FAFAFA;
+        background-color: $tab-menu;
         height: 72px;
         font-size: 16px;
         line-height: 72px;
@@ -209,7 +209,7 @@
 
 //タブ全体についてここから開始
 .tabs {
-  background-color: #eeeeee;
+  background-color: $list-btn;
   width: 700px;
   margin: 0 auto;}
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); //タブの切替に必須
