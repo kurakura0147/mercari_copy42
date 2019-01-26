@@ -1,0 +1,15 @@
+%ul.tab-content
+  %li
+    = link_to "" , class: "mypage-item-link"  do
+      = image_tag("mercari-icon.jpg", width: "48", class: "mercari-icon")
+      = fa_icon "angle-right", class: "arrow-mark"
+      .mypage-item-body
+        .mypage-item-text
+          事務局からの連絡です。「うううううううううううううううううううううううううううううううううううううう」
+        .time
+          = fa_icon "clock-o", class: "time"
+          %span
+            5日前
+  //リストがある場合に最後に下記のリストを表示させる必要がある。(メルカリはリスト5個のあとに下記の一覧を見るリストが表示)
+  %li.mypage-item-link
+    = link_to "一覧をみる" , "/" , class: "mypage-go-list"
