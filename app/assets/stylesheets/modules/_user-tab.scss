@@ -1,0 +1,104 @@
+@import "variable";
+@import "./mixin/mixin";
+
+//タブ開始機能
+.tabs {
+  background-color: $list-btn;
+  width: 700px;
+}
+  /*ラジオボタンを全て消す*/
+  // input[name="tab_user"],
+  input[name="tab_item"] , input[name="tab_user"] {
+    display: none;
+  }
+
+/*タブのスタイル*/
+.tab_item,.tab_user {
+  width: calc(100%/2);
+  height: 74px;
+  font-size: 16px;
+  line-height: 74px;
+  text-align: center;
+  color: $black;
+  display: block;
+  float: left;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+/*タブ切り替えの中身のスタイル*/
+.tab_content {
+  display: none;
+  background-color: $white;
+  clear: both;
+  overflow: hidden;
+  // max-height:    後々制限が必要？（メルカリだとリスト⑤個分）
+}
+/*選択されているタブのコンテンツのみを表示*/
+#notice:checked ~ #notice_content,
+#todo:checked ~ #todo_content , #trade-now:checked ~ #trade-now_content,
+#trade-kako:checked ~ #trade-kako_content {
+  display: block;
+}
+/*選択されているタブのスタイルを変える*/
+.tabs input:checked + .tab_item , .tabs input:checked + .tab_user {
+  background-color: $white;
+  border-top: 2px solid $red-btn;
+  } //タブ機能終わり
+
+    //タブ-リスト
+    .tab-content {
+      &__list {
+        height: 48px;
+        padding: 16px;
+        float: left;
+        width: calc(100% - 32px);
+        border-bottom:  solid 1px $off-white;
+        text-decoration: none;
+        &:hover {
+          background: rgba(238, 238, 238 , 0.2); //背景のみ透過.(色は$list-btn)
+        }
+          //リストの最後の "一覧を見る" のcss
+        &--link {
+          color: $black;
+          background-color: $list-btn;
+          height: 48px;
+          width: 100%;
+          float: left;
+          text-align: center;
+          line-height: 48px;
+          text-decoration: none;
+          &:hover {
+            background: rgba(238, 238, 238 , 0.7);
+          }
+        }
+        &--mercari {
+          background-color: $off-white;
+          float: left;
+        }
+        &--arrow {
+          float: right;
+          line-height: 48px;
+          font-size: 28px;
+          color: $black;
+        }
+        &--body {
+          height: 100%;
+          margin: 0 40px 0 68px;
+          &-text {
+            font-size: 14px;
+            color: $black;
+          }
+          &-time {
+            float: left;
+            margin-right: 8px;
+            color: $time;
+            font-size: 16px;
+            line-height: 16px;
+            & span {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+
