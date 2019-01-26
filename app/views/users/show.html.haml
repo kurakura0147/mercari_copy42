@@ -2,63 +2,68 @@
   = render 'shared/header'
   //ページのルート表示
   %nav.bread-crumbs
-    %ul.bread-crumbs-rink
+    %ul.bread-crumbs__rink
       = link_to "" do
         メルカリ
-      = fa_icon "angle-right", class: "arrow-root"
+      = fa_icon "angle-right", class: "bread-crumbs__rink--arrow"
       マイページ
       //ユーザーサイトのメイン部分
-      //左のメニュー部分
-  .l-container.clearfix
-    = render 'shared/user'
-    //右の大枠の部分。ユーザーページの右側の大枠は、変わらないため。
-    .l-content
-      %section.mypage-user-icon
-        =link_to "#" , class: "user-information" do
-          .figure
-            = image_tag("380138525.jpg", width: "60", class: "current_user-icon")
-            %h3.bold
+  .mypage-body.clearfix
+    //左のメニュー部分
+    = render 'shared/user-side'
+    //右のコンテンツ
+    .main__content
+      %section.user-information
+        =link_to "#" , class: "user-information__link" do
+          .user-information__figure
+            = image_tag("380138525.jpg", width: "60", class: "user-information__figure--icon")
+            %h3.user-information__name
               レッドブル
-            .mypage-number
-              .review
+            .user-information__number
+              .user-information__number--review
                 評価
                 %span.bold
                   10
-              .exhibit
+              .user-information__number--exhibit
                 出品数
                 %span.bold
                   20
-      .mypage-tab-container-notification-todo
+      .user-information__tab
+        //タブの開始
         .tabs
-          %input#information{:checked => "checked", :name => "tab_user", :type => "radio"}/
-          %label.tab_user{:for => "information"}
+          %input#notice{:checked => "checked", :name => "tab_user", :type => "radio"}/
+          %label.tab_user{:for => "notice"}
             お知らせ
           %input#todo{:name => "tab_user", :type => "radio"}/
           %label.tab_user{:for => "todo"}
             やることリスト
-          #information_content.tab_content
-            //リストの全体
-            = render 'shared/user-tab'
-            //タブ内（やることリスト）
+          #notice_content.tab_content
+            //タブ-リストの開始
+            %ul.tab-content
+              %li.notice_content
+                = render 'shared/user-tab'
+            //タブ-リスト（やることリスト）
           #todo_content.tab_content
-            = image_tag("user-joukyo" , :width => '100%' )
-
+            %ul.tab-content
+              %li.todo_content
+                = image_tag("user-joukyo" , :width => '100%' )
       //ユーザーの商品情報（下の部分）
-      %section.mypage-tab-container
-        %h2.mypage-tab-head
+      %section.trade-information
+        %h2.trade-information__tab
           購入した商品
         //タブの部分
         .tabs
-          %input#torihiki-now{:checked => "checked", :name => "tab_item", :type => "radio"}/
-          %label.tab_item{:for => "torihiki-now"}
+          %input#trade-now{:checked => "checked", :name => "tab_item", :type => "radio"}/
+          %label.tab_item{:for => "trade-now"}
             取引中
-          %input#torihiki-kako{:name => "tab_item", :type => "radio"}/
-          %label.tab_item{:for => "torihiki-kako"}
+          %input#trade-kako{:name => "tab_item", :type => "radio"}/
+          %label.tab_item{:for => "trade-kako"}
             過去の取引
-          #torihiki-now_content.tab_content
-            //リストの全体
-            = render 'shared/user-tab'
-          #torihiki-kako_content.tab_content
+          #trade-now_content.tab_content
+            %ul.trade-now-content
+              %li.trade-now_content
+                = render 'shared/user-tab'
+          #trade-kako_content.tab_content
             = image_tag("user-joukyo" , :width => '100%' )
 
   = render 'shared/aside'

@@ -1,202 +1,99 @@
 @import "variable";
 @import "./mixin/mixin";
 
+//ルート
 .bread-crumbs {
   height: 49px;
   border-top:  solid 1px $off-white;
   padding: 0 210px;
   box-shadow: 0px 100px 0 0;
-  .bread-crumbs-rink {
+  .bread-crumbs__rink {
     margin: 17px  16px;
     font-size: 14px;
     a {
+      color: $black;
       text-decoration: none;
       &:hover {
         text-decoration: underline;
       }
     }
-    .arrow-root {
+    &--arrow {
       margin: 0 8px;
     }
   }
 }
 
-.l-container {
-  padding: 40px 210px 40px 210px;
+//全体
+.mypage-body {
+  background-color:$off-white;
   height: 100%;
   width: 1020px;
-  background-color:$off-white;
-
-//左側
-  .l-side {
-    float:left;
-    font-size: 14px;
-    margin-right: 40px;
-    height: 100%;
-    width:  282px;
-    line-height: 14px;
-    //サイドメニューー項目
-    .mypage-nav-head {
-      font-size: 16px;
-      margin: 40px 0 8px 0;
-      font-weight: 700px;
-      font-weight:  bold;
-    }
-    //リスト全体
-    .mypage-nav-list {
-      a {
-        color: black;
-        text-decoration: none;
-      }
-    }
-      //リスト1つ分
-      .mypage-nav-list-item {
-        height: 16px;
-        width: 248px;
-        padding: 16px;
-        background-color: $white;
-        border-top:  solid 1px $off-white;
-        .arrow-button {
-          float: right;
-          line-height: 16px;
-          font-size: 28px;
-          opacity: 0.2;
-        }
-        &:hover {
-          opacity: 0.7;
-          .arrow-button {
-            float: right;
-            line-height: 16px;
-            font-size: 30px;
-            opacity: 1.0;
-            transform: translateX(3px);
-            transition: 0.4s ;
-          }
-        }
-      }
-  }
+  padding: 40px 210px 40px 210px;
 
   //右側大枠部分
-  .l-content {
+  .main__content {
     float: left;
     width: calc(100vw - 742px);
     height: 100%;
-    //ユーザー名、評価表示部分
-    .mypage-user-icon {
+    // ユーザー名、評価表示部分
+    .user-information {
       height: 160px;
       width: 658px;
       padding: 20px;
       background-color: $white;
-      display:inline-block;
-      .user-information {
+      &__link {
         height: 111px;
         width: 700px;
         text-decoration: none;
-        background-color: red;
         position: relative;
         top:15px;
-
-        .figure {
-          text-align: center;
-          .current_user-icon {
-            border-radius: 50%;
-          }
-          //ログインユーザーの名前
-          h3.bold {
-            margin: 8px 0;
-            font-size: 14px;
-            text-align: center;
-            color: black;
-          }
-              color: black;
-          //評価・出品
-        .mypage-number {
-          height:16px;
-          font-size: 14px;
-          text-align: center;
-          .review {
-            float: left;
-            position: relative;
-            left: 260px;
-          }
-          .exhibit {
-            position: relative;
-            left:20px;
-          }
-            span.bold {
-              // margin-left: 8px;
-              font-size: 16px;
-            }
-        }
-        }
         //アイコン周りにカーソルが乗ったときに反応
         &:hover {
           opacity: 0.6;
-          h3.bold {
+          .user-information__name {
             text-decoration: underline;
           }
         }
       }
-    }
-    //タブ部分(お知らせ、やることりすと)
-      //1リスト分
-      .mypage-item-link {
-        height: 48px;
-        padding: 16px;
-        float: left;
-        width: calc(100% - 32px);
-        border-bottom:  solid 1px $off-white;
-        text-decoration: none;
-        .mercari-icon {
-          background-color: $off-white;
-          float: left;
+      &__figure {
+        text-align: center;
+        &--icon {
+          border-radius: 50%;
         }
-        .arrow-mark {
-          float: right;
-          line-height: 48px;
-          font-size: 28px;
-        }
-        .mypage-item-body {
-          height: 100%;
-          margin: 0 40px 0 68px;
-          .mypage-item-text {
-            font-size: 14px;
-            color: black;
-          }
-          .time {
-            float: left;
-            margin-right: 8px;
-            color: $time;
-            font-size: 16px;
-            line-height: 16px;
-            & span {
-              font-size: 14px;
-            }
-          }
-        }
-          &:hover {
-            background: rgba(238, 238, 238 , 0.2); //背景のみ透過.(色は$list-btn)
-          }
       }
-        //リストの最後の一覧を見るのcss
-        .mypage-go-list {
-          height: 48px;
-          float: left;
-          width: 100%;
+          //ログインユーザーの名前
+        &__name {
+          margin: 8px 0;
+          font-size: 14px;
           text-align: center;
-          line-height: 48px;
-          background-color: $list-btn;
-          text-decoration: none;
-          color: black;
-          &:hover {
-            background: rgba(238, 238, 238 , 0.7);
-          }
+          color: $black;
         }
+          //評価(review)・出品(exhibit)
+        &__number {
+          height:16px;
+          font-size: 14px;
+          text-align: center;
+          color: $black;
+          &--review {
+            float: left;
+            position: relative;
+            left: 260px;
+          }
+          &--exhibit {
+            position: relative;
+            left:20px;
+          }
+            span.bold {
+              font-size: 16px;
+            }
+        }
+    }
+  }
     //購入したのcss
-    .mypage-tab-container {
+    .trade-information {
       height: 382px;
       margin-top: 40px;
-      .mypage-tab-head {
+      &__tab {
         padding: 0 16px;
         background-color: $tab-menu;
         height: 72px;
@@ -204,68 +101,5 @@
         line-height: 72px;
       }
     }
-  }
-
-
-//タブ全体についてここから開始
-.tabs {
-  background-color: $list-btn;
-  width: 700px;
-  margin: 0 auto;}
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); //タブの切替に必須
-
-/*ラジオボタンを全て消す*/
-input[name="tab_user"],
-input[name="tab_item"] {
-  display: none;
 }
-
-/*タブのスタイル*/
-.tab_item,
-.tab_user {
-  width: calc(100%/2);
-  height: 74px;
-  font-size: 16px;
-  line-height: 74px;
-  text-align: center;
-  color: black;
-  display: block;
-  float: left;
-  font-weight: bold;
-  transition: all 0.2s ease;
-}
-.tab_item:hover,
-.tab_user:hover {
-  opacity: 0.75;
-}
-
-/*タブ切り替えの中身のスタイル*/
-.tab_content {
-  display: none;
-  background-color: $white;
-  clear: both;
-  overflow: hidden;
-  height: 100%;
-  // max-height:    後々制限が必要？（メルカリだとリスト⑤個分）
-}
-
-/*選択されているタブのコンテンツのみを表示*/
-#torihiki-now:checked ~ #torihiki-now_content,
-#torihiki-kako:checked ~ #torihiki-kako_content,
-#information:checked ~ #information_content,
-#todo:checked ~ #todo_content,{
-  display: block;
-  margin: auto;
-}
-/*選択されているタブのスタイルを変える*/
-.tabs input:checked + .tab_user,
-.tabs input:checked + .tab_item {
-  background-color: $white;
-  color: black;
-  border-top: 2px solid red;
-}
-
-}
-
-
 
