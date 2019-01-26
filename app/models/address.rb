@@ -1,3 +1,4 @@
 class Address < ApplicationRecord
-  belongs_to :user
+  # optional: trueで外部キーのnilを許可している。ユーザーと住所を同時に登録するので必要。
+  belongs_to :user, optional: true
 end
