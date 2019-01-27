@@ -1,0 +1,106 @@
+@import "variable";
+@import "./mixin/mixin";
+
+//ルート
+.bread-crumbs {
+  height: 49px;
+  border-top:  solid 1px $off-white;
+  padding: 0 210px;
+  box-shadow: 0px 100px 0 0;
+  .bread-crumbs__rink {
+    margin: 17px  16px;
+    font-size: 14px;
+    a {
+      color: $black;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    &--arrow {
+      margin: 0 8px;
+    }
+  }
+}
+
+//全体
+.mypage-body {
+  background-color:$off-white;
+  height: 100%;
+  width: 1020px;
+  padding: 40px 210px 40px 210px;
+
+  //右側大枠部分
+  .main__content {
+    float: left;
+    width: calc(100vw - 742px);
+    height: 100%;
+    // ユーザー名、評価表示部分
+    .user-information {
+      height: 160px;
+      width: 658px;
+      padding: 20px;
+      background-color: $white;
+      &__link {
+        height: 111px;
+        width: 700px;
+        text-decoration: none;
+        position: relative;
+        top:15px;
+        //アイコン周りにカーソルが乗ったときに反応
+        &:hover {
+          opacity: 0.6;
+          .user-information__name {
+            text-decoration: underline;
+          }
+        }
+      }
+      &__figure {
+        text-align: center;
+        &--icon {
+          border-radius: 50%;
+          width: 60px;
+        }
+      }
+          //ログインユーザーの名前
+        &__name {
+          margin: 8px 0;
+          font-size: 14px;
+          text-align: center;
+          color: $black;
+        }
+          //評価(review)・出品(exhibit)
+        &__number {
+          height:16px;
+          font-size: 14px;
+          text-align: center;
+          color: $black;
+          &--review {
+            float: left;
+            position: relative;
+            left: 260px;
+          }
+          &--exhibit {
+            position: relative;
+            left:20px;
+          }
+            span.bold {
+              font-size: 16px;
+            }
+        }
+    }
+  }
+    //購入したのcss
+    .trade-information {
+      height: 382px;
+      margin-top: 40px;
+      &__tab {
+        padding: 0 16px;
+        background-color: $tab-menu;
+        height: 72px;
+        font-size: 16px;
+        line-height: 72px;
+      }
+    }
+}
+

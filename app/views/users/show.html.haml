@@ -1,0 +1,71 @@
+.container
+  = render 'shared/header'
+  //ページのルート表示
+  %nav.bread-crumbs
+    %ul.bread-crumbs__rink
+      = link_to "" do
+        メルカリ
+      = fa_icon "angle-right", class: "bread-crumbs__rink--arrow"
+      マイページ
+      //ユーザーサイトのメイン部分
+  .mypage-body.clearfix
+    //左のメニュー部分
+    = render 'shared/user-side'
+    //右のコンテンツ
+    .main__content
+      %section.user-information
+        =link_to "#" , class: "user-information__link" do
+          .user-information__figure
+            = image_tag("380138525.jpg", class: "user-information__figure--icon")
+            %h3.user-information__name
+              レッドブル
+            .user-information__number
+              .user-information__number--review
+                評価
+                %span.bold
+                  10
+              .user-information__number--exhibit
+                出品数
+                %span.bold
+                  20
+      .user-information__tab
+        //タブの開始
+        .tabs
+          %input#notice{:checked => "checked", :name => "tab_user", :type => "radio"}/
+          %label.tab_user{:for => "notice"}
+            お知らせ
+          %input#todo{:name => "tab_user", :type => "radio"}/
+          %label.tab_user{:for => "todo"}
+            やることリスト
+          #notice_content.tab_content
+            //タブ-リストの開始
+            %ul.tab-content
+              %li.notice_content
+                = render 'shared/user-tab'
+            //タブ-リスト（やることリスト）
+          #todo_content.tab_content
+            %ul.tab-content
+              %li.todo_content
+                = image_tag("user-joukyo" , class: "tab-content__list--image" )
+      //ユーザーの商品情報（下の部分）
+      %section.trade-information
+        %h2.trade-information__tab
+          購入した商品
+        //タブの部分
+        .tabs
+          %input#trade-now{:checked => "checked", :name => "tab_item", :type => "radio"}/
+          %label.tab_item{:for => "trade-now"}
+            取引中
+          %input#trade-kako{:name => "tab_item", :type => "radio"}/
+          %label.tab_item{:for => "trade-kako"}
+            過去の取引
+          #trade-now_content.tab_content
+            %ul.trade-now-content
+              %li.trade-now_content
+                = render 'shared/user-tab'
+          #trade-kako_content.tab_content
+            = image_tag("user-joukyo" , class: "tab-content__list--image" )
+
+  = render 'shared/aside'
+  = render 'shared/footer'
+  = render 'shared/sell-btn'

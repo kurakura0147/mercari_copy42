@@ -1,0 +1,46 @@
+.side__content {
+  height: 100%;
+  width:  282px;
+  float:left;
+  margin-right: 40px;
+  //サイドメニュー項目
+  .mypage-nav {
+    &__head {
+      font-size: 16px;
+      margin: 40px 0 8px 0;
+      font-weight:  bold;
+    }
+  //サイドメニュー内容
+    &__list {
+        & a {
+        text-decoration: none;
+        color: $black;
+        }
+      &--item {
+        height: 16px;
+        font-size: 14px;
+        background-color: $white;
+        padding: 16px;
+        border-top:  solid 1px $off-white;
+        &:hover {
+          opacity: 0.7;
+          .mypage-nav__list--arrow {
+            float: right;
+            line-height: 16px;
+            font-size: 30px;
+            opacity: 1.0;
+            transform: translateX(4px); //X軸移動距離
+            transition: 0.4s ; //変化時間
+          }
+        }
+      }
+      &--arrow {
+          float: right;
+          line-height: 16px;
+          font-size: 26px;
+          opacity: 0.2;
+          color: $black;
+      }
+    }
+  }
+}

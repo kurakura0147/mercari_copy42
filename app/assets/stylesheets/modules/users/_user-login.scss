@@ -1,0 +1,65 @@
+.login__container {
+  height: 100%;
+}
+
+.login__panel {
+  background-color: $white;
+  width: 456px;
+  margin: 0 auto;
+}
+
+.login--no__account {
+  text-align: center;
+  padding: 40px 64px;
+    & p {
+      font-size: 14px;
+    }
+    & a {
+      text-decoration: none;
+      font-size: 14px;
+      display: block;
+      margin: 8px 0 0;
+      border: 1px solid $sky-blue;
+      background-color: $sky-blue;
+      color: $white;
+      line-height: 40px;
+    }
+}
+
+.login__inner-sns {
+  border-top: 1px solid $off-white;
+  padding: 32px 64px;
+}
+
+.login__inner {
+  padding: 24px 64px 32px;
+    &__group:first-child {
+      margin: 0;
+    }
+    &__group {
+      margin: 24px 0 0 0;
+    }
+}
+
+.input-default {
+  @include input-default;
+  box-sizing: border-box;
+}
+
+.login-submit {
+  margin: 24px 0 0;
+    &-btn {
+      @include btn-default;
+      background-color: $red-btn;
+      color: $white;
+    }
+}
+
+.login__nav {
+  display: block;
+  margin: 40px 0 0;
+  color: $sky-blue;
+  text-decoration: none;
+  font-size: 14px;
+}
+

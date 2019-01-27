@@ -1,21 +1,220 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+.user__container.login__container
+  %header.signup__container__header
+    %h1
+      = link_to "/" do
+        = image_tag("logo.svg", alt: "mercari", width: "185", height: "49")
+    %nav.progress__bar
+      %ol
+        %li
+          会員情報
+          .progress-dot.progress__status-first
+        %li
+          電話番号認証
+          .progress-dot.progress__status
+        %li
+          住所入力
+          .progress-dot.progress__status
+        %li
+          支払い方法
+          .progress-dot.progress__status
+        %li
+          完了
+          .progress-dot.progress__status-last
+
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    .section
+      %main.user__container__main
+        .signup__container
+          %h2.signup__container--upper 会員情報入力
+
+          .signup__inner
+            .signup__inner__container
+              .signup__inner__group
+                = f.label :ニックネーム
+                %span.form-require 必須
+                %br/
+                = f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: "input-default", placeholder: "例）メルカリ太郎"
+              .signup__inner__group
+                = f.label :メールアドレス
+                %span.form-require 必須
+                %br/
+                = f.email_field :email, autofocus: true, autocomplete: "email", class: "input-default", placeholder: "pc・携帯どちらでも可"
+              .signup__inner__group
+                = f.label :パスワード
+                %span.form-require 必須
+                %br/
+                = f.password_field :password, autocomplete: "new-password", class: "input-default", placeholder: "6文字以上"
+              .signup__inner__group
+                = f.label :'パスワード(確認)'
+                %span.form-require 必須
+                %br/
+                = f.password_field :password_confirmation, autocomplete: "new-password", class: "input-default", placeholder: "6文字以上"
+
+                .signup__inner__group
+                  = image_tag('reCAPTCHA.png', width: "304", height: "78")
+
+                .signup-submit.signup-submit-btn.next-step
+                  次へ進む
+
+    / 電話番号認証
+    .section
+      %main.user__container__main
+        .signup__container
+          %h2.chapter__header 電話番号の確認
+
+          .signup__inner
+            .signup__inner__container
+              .signup__inner__group
+                = f.label :携帯電話の番号
+                %br/
+                = f.text_field :phone_number, autofocus: true, autocomplete: "nickname", class: "input-default", placeholder: "携帯電話の番号"
+                %p.tel__info
+                本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+
+              .signup-submit.signup-submit-btn.next-step2
+                SMSを送信する
+              %p.tel-info ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+              .text-right
+                = link_to "/", class: "tel_reason" do
+                  電話番号の確認が必要な理由>
+
+    / 住所入力
+    .section
+      %main.user__container__main
+        .signup__container
+          %h2.signup__container--upper 住所入力
+          .signup__inner
+            .signup__inner__container
+              .signup__inner__group
+                = f.label :お名前
+                %span.form-require 必須
+                %br/
+                = f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "input-default", placeholder: "例）山田"
+                .signup__inner__group-box
+                  = f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "input-default", placeholder: "例）彩"
+              .signup__inner__group
+                = f.label :お名前カナ
+                %span.form-require 必須
+                %br/
+                = f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", class: "input-default", placeholder: "例)ヤマダ"
+                .signup__inner__group-box
+                  = f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", class: "input-default", placeholder: "例)アヤ"
+
+              .signup__inner__group
+                = f.fields_for :address, Address.new do |address|
+                  = address.label :郵便番号
+                  %span.form-require 必須
+                  %br/
+                  = address.text_field :postal_code, autocomplete: "postsl_code", class: "input-default", placeholder: "123-4567"
+                  .address__group
+                    = address.label :都道府県
+                    %span.form-require 必須
+                    %br/
+                    = address.select :prefecture, Address.prefs.keys, {}, { class: "input-default" }
+
+                  .address__group
+                    =address.label :市区町村
+                    %span.form-require 必須
+                    %br/
+                    = address.text_field :city, autocomplete: "city", class: "input-default", placeholder: "例)横浜市緑区"
+                  .address__group
+                    =address.label :番地
+                    %span.form-require 必須
+                    %br/
+                    = address.text_field :house_number, autocomplete: "house_number", class: "input-default", placeholder: "例)青山1-1-1"
+                  .address__group
+                    =address.label :建物名
+                    %span.form-any 任意
+                    %br/
+                    = address.text_field :building_name, autocomplete: "building_name", class: "input-default", placeholder: "例)柳ビル103"
+
+              .signup-submit.signup-submit-btn.next-step3
+                次へ進む
+
+    / クレジットカード
+    .section
+      %main.user__container__main
+        .signup__container
+          %h2.signup__container--upper 支払い方法
+
+          .signup__inner
+            .signup__inner__container
+              .signup__inner__group
+                %span カード番号
+                %input.input-default{ placeholder: "半角数字のみ" }
+                %ul.card__lineup
+                  %li
+                    = image_tag("visa.svg", class: "card--image", width: "49")
+                  %li
+                    = image_tag("master-card.svg", class: "card--image", width: "34")
+                  %li
+                    = image_tag("saison-card.svg", class: "card--image", width: "30")
+                  %li
+                    = image_tag("jcb.svg", class: "card--image", width: "32")
+                  %li
+                    = image_tag("american_express.svg", class: "card--image", width: "21")
+                  %li
+                    = image_tag("dinersclub.svg", class: "card--image", width: "32")
+                  %li
+                    = image_tag("discover.svg", class: "card--image", width: "32")
+                .card__block
+                  %label 有効期限
+                  %br/
+                  %select.card__block__select
+                    %option{value: "01"} 01
+                    %option{value: "02"} 02
+                    %option{value: "03"} 03
+                    %option{value: "04"} 04
+                    %option{value: "05"} 05
+                    %option{value: "06"} 06
+                    %option{value: "07"} 07
+                    %option{value: "08"} 08
+                    %option{value: "09"} 09
+                    %option{value: "10"} 10
+                    %option{value: "11"} 11
+                    %option{value: "12"} 12
+                  %span 月
+                  %br/
+                  %select.card__block__select
+                    %option{value: "19"} 19
+                    %option{value: "20"} 20
+                    %option{value: "21"} 21
+                    %option{value: "22"} 22
+                    %option{value: "23"} 23
+                    %option{value: "24"} 24
+                    %option{value: "25"} 25
+                    %option{value: "26"} 26
+                    %option{value: "27"} 27
+                    %option{value: "28"} 28
+                    %option{value: "29"} 29
+                  %span 年
+
+              .signup__inner__group
+                %label セキュリティコード
+                %span.form-require 必須
+                %input.input-default{ placeholder: "カード背面4桁もしくは3桁の番号" }
+                .signup__sqcode-text
+                  %span ?
+                  カード裏面の番号とは？
+              .signup-submit.signup-submit-btn.next-step4
+                次へ進む
+
+    / 完了
+    .section
+      %main.user__container__main
+        .signup__container
+          %h2.signup__container--upper 会員登録完了
+
+          .signup__inner
+            .signup__inner__container
+              .signup__inner__group
+                %p.fin__message ありがとうございます。
+                %p.fin__message 会員登録が完了しました。
+
+              .signup-submit.last-submit
+                = f.submit "メルカリをはじめる", class: "signup-submit-btn"
+          = link_to '/', class: "fin__banner" do
+            = image_tag("banner-pc.jpg", width: "700px")
+
+
+  = render 'shared/registration/registration-footer'
