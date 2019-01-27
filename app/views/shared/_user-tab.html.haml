@@ -1,0 +1,23 @@
+= link_to "" , class: "tab-content__list"  do
+  = image_tag("mercari-icon.jpg", class: "tab-content__list--mercari")
+  = fa_icon "angle-right", class: "tab-content__list--arrow"
+  .tab-content__list--body
+    .tab-content__list--body-text
+      事務局からの連絡です。「うううううううううううううううううううううううううううううううううううううう」
+    .tab-content__list--body-time
+      = fa_icon "clock-o", class: "tab-content__icon--time"
+      %span
+        5日前
+= link_to "" , class: "tab-content__list"  do
+  = image_tag("mercari-icon.jpg", width: "48", class: "tab-content__list--mercari")
+  = fa_icon "angle-right", class: "tab-content__list--arrow"
+  .tab-content__list--body
+    .tab-content__list--body-text
+      事務局からの連絡です。「うううううううううううううううううううううううううううううううううううううう」
+    .tab-content__list--body-time
+      = fa_icon "clock-o", class: "tab-content__icon--time"
+      %span
+        5日前
+//リストがある場合に最後に下記のリストを表示させる必要がある。(メルカリはリスト5個のあとに下記の一覧を見るリストが表示)
+%li.tab-content__list
+  = link_to "一覧をみる" , "/" , class: "tab-content__list--link"
