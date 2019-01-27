@@ -46,6 +46,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails', '~> 4.4.1'
   gem 'faker'
+  gem 'pry-rails'
 end
 
 group :development do
@@ -68,3 +69,4 @@ gem 'haml-rails'
 gem 'erb2haml'
 gem 'font-awesome-rails'
 gem 'devise'
+gem "recaptcha", require: "recaptcha/rails"
