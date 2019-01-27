@@ -3,7 +3,7 @@
 
 //タブ開始機能
 .tabs {
-  background-color: $list-btn;
+  background-color: $btn-gray;
   width: 700px;
 }
   /*ラジオボタンを全て消す*/
@@ -55,12 +55,12 @@
         border-bottom:  solid 1px $off-white;
         text-decoration: none;
         &:hover {
-          background: rgba(238, 238, 238 , 0.2); //背景のみ透過.(色は$list-btn)
+          background: rgba(238, 238, 238 , 0.2); //背景のみ透過.(色は$progress-bar)
         }
           //リストの最後の "一覧を見る" のcss
         &--link {
           color: $black;
-          background-color: $list-btn;
+          background-color: $btn-gray;
           height: 48px;
           width: 100%;
           float: left;
@@ -95,7 +95,7 @@
           &-time {
             float: left;
             margin-right: 8px;
-            color: $time;
+            color: $progress-bar;
             font-size: 16px;
             line-height: 16px;
             & span {
