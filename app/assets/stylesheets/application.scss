@@ -1,6 +1,7 @@
 @import "./reset";
 @import "font-awesome";
 @import "./variable";
+@import "./mixin/mixin";
 @import "./modules/header";
 @import "./modules/main";
 @import "./modules/aside";
@@ -9,4 +10,3 @@
 @import "./modules/users/user";
 @import "./modules/users/user-login";
 @import "./modules/users/user-signup";
-@import "./mixin/mixin";
