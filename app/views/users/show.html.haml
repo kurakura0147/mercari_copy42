@@ -16,7 +16,7 @@
       %section.user-information
         =link_to "#" , class: "user-information__link" do
           .user-information__figure
-            = image_tag("380138525.jpg", width: "60", class: "user-information__figure--icon")
+            = image_tag("380138525.jpg", class: "user-information__figure--icon")
             %h3.user-information__name
               レッドブル
             .user-information__number
@@ -46,7 +46,7 @@
           #todo_content.tab_content
             %ul.tab-content
               %li.todo_content
-                = image_tag("user-joukyo" , :width => '100%' )
+                = image_tag("user-joukyo" , class: "tab-content__list--image" )
       //ユーザーの商品情報（下の部分）
       %section.trade-information
         %h2.trade-information__tab
@@ -64,7 +64,7 @@
               %li.trade-now_content
                 = render 'shared/user-tab'
           #trade-kako_content.tab_content
-            = image_tag("user-joukyo" , :width => '100%' )
+            = image_tag("user-joukyo" , class: "tab-content__list--image" )
 
   = render 'shared/aside'
   = render 'shared/footer'
