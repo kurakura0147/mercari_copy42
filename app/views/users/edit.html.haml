@@ -1,0 +1,28 @@
+.container
+  = render 'shared/header'
+  %nav.bread-crumbs
+    %ul.bread-crumbs__rink
+      = link_to "" do
+        メルカリ
+      = fa_icon "angle-right", class: "bread-crumbs__rink--arrow"
+      マイページ
+
+= form_for @user do |f|
+  .mypage-body.clearfix
+    = render 'shared/user-side'
+    .main__content.user__profile
+      .user__profile-head
+        プロフィール
+      .user-information.user__profile-background
+        = link_to "#" , class: "user-information__link" do
+          .user-information__figure.info__block-parts
+            = image_tag("380138525.jpg", class: "user-information__figure--icon")
+        = f.text_field :nickname, class: "input-default profile__name", placeholder: "例)AYA☆セール中"
+
+      .user__profile-content
+        = f.text_area :profile, class: "user__profile-content-area", placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"
+        = f.submit :変更する,class: "user__profile-content-btn"
+
+  = render 'shared/aside'
+  = render 'shared/footer'
+  = render 'shared/sell-btn'
