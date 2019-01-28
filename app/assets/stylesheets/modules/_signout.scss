@@ -3,6 +3,8 @@
   padding:64px;
   background-color: $white;
   &--button {
+    display: block;
+    text-decoration: none;
     margin: 0 126px;
     height: 50px;
     width: 320px;

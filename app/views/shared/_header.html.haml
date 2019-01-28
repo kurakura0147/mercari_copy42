@@ -14,30 +14,31 @@
             = link_to "カテゴリーから探す", "/", class: "header__search__btn"
           %li
             = link_to "ブランドから探す", "/", class: "header__search__btn"
-      .header__nav__right
-        / ログイン前のview if文で分岐
-        / %ul
-        /   %li
-        /     = link_to "ログイン", "/", class: "header__login__btn btn-red"
-        /   %li
-        /     = link_to "新規会員登録", "/", class: "header__login__btn header-signup"
-        / ログイン後のview
-        %ul
-          %li
-            = link_to "/" do
-              %figure
-                %p.header__nav__root
-                  = image_tag("380138525.jpg", width: "32", class: "header__user-icon")
-                %span.header__nav__user-mypage マイページ
-          %li
-            = link_to "/", class: "header__nav__root" do
-              %figure
-                %p.header__nav__root
-                  = fa_icon "bell-o", class: "fa-lg"
-                %span.header__nav__user-info お知らせ
-          %li
-            = link_to "/", class: "header__nav__root" do
-              %figure
-                %p.header__nav__root
-                  = fa_icon "check", class: "fa-lg"
-                %span.header__nav__user-todo やることリスト
+      - if user_signed_in?
+        .header__nav__right
+          %ul
+            %li
+              = link_to "/" do
+                %figure
+                  %p.header__nav__root
+                    = image_tag("380138525.jpg", class: "header__user-icon")
+                  %span.header__nav__user-mypage マイページ
+            %li
+              = link_to "/", class: "header__nav__root" do
+                %figure
+                  %p.header__nav__root
+                    = fa_icon "bell-o", class: "fa-lg"
+                  %span.header__nav__user-info お知らせ
+            %li
+              = link_to "/", class: "header__nav__root" do
+                %figure
+                  %p.header__nav__root
+                    = fa_icon "check", class: "fa-lg"
+                  %span.header__nav__user-todo やることリスト
+      - else
+        .header__nav__right
+          %ul
+            %li
+              = link_to "ログイン", new_user_session_path, class: "header__login__btn btn-red"
+            %li
+              = link_to "新規会員登録", new_user_path, class: "header__login__btn header-signup"
