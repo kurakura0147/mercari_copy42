@@ -1,0 +1,49 @@
+.user__profile {
+  background-color: $white;
+    &-head {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      border: 1px solid $off-white;
+      padding: 8px 24px;
+    }
+    &-background {
+      position: relative;
+      height: 156px;
+      width: 666px;
+      background-image: image-url('user-bg.jpg');
+    }
+    &-content {
+      padding: 40px 16px;
+      &-area {
+        // display: inline-block;
+        min-height: 216px;
+        box-sizing: border-box;
+        max-width: 668px;
+        @include textarea-default;
+      }
+      &-btn {
+        @include btn-default;
+        color: $white;
+        background-color: $red-btn;
+        margin:16px 0 0;
+      }
+    }
+}
+
+.info__block-parts {
+  position: absolute;
+  top: 50px;
+  left: 160px;
+  width: 100px;
+}
+
+.profile__name {
+  display: block;
+  width: 220px;
+  margin: 0 0 0 8px;
+  vertical-align: middle;
+  position: absolute;
+  right: 200px;
+  bottom: 60px;
+}
