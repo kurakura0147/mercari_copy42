@@ -1,0 +1,318 @@
+.main-item {
+  height: 100%;
+  width: 100%;
+  background-color: $off-white;
+  padding-top: 40px;
+  &-content {
+    margin: 40px 450px 0 450px ;
+    background-color: $white;
+    padding:24px 40px 40px;
+    //ボタンアイコン（いいね、通報）
+    &__icon {
+      margin-top:16px;
+      &--iine {
+        float: left;
+        padding: 8px 16px;
+        border-radius:30px;
+        color: black;
+        background-color: $off-white;
+        &-text {
+          float: left;
+        }
+        &-icon {
+          float: left;
+          margin-right: 8px;
+        }
+      }
+      &--report {
+        float: left;
+        margin:0 16px 16px 16px;
+        padding: 8px 16px;
+        border-radius:30px;
+        color: black;
+        background-color: $off-white;
+        &-icon {
+          float: left;
+          margin-right:8px;
+        }
+        &-text {
+          float: left
+        }
+      }
+      &--safety {
+        padding: 8px 16px;
+        float: right;
+        color: $sky-blue;
+        width: 210px;
+        &-icon {
+          float: left;
+          margin-right: 10px;
+        }
+        &-text {
+          float: left;
+        }
+      }
+    }
+
+
+    //商品金額
+    &__price {
+      height: 50px;
+      width: 620px;
+      clear: both;
+      margin-top: 24px;
+      text-align: center;
+      .price__box {
+        display: inline-block;
+        text-align: center;
+        &--total {
+          font-size: 50px;
+          line-height: 50px;
+          float: left;
+          display: inline-block;
+          text-decoration: bold;
+        }
+        &--tax {
+          float: left;;
+          font-size: 10px;
+          line-height: 10px;
+          position: relative;
+          display: inline-block;
+          top: 35px;
+        }
+        &--option {
+          float: left;
+          font-size: 16px;
+          line-height: 16px;
+          position: relative;
+          display: inline-block;
+          top: 29px;
+        }
+      }
+    }
+      &__button {
+        background-color: red;
+        text-align: center;
+        margin:16px 0 24px 0;
+        height: 60px;
+        width: 100%;
+        line-height: 60px;
+        & a {
+          color: $white;
+          font-size: 24px;
+          text-decoration: none;
+        }
+      }
+      //商品情報
+      &__information {
+        padding-top: 32px;
+        &--text {
+          font-size: 18px;
+          line-height: 27px;
+          font-weight: 400px;
+          box-sizing: border-box;
+        }
+      }
+    &__name {
+      text-align: center;
+      font-size: 24px;
+    }
+    //上の商品紹介
+    &__profile {
+      margin-top: 16px;
+      &--img {
+        float: left;
+        background-color: $off-white;
+        .item__imag--main {
+          height: 300px;
+          width: 300px;
+        }
+        .item__img {
+          font-size: 50px;
+          &--sub1 {
+            width: 75px;
+            height: 75px;
+            float: left;
+          }
+          &--sub2 {
+            height: 75px;
+            width: 75px;
+            float: left;
+          }
+          &--sub3 {
+            height: 75px;
+            float: left;
+            width: 75px;
+          }
+          &--sub4 {
+            float: left;
+            height: 75px;
+            width: 75px;
+          }
+        }
+      }
+      &--text {
+        float: right;
+        height: 375px;
+        width: 300px;
+      }
+    }
+  }
+
+  &__box {
+    margin: 40px 450px 40px 440px;
+    &--name {
+      margin: 24px 0 8px 0;
+      font-size: 24px;
+      & a {
+      color: $sky-blue;
+      text-decoration: none;
+      }
+    }
+    .items__box{
+      float: left;
+      margin-bottom: 20px;
+    }
+  }
+  &__comments {
+    margin: 8px 450px 0 450px;
+    padding: 24px;
+    background-color: $white;
+    &--com {
+      float: left;
+    }
+  }
+}
+
+.user__comment {
+  margin:0 450px;
+  background-color: $white;
+  padding: 24px;
+  &--alart {
+    background-color: #FFF6DD;
+    padding: 8px;
+  }
+  &--input {
+    font-size: 14px;
+    padding: 10px ;
+    margin-top: 10px;
+    height:auto;
+    width: 630px;
+  }
+  &--button {
+    background-color: #AAAAAA;
+    margin-top: 8px;
+    color: $white;
+    height: 48px;
+    font-size: 18px;
+    width: 652px;
+  }
+}
+
+.main-users__nav {
+  margin:24px 450px;
+  &--before {
+    float: left;
+    color: $sky-blue;
+    text-decoration: none;
+  }
+  &--after {
+    float: right;
+    color: $sky-blue;
+    text-decoration: none;
+  }
+}
+
+.main-users__sns {
+  margin: 24px 450px;
+  padding:60px 280px 24px 276px ;
+  height: 56px;
+  text-align: center;
+  background-color: $white;
+  &--facebook {
+    color:#385185;
+    float: left;
+  }
+  &--tweeter {
+    color: #5D9DC9;
+    margin: 0 10px 0 10px;
+    float: left;
+  }
+  &--pinterest {
+    color: #AA2629;
+    float: left;
+  }
+}
+
+table {
+  font-size: 14px;
+  border-color: $off-white;
+  tr {
+        border-color: $btn-gray;
+  }
+  th {
+    width: 101px;
+    background-color: $off-white;
+    padding: 8px;
+  }
+  td {
+    padding: 8px;
+  }
+    .e1 {
+      & a {
+      text-decoration: none;
+      color: $sky-blue;
+      word-wrap: break-word;
+      &:hover {
+        text-decoration: underline;
+      }
+      }
+    }
+  }
+
+//吹き出しのcss開始。アイテムに対するコメント（2コメからは、  margin-top:60px;）
+.second-comment {
+  margin-top:60px;
+}
+.items__comment{
+  position: relative;
+  padding: 16px;
+  border-radius: 15px;
+  color: $black;
+  background-color: $btn-gray;
+  margin-left: 60px;
+  /* 画像 - 絶対配置で左上に配置 */
+  &--icon{
+    position: absolute;
+    left: -60px;
+    top: 0;
+    width: 40px;
+    border-radius: 25px;
+  }
+  &--name {
+    margin-left: 55px;
+  }
+  &--time {
+          color: $btn-gray;
+          float: left;
+    &-icon {
+      float: left;
+      &span {
+      float: left;
+    }
+  }
+}
+/* 三角アイコン */
+  &:before{
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  left: -15px;
+  top: 20px;
+  border-right: 30px solid $btn-gray;
+  border-top: 2px solid transparent;
+  border-bottom: 25px solid transparent;
+  }
+}
