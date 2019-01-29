@@ -7,5 +7,5 @@ Rails.application.routes.draw do
       get 'signout'
     end
   end
-
+  resources :credit_cards, only: [:new]
 end
