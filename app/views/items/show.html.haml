@@ -1,0 +1,204 @@
+.container
+  = render 'shared/header'
+  .main-item
+    %section.main-item-content
+      .main-item-content__name
+        あふろまん
+      .main-item-content__profile.clear.clearfix
+        .main-item-content__profile--img
+          .item__imag--main
+          .item__img
+            .item__img--sub1
+            .item__img--sub2
+            .item__img--sub3
+            .item__img--sub4
+        %table.main-item-content__profile--text{:border => "1"}
+          %tr
+            %th 出品者
+            %td.e1
+              = link_to "" do
+                コーラ
+          %tr
+            %th カテゴリー
+            %td.e1
+              = link_to "" do
+                甘い
+          %tr
+            %th ブランド
+            %td.e1
+              = link_to "" do
+                コカコーラ
+          %tr
+            %th 商品の状態
+            %td 半分飲みかけ
+          %tr
+            %th 配送料の負担
+            %td お気持ち
+          %tr
+            %th 配送の方法
+            %td 手渡し
+          %tr
+            %th 配送元地域
+            %td.e1
+              = link_to "" do
+                渋谷
+          %tr
+            %th 発送日の目安
+            %td 早め
+      .main-item-content__price
+        .price__box.clear.clearfix
+          %p.price__box--total
+            ¥ 2,000-
+          %p.price__box--tax
+            （税込み）
+          %p.price__box--option
+            送料込み
+      %ul.main-item-content__button
+        = link_to "/" do
+          %li.main-item-content__button-buy
+            購入画面に進む
+      .main-item-content__information
+        .main-item-content__information--text
+          「商品の紹介」 <br>飲みかけのコーラです。<br>状態は少しだけ悪いです。<br>
+          飲みかけのため返品は不可です。<br>慎重に注文を御願い致します。渋谷から持っていきます。<br>炭酸は抜けかけで甘みが強いです。
+      .main-item-content__icon.clear.clearfix
+        = link_to "#" do
+          %ul.main-item-content__icon--iine.clear.clearfix
+            %li.main-item-content__icon--iine-icon
+              ♡
+            %li.main-item-content__icon--iine-text
+              いいね! 5
+        = link_to "/" do
+          %ul.main-item-content__icon--report.clear.clearfix
+            %li.main-item-content__icon--report-icon
+              = fa_icon " flag-o ", class: "main-item-content__icon--report-icon"
+              .main-item-content__icon--report-text
+                不適切な商品の報告
+        = link_to "" do
+          .main-item-content__icon--safety.clear.clearfix
+            = fa_icon " lock ", class: "main-item-content__icon--safety-icon"
+            .main-item-content__icon--safety-text
+              安心安全への取り組み
+    %section.main-item__comments.clear.clearfix
+      %ul.items__comments
+        .items__comment--name
+          ロイヤルミルクティー
+        //コメントは２つ目以降は、margin-top:60px;
+        .items__comment
+          = image_tag("380138525.jpg", class: "items__comment--icon")
+          .items__comments--text
+            こんばんは。ロイヤルミルクティーです。こんばんは。ロイヤルミルクティーです。こんばんは。ロイヤルミルクティーです。
+          .items__comments--time.clear.clearfix
+            = fa_icon "clock-o", class: "items__comments--time-icon"
+            %span
+              90日前
+        .second-comment
+          .items__comment--name
+            ロイヤルミルクティー
+          .items__comment
+            = image_tag("380138525.jpg", class: "items__comment--icon")
+            .items__comments--text
+              こんばんは。ロイヤルミルクティーです。こんばんは。ロイヤルミルクティーです。こんばんは。ロイヤルミルクティーです。
+            .items__comments--time.clear.clearfix
+              = fa_icon "clock-o", class: "items__comments--time-icon"
+              %span
+                90日前
+        .second-comment
+          .items__comment--name
+            ロイヤルミルクティー
+          .items__comment
+            = image_tag("380138525.jpg", class: "items__comment--icon")
+            .items__comments--text
+              こんばんは。ロイヤルミルクティーです。こんばんは。ロイヤルミルクティーです。こんばんは。ロイヤルミルクティーです。
+            .items__comments--time.clear.clearfix
+              = fa_icon "clock-o", class: "items__comments--time-icon"
+              %span
+                90日前
+    %section.user__comment
+      .user__comment--alart
+        相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      =form_for "" do |f|
+        = f.text_area :comment, type: 'text', rows: 4 , class: 'user__comment--input'
+        = f.submit "コメントする", class:'user__comment--button'
+
+
+    %nav.main-users__nav.clear.clearfix
+      = link_to "アフロ" , "/" , class: "main-users__nav--before"
+      = link_to "パンチパーマ" , "/" , class: "main-users__nav--after"
+
+    .main-users__sns
+      %ul
+        %li
+          = link_to "/" , class: "main-users__sns--facebook" do
+            = fa_icon " facebook-square " , class: " fa-3x"
+      %ul
+        %li
+          = link_to "/" , class: "main-users__sns--tweeter" do
+            = fa_icon " twitter-square " , class: " fa-3x"
+      %ul
+        %li
+          = link_to "/" , class: "main-users__sns--pinterest" do
+            = fa_icon " pinterest-square " , class: " fa-3x"
+    .main-item__box.clear.clearfix
+      %ul.main-item__box--name
+        %li
+          = link_to "ばすろまんのその他の出品" , "/"
+
+      %section.items__box
+        = link_to "/", class: "clear-decoration" do
+          %figure.items__box__photo
+            = image_tag("m15186317597_1.jpg", alt: "uniqlo", class: "items__box__photo--size")
+          .items__box__body
+            %h3.items__box__name ユニクロフリース
+            .items__box__num
+              .items__box__num__price ¥4,200
+              %p.items__box__num__tax (税込)
+      %section.items__box
+        = link_to "/", class: "clear-decoration" do
+          %figure.items__box__photo
+            = image_tag("m15186317597_1.jpg", alt: "uniqlo", class: "items__box__photo--size")
+          .items__box__body
+            %h3.items__box__name ユニクロフリース
+            .items__box__num
+              .items__box__num__price ¥4,200
+              %p.items__box__num__tax (税込)
+      %section.items__box
+        = link_to "/", class: "clear-decoration" do
+          %figure.items__box__photo
+            = image_tag("m15186317597_1.jpg", alt: "uniqlo", class: "items__box__photo--size")
+          .items__box__body
+            %h3.items__box__name ユニクロフリース
+            .items__box__num
+              .items__box__num__price ¥4,200
+              %p.items__box__num__tax (税込)
+      %section.items__box
+        = link_to "/", class: "clear-decoration" do
+          %figure.items__box__photo
+            = image_tag("m15186317597_1.jpg", alt: "uniqlo", class: "items__box__photo--size")
+          .items__box__body
+            %h3.items__box__name ユニクロフリース
+            .items__box__num
+              .items__box__num__price ¥4,200
+              %p.items__box__num__tax (税込)
+      %section.items__box
+        = link_to "/", class: "clear-decoration" do
+          %figure.items__box__photo
+            = image_tag("m15186317597_1.jpg", alt: "uniqlo", class: "items__box__photo--size")
+          .items__box__body
+            %h3.items__box__name ユニクロフリース
+            .items__box__num
+              .items__box__num__price ¥4,200
+              %p.items__box__num__tax (税込)
+      %section.items__box
+        = link_to "/", class: "clear-decoration" do
+          %figure.items__box__photo
+            = image_tag("m15186317597_1.jpg", alt: "uniqlo", class: "items__box__photo--size")
+          .items__box__body
+            %h3.items__box__name ユニクロフリース
+            .items__box__num
+              .items__box__num__price ¥4,200
+              %p.items__box__num__tax (税込)
+
+  = render 'shared/aside'
+  = render 'shared/footer'
+  = render 'shared/sell-btn'
