@@ -1,0 +1,39 @@
+.item__container
+  =render 'shared/registration/registration-header'
+
+  %main.item__container__main
+    %section.item__box
+      %h2.item__box__header 購入を確定しますか？
+      %section.item__box__inner
+        .item__box__list
+          %h3.item-image
+            = image_tag('m32035439041_1.jpg', class: "buy_photo")
+          %P.item-name リーダブルコード 裁断済み
+          %form{action: "/", method: "post"}
+            .price-box
+              %p.item-price ¥1,500
+              %p.item-fee 送料込み
+            .item-point
+              ポイントはありません
+            %ul.item-price-table
+              .buy-price-call 支払い金額
+              .buy-price-pay ¥1,500
+              %p.has-error-text 配送先と支払い方法の入力を完了してください。
+              %button.btn-default{aciton: "/", type: "submit"} 購入する
+      %section.user__info
+        .buy-container-inner
+          %h3.delivery 配送先
+          %p.adress-user-info
+            〒150−0041
+            %br
+            東京都渋谷区神南1丁目12−16アジアビル8F
+            %br
+            株式会社div
+          %a.buy-user-info-fix{href: "/"}変更する >
+      %section.user__footer
+        .buy-footer-inner
+          %h3.payment 支払い方法
+          %p.buy-user-info-text /
+          %a.buy-user-info-fix{href: "/"}変更する >
+
+  = render 'shared/registration/registration-footer'
