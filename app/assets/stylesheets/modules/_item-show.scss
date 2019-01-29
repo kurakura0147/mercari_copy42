@@ -17,7 +17,7 @@
         color: black;
         background-color: $off-white;
         &-text {
-         float: left;
+          float: left;
         }
         &-icon {
           float: left;
@@ -52,7 +52,7 @@
           float: left;
         }
       }
-  }
+    }
 
 
     //商品金額
@@ -79,7 +79,7 @@
           position: relative;
           display: inline-block;
           top: 35px;
-       }
+        }
         &--option {
           float: left;
           font-size: 16px;
@@ -88,7 +88,7 @@
           display: inline-block;
           top: 29px;
         }
-}
+      }
     }
       &__button {
         background-color: red;
@@ -128,7 +128,6 @@
           width: 300px;
         }
         .item__img {
-          height: 75px;
           font-size: 50px;
           &--sub1 {
             width: 75px;
@@ -160,7 +159,6 @@
     }
   }
 
-
   &__box {
     margin: 40px 450px 40px 440px;
     &--name {
@@ -191,8 +189,8 @@
   background-color: $white;
   padding: 24px;
   &--alart {
-  background-color: #FFF6DD;
-  padding: 8px;
+    background-color: #FFF6DD;
+    padding: 8px;
   }
   &--input {
     font-size: 14px;
@@ -248,8 +246,7 @@
 
 table {
   font-size: 14px;
-      border-color: $off-white;
-
+  border-color: $off-white;
   tr {
         border-color: $btn-gray;
   }
@@ -272,7 +269,6 @@ table {
       }
     }
   }
-
 
 //吹き出しのcss開始。アイテムに対するコメント（2コメからは、  margin-top:60px;）
 .second-comment {
