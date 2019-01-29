@@ -23,7 +23,7 @@
             = f.password_field :password, autocomplete: "current-password",class: "input-default", placeholder: "パスワード"
 
           .login__inner__group
-            = recaptcha_tags
+            = image_tag('reCAPTCHA.png', width: "304", height: "78")
 
           .login-submit
             = f.submit "ログイン", class: "login-submit-btn"
