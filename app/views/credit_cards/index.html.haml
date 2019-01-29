@@ -1,0 +1,31 @@
+.user_container.clearfix
+  = render 'shared/header'
+  %nav.bread-crumbs
+    %ul.bread-crumbs__rink
+      = link_to "メルカリ" , "/"
+      = fa_icon "angle-right", class: "bread-crumbs__rink--arrow"
+      = link_to "マイページ" , "/"
+      = fa_icon "angle-right", class: "bread-crumbs__rink--arrow"
+      ログアウト
+
+  .mypage-body.clearfix
+    = render 'shared/user-side'
+
+    .credit__container
+      %h2.chapter__header 支払い方法
+      .credit__container-index
+        %section
+          %h3.credit__container-index-content クレジットカード一覧
+        %section.add__card
+          .add__card-btn
+            = link_to new_credit_card_path, class: "add__card-btn-default" do
+              = fa_icon "credit-card"
+              クレジットカードを追加する
+        %section
+          = link_to '/', class: "payment__box-content" do
+            %span 支払い方法について
+            = fa_icon "angle-right"
+
+  = render 'shared/sell-btn'
+  = render 'shared/aside'
+  = render 'shared/footer'

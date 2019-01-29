@@ -100,3 +100,10 @@
   font-size: 16px;
   line-height: 1.5;
 }
+
+@mixin user-profile-main-content() {
+    float: left;
+    width: calc(100vw - 742px);
+    height: 100%;
+}
+

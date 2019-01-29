@@ -1,0 +1,38 @@
+.credit__container {
+  @include user-profile-main-content;
+  background-color: $white;
+    &-index {
+      padding: 64px;
+      border-top: 1px solid $off-white;
+       &-content {
+        font-weight: bold;
+        max-width: 320px;
+        margin: 0 auto;
+       }
+    }
+}
+
+.add__card {
+  padding: 24px 0;
+  border-bottom: 1px solid $btn-gray;
+    &-btn {
+      max-width: 320px;
+      margin: 0 auto;
+      &-default {
+        @include btn-default;
+        background-color: $red-btn;
+        color: $white;
+        text-decoration: none;
+      }
+    }
+}
+
+.payment__box-content {
+  display: block;
+  color: $sky-blue;
+  font-size: 14px;
+  text-align: right;
+  text-decoration: none;
+  margin: 40px 0 0;
+}
+
