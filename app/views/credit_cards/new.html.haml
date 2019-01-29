@@ -1,0 +1,83 @@
+.user_container.clearfix
+  = render 'shared/header'
+  %nav.bread-crumbs
+    %ul.bread-crumbs__rink
+      = link_to "メルカリ" , "/"
+      = fa_icon "angle-right", class: "bread-crumbs__rink--arrow"
+      = link_to "マイページ" , "/"
+      = fa_icon "angle-right", class: "bread-crumbs__rink--arrow"
+      ログアウト
+
+  .mypage-body.clearfix
+    = render 'shared/user-side'
+
+    / クレジットカード
+    .credit__container
+      %h2.chapter__header クレジットカード情報入力
+
+      .signup__inner
+        .signup__inner__container
+          .signup__inner__group
+            %span カード番号
+            %input.input-default{ placeholder: "半角数字のみ" }
+            %ul.card__lineup
+              %li
+                = image_tag("visa.svg", class: "card--image", width: "49")
+              %li
+                = image_tag("master-card.svg", class: "card--image", width: "34")
+              %li
+                = image_tag("saison-card.svg", class: "card--image", width: "30")
+              %li
+                = image_tag("jcb.svg", class: "card--image", width: "32")
+              %li
+                = image_tag("american_express.svg", class: "card--image", width: "21")
+              %li
+                = image_tag("dinersclub.svg", class: "card--image", width: "32")
+              %li
+                = image_tag("discover.svg", class: "card--image", width: "32")
+            .card__block
+              %label 有効期限
+              %br/
+              %select.card__block__select
+                %option{value: "01"} 01
+                %option{value: "02"} 02
+                %option{value: "03"} 03
+                %option{value: "04"} 04
+                %option{value: "05"} 05
+                %option{value: "06"} 06
+                %option{value: "07"} 07
+                %option{value: "08"} 08
+                %option{value: "09"} 09
+                %option{value: "10"} 10
+                %option{value: "11"} 11
+                %option{value: "12"} 12
+              %span 月
+              %br/
+              %select.card__block__select
+                %option{value: "19"} 19
+                %option{value: "20"} 20
+                %option{value: "21"} 21
+                %option{value: "22"} 22
+                %option{value: "23"} 23
+                %option{value: "24"} 24
+                %option{value: "25"} 25
+                %option{value: "26"} 26
+                %option{value: "27"} 27
+                %option{value: "28"} 28
+                %option{value: "29"} 29
+              %span 年
+
+          .signup__inner__group
+            %label セキュリティコード
+            %span.form-require 必須
+            %input.input-default{ placeholder: "カード背面4桁もしくは3桁の番号" }
+            .signup__sqcode-text
+              %span ?
+              カード裏面の番号とは？
+          .signup-submit.signup-submit-btn
+            追加する
+
+
+  = render 'shared/sell-btn'
+  = render 'shared/aside'
+  = render 'shared/footer'
