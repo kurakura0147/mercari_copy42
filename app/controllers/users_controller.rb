@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:edit, :update, :identification]
+  before_action :set_user, only: [:edit, :update]
 
   def show
   end
@@ -22,9 +22,6 @@ class UsersController < ApplicationController
   def signout
   end
 
-  def identification
-  end
-
   private
 
   def set_user
@@ -34,5 +31,7 @@ class UsersController < ApplicationController
   def edit_user_params
     params.require(:user).permit(:nickname, :profile)
   end
+
+
 
 end
