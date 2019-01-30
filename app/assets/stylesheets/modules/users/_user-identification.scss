@@ -1,0 +1,22 @@
+.form__group {
+  margin: 40px 0 0;
+}
+
+// date_selectで生成されるHTMLオプション
+#user_birthday_1i {
+  background-color: $white;
+  width: 140px;
+  @include select-default;
+}
+
+#user_birthday_2i {
+  background-color: $white;
+  width: 140px;
+  @include select-default;
+}
+
+#user_birthday_3i {
+  background-color: $white;
+  width: 140px;
+  @include select-default;
+}
