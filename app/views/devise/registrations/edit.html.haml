@@ -1,36 +1,74 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    %div
-      Currently waiting confirmation for: #{resource.unconfirmed_email}
-  .field
-    = f.label :password
-    %i (leave blank if you don't want to change it)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-    - if @minimum_password_length
-      %br/
-      %em
-        = @minimum_password_length
-        characters minimum
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .field
-    = f.label :current_password
-    %i (we need your current password to confirm your changes)
-    %br/
-    = f.password_field :current_password, autocomplete: "current-password"
-  .actions
-    = f.submit "Update"
-%h3 Cancel my account
-%p
-  Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-= link_to "Back", :back
+.container
+  = render 'shared/header'
+  //ページのルート表示
+  %nav.bread-crumbs
+    %ul.bread-crumbs__rink
+      = link_to "メルカリ" , "/"
+      = fa_icon "angle-right", class: "bread-crumbs__rink--arrow"
+      = link_to "マイページ" , "/"
+      = fa_icon "angle-right", class: "bread-crumbs__rink--arrow"
+      ログアウト
+
+
+  .mypage-body.clearfix
+    = render 'shared/user-side'
+    .main__content
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        .signup__container
+          %h2.signup__container--upper 住所入力
+          .signup__inner
+            .signup__inner__group
+              = f.label :お名前
+              %span.form-require 必須
+              %br/
+              = f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "input-default", placeholder: "例）山田"
+              .signup__inner__group-box
+                = f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "input-default", placeholder: "例）彩"
+            .signup__inner__group
+              = f.label :お名前カナ
+              %span.form-require 必須
+              %br/
+              = f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", class: "input-default", placeholder: "例)ヤマダ"
+              .signup__inner__group-box
+                = f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", class: "input-default", placeholder: "例)アヤ"
+
+            .signup__inner__group
+              = f.fields_for :address, :address do |address|
+                = address.label :郵便番号
+                %span.form-require 必須
+                %br/
+                = address.text_field :postal_code, autocomplete: "postsl_code", class: "input-default", placeholder: "123-4567"
+                .address__group
+                  = address.label :都道府県
+                  %span.form-require 必須
+                  %br/
+                  = address.select :prefecture, Address.prefs.keys, {}, { class: "input-default" }
+
+                .address__group
+                  =address.label :市区町村
+                  %span.form-require 必須
+                  %br/
+                  = address.text_field :city, autocomplete: "city", class: "input-default", placeholder: "例)横浜市緑区"
+                .address__group
+                  =address.label :番地
+                  %span.form-require 必須
+                  %br/
+                  = address.text_field :house_number, autocomplete: "house_number", class: "input-default", placeholder: "例)青山1-1-1"
+                .address__group
+                  =address.label :建物名
+                  %span.form-any 任意
+                  %br/
+                  = address.text_field :building_name, autocomplete: "building_name", class: "input-default", placeholder: "例)柳ビル103"
+
+            .form__group
+              = f.label :生年月日
+              %span.form-require 必須
+              %br/
+              = raw sprintf(f.date_select(:birthday, start_year: 1900, use_month_numbers: 1, date_separator: '%s', datetime_separator: '%s'), '年', '月') + '日'
+
+            = f.submit "登録する", class: "signup-submit signup-submit-btn"
+
+
+  = render 'shared/sell-btn'
+  = render 'shared/aside'
+  = render 'shared/footer'

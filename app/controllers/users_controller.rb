@@ -32,4 +32,6 @@ class UsersController < ApplicationController
     params.require(:user).permit(:nickname, :profile)
   end
 
+
+
 end
