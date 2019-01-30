@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:edit, :update]
+  before_action :set_user, only: [:edit, :update, :identification]
 
   def show
   end
@@ -20,6 +20,9 @@ class UsersController < ApplicationController
   end
 
   def signout
+  end
+
+  def identification
   end
 
   private

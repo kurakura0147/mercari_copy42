@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new , :show, :edit, :update] do
     member do
       get 'signout'
+      get 'identification'
     end
   end
   resources :credit_cards, only: [:index, :new]
