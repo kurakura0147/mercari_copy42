@@ -2,9 +2,10 @@ Rails.application.routes.draw do
 
   get 'transactions/new'
 
+
   devise_for :users
   root 'items#index'
-  resources :items, only: [:index, :new]
+  resources :items, only: [:index, :new, :show]
   resources :users, only: [:new , :show, :edit, :update] do
     member do
       get 'signout'
