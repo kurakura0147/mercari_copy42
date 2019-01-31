@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'transactions/new'
+
   devise_for :users
   root 'items#index'
   resources :items, only: [:index, :new]
