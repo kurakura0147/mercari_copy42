@@ -18,9 +18,7 @@ $(function(){
 
       if( min >= 300 && min <= 9999999){
         update_field();
-      }else if( min < 300){
-        no_field();
-      }else if( min > 10000000){
+      }else {
         no_field();
       }
   });
