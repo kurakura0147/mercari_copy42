@@ -23,7 +23,7 @@
                 %figure
                   %p.header__nav__root
                     = image_tag("380138525.jpg", class: "header__user-icon")
-                  = link_to "users/#{@user}" do
+                  = link_to "users/#{current_user.id}" do
                     %span.header__nav__user-mypage マイページ
             %li
               = link_to "/", class: "header__nav__root" do
