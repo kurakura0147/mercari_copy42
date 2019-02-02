@@ -3,37 +3,144 @@
 
   %main.item__container__main
     %section.item__box
-      %h2.item__box__header 購入を確定しますか？
-      %section.item__box__inner
-        .item__box__list
-          %h3.item-image
-            = image_tag('m32035439041_1.jpg', class: "buy_photo")
-          %P.item-name リーダブルコード 裁断済み
-          %form{action: "/", method: "post"}
-            .price-box
-              %p.item-price ¥1,500
-              %p.item-fee 送料込み
-            .item-point
-              ポイントはありません
-            %ul.item-price-table
-              .buy-price-call 支払い金額
-              .buy-price-pay ¥1,500
-              %p.has-error-text 配送先と支払い方法の入力を完了してください。
-              %button.btn-default{aciton: "/", type: "submit"} 購入する
-      %section.user__info
-        .buy-container-inner
-          %h3.delivery 配送先
-          %p.adress-user-info
-            〒150−0041
-            %br
-            東京都渋谷区神南1丁目12−16アジアビル8F
-            %br
-            株式会社div
-          %a.buy-user-info-fix{href: "/"}変更する >
-      %section.user__footer
-        .buy-footer-inner
-          %h3.payment 支払い方法
-          %p.buy-user-info-text /
-          %a.buy-user-info-fix{href: "/"}変更する >
+      %h2.item__box__header 商品の情報を入力
+      %section.sell-form
+        .sell-upload-box
+          %h3.sell-upload-head
+            %p.sell-name 出品画像
+            %span.form-require 必須
+          %p.comment 最大4枚までアップロードできます
+          .sell-dropbox-container
+          .sell-upload-drop-box
+            %input.sell-upload-drop-file{multiple:  "multiple", name: "image1", style:  "display: none;", type:  "file"}/
+            %pre.visible-pc
+              :preserve
+              ドラッグアンドドロップ
+              またはクリックしてファイルをアップロード
+
+        .sell-content
+          .form-group
+            %p.label 商品名
+            %span.form-require 必須
+            %br/
+            %input.input-goods{:placeholder => "商品名（必須 40文字まで)", :value => ""}/
+          .form-group
+            %p.label 商品の説明
+            %span.form-require 必須
+            %br/
+            %textarea.textarea-default{:placeholder => "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", :rows => "5"}
+
+        / 商品の詳細
+        .sell-content.clearfix
+          %h3.sell-sub-head 商品の詳細
+          .sell-form-right
+            .sell-form-box
+              %p.label カテゴリー
+              %span.form-require 必須
+              %br/
+              %select.category__block__select
+                %option{value: "01"} ---
+                %option{value: "02"} レディース
+                %option{value: "03"} メンズ
+                %option{value: "04"} ベビー・キッズ
+                %option{value: "05"} インテリア・住まい・小物
+                %option{value: "06"} 本・音楽・ゲーム
+                %option{value: "07"} おもちゃ・ホビー・グッズ
+                %option{value: "08"} コスメ・香水・美容
+                %option{value: "09"} 家電・スマホ・カメラ
+                %option{value: "10"} スポーツ・レジャー
+                %option{value: "11"} ハンドメイド
+                %option{value: "12"} チケット
+                %option{value: "13"} 自転車・オートバイ
+                %option{value: "14"} その他
+                %br/
+
+            .sell-form-box
+              %p.label 商品の詳細
+              %span.form-require 必須
+              %br/
+              %select.category__block__select
+                %option{value: "01"} ---
+                %option{value: "02"} 新品、未使用
+                %option{value: "03"} 未使用に近い
+                %option{value: "04"} 目立った傷や汚れなし
+                %option{value: "05"} やや傷や汚れあり
+                %option{value: "06"} 傷や汚れあり
+                %option{value: "07"} 全体的に状態が悪い
+                %br/
+                .select-wrap
+                .select-wrap
+                .select-wrap
+              .select-bottom-box
+                .select-wrap
+
+        / 配送について
+        .sell-content.clearfix
+          %h3.sell-sub-head 配送について
+          %a.form-question{:href => "/", :target => "_blank"} ?
+          .sell-form-right
+            .sell-form-box
+              %p.label 配送料の負担
+              %span.form-require 必須
+              %br/
+              %select.category__block__select
+                %option{value: "01"} ---
+                %option{value: "02"} 送料込み(出品者負担)
+                %option{value: "03"} 着払い(購入者負担)
+                %br/
+            .sell-form-box
+              = fields_for :address, Address.new do |address|
+                .address__group
+                  = address.label :配送元の地域
+                  %span.form-require 必須
+                  %br/
+                  = address.select :prefecture, Address.prefs.keys, {}, { class: "input-default" }
+            .sell-form-box
+              %p.label 配送までの日数
+              %span.form-require 必須
+              %br/
+              %select.category__block__select
+                %option{value: "01"} ---
+                %option{value: "02"} 1~2日で発送
+                %option{value: "03"} 2~3日で発送
+                %option{value: "04"} 4~7日で発送
+                %br/
+
+        / 販売価格
+        .sell-content.clearfix
+          %h3.sell-sub-head 販売価格(300〜9,999,999)
+          %a.form-question{:href => "/", :target => "_blank"} ?
+          %ul.sell-form-right
+            %li.sell-form-box
+              %p.label 価格
+              %span.form-require 必須
+              .sell-price-input
+                %input#quantity.input-price{:placeholder => "例）300", :value => ""}/
+            %li.sell-margin.clearfix
+              販売手数料(10%)
+              .result-margin
+                %span#margin
+            %li.sell-gain.clearfix
+              販売利益
+              .result-total
+                %span#total
+
+        .sell-content-bottom
+          .caution
+            .p-text
+              %a{href: "/jp/help_center/getting_started/prohibited_items/", target: "_blank"} 禁止されている出品
+              %a{href: "/jp/help_center/getting_started/prohibited_conduct/", target: "_blank"} 行為
+              を必ずご確認ください。
+            .p-text
+              またブランド品でシリアルナンバー等がある場合はご記載ください。
+              %a{href: "/jp/help_center/getting_started/counterfeit_goods/", target: "_blank"} 偽ブランドの販売
+              は犯罪であり処罰される可能性があります。
+            .p-text
+              また、出品をもちまして
+              %a{:href => "/jp/seller_terms/"} 加盟店規約
+              に同意したことになります。
+          .button-bottom
+            %button.btn-default-sell{type:  "submit"}出品する
+            %button.btn-back もどる
 
   = render 'shared/registration/registration-footer'

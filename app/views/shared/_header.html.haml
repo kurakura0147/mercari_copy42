@@ -2,7 +2,8 @@
   .header__inner
     .header__innner__upper.clearfix
       .header__inner__upper--icon
-        = image_tag("logo.svg", alt: "mercari", width: "134", height: "36")
+        =link_to root_path do
+          = image_tag("logo.svg", alt: "mercari", width: "134", height: "36")
       .header__inner__upper--form
         %input{ type: "text", placeholder: "キーワードから探す"}
         = fa_icon "search", class: "keyword__search"
@@ -22,7 +23,8 @@
                 %figure
                   %p.header__nav__root
                     = image_tag("380138525.jpg", class: "header__user-icon")
-                  %span.header__nav__user-mypage マイページ
+                  = link_to "users/#{@user}" do
+                    %span.header__nav__user-mypage マイページ
             %li
               = link_to "/", class: "header__nav__root" do
                 %figure
