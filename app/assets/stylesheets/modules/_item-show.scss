@@ -4,7 +4,7 @@
   background-color: $off-white;
   padding-top: 40px;
   &-content {
-    margin: 40px 450px 0 450px ;
+    margin: 40px 370px 0 370px ;
     background-color: $white;
     padding:24px 40px 40px;
     //ボタンアイコン（いいね、通報）
@@ -160,7 +160,7 @@
   }
 
   &__box {
-    margin: 40px 450px 40px 440px;
+    margin: 40px 370px 40px 370px;
     &--name {
       margin: 24px 0 8px 0;
       font-size: 24px;
@@ -175,7 +175,7 @@
     }
   }
   &__comments {
-    margin: 8px 450px 0 450px;
+    margin: 8px 370px 0 370px;
     padding: 24px;
     background-color: $white;
     &--com {
@@ -185,7 +185,7 @@
 }
 
 .user__comment {
-  margin:0 450px;
+  margin:0 370px;
   background-color: $white;
   padding: 24px;
   &--alart {
@@ -210,7 +210,7 @@
 }
 
 .main-users__nav {
-  margin:24px 450px;
+  margin:24px 370px;
   &--before {
     float: left;
     color: $sky-blue;
@@ -224,7 +224,7 @@
 }
 
 .main-users__sns {
-  margin: 24px 450px;
+  margin: 24px 370px;
   padding:60px 280px 24px 276px ;
   height: 56px;
   text-align: center;
@@ -246,14 +246,16 @@
 
 table {
   font-size: 14px;
-  border-color: $off-white;
+  // border-color: $off-white;
   tr {
-        border-color: $btn-gray;
+    border-color: $btn-gray;
+    border: 1px solid $off-white;
   }
   th {
     width: 101px;
     background-color: $off-white;
     padding: 8px;
+    border: 1px solid $off-white;
   }
   td {
     padding: 8px;
