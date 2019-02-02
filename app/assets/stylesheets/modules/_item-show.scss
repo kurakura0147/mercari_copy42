@@ -2,7 +2,7 @@
   height: 100%;
   width: 100%;
   background-color: $off-white;
-  padding-top: 40px;
+  padding: 40px 0;
   &-content {
     margin: 40px 370px 0 370px ;
     background-color: $white;
@@ -160,7 +160,7 @@
   }
 
   &__box {
-    margin: 40px 370px 40px 370px;
+    margin: 40px 370px 0 370px;
     &--name {
       margin: 24px 0 8px 0;
       font-size: 24px;
