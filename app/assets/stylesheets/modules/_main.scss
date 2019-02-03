@@ -8,6 +8,16 @@
 .top__carousel {
   height: 390px;
   background-color: gray;
+  &__item {
+    position: relative;
+    overflow: hidden;
+    &--slide {
+      width: 6000px;
+      & figure {
+        float:left;
+      }
+    }
+  }
 }
 
 .top__banner {
