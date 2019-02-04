@@ -3,7 +3,7 @@
   .main-item
     %section.main-item-content
       .main-item-content__name
-        あふろまん
+        = @item.name
       .main-item-content__profile.clear.clearfix
         .main-item-content__profile--img
           .item__imag--main
@@ -17,7 +17,7 @@
             %th 出品者
             %td.e1
               = link_to "" do
-                コーラ
+                = @item.user.nickname
           %tr
             %th カテゴリー
             %td.e1
@@ -30,10 +30,12 @@
                 コカコーラ
           %tr
             %th 商品の状態
-            %td 半分飲みかけ
+            %td
+              = @item.state
           %tr
             %th 配送料の負担
-            %td お気持ち
+            %td
+              = @item.delivery_cost
           %tr
             %th 配送の方法
             %td 手渡し
@@ -41,14 +43,15 @@
             %th 配送元地域
             %td.e1
               = link_to "" do
-                渋谷
+                = @item.delivery_area
           %tr
             %th 発送日の目安
-            %td 早め
+            %td
+              = @item.delivery_day
       .main-item-content__price
         .price__box.clear.clearfix
           %p.price__box--total
-            ¥ 2,000-
+            = number_to_currency("#{@item.price}", locale: "jp")
           %p.price__box--tax
             （税込み）
           %p.price__box--option
@@ -57,8 +60,7 @@
       / 商品紹介
       .main-item-content__information
         .main-item-content__information--text
-          「商品の紹介」飲みかけのコーラです。<br>状態は少しだけ悪いです。<br>
-          飲みかけのため返品は不可です。<br>慎重に注文を御願い致します。渋谷から持っていきます。<br>炭酸は抜けかけで甘みが強いです。
+          = @item.detail
 
     / 出品編集・停止・削除ボタン
     %section.item--change__box
