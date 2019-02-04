@@ -22,10 +22,8 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
-    binding.pry
     @item.destroy if @item.user_id == current_user.id
-    redirect_to action: :index
+    redirect_to items_path
   end
 
   private
