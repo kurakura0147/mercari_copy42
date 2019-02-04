@@ -53,39 +53,45 @@
             （税込み）
           %p.price__box--option
             送料込み
-      %ul.main-item-content__button
-        = link_to "/" do
-          %li.main-item-content__button-buy
-            購入画面に進む
+
+      / 商品紹介
       .main-item-content__information
         .main-item-content__information--text
-          「商品の紹介」 <br>飲みかけのコーラです。<br>状態は少しだけ悪いです。<br>
+          「商品の紹介」飲みかけのコーラです。<br>状態は少しだけ悪いです。<br>
           飲みかけのため返品は不可です。<br>慎重に注文を御願い致します。渋谷から持っていきます。<br>炭酸は抜けかけで甘みが強いです。
-      .main-item-content__icon.clear.clearfix
-        = link_to "#" do
-          %ul.main-item-content__icon--iine.clear.clearfix
-            %li.main-item-content__icon--iine-icon
-              ♡
-            %li.main-item-content__icon--iine-text
-              いいね! 5
-        = link_to "/" do
-          %ul.main-item-content__icon--report.clear.clearfix
-            %li.main-item-content__icon--report-icon
-              = fa_icon "flag-o", class: "main-item-content__icon--report-icon"
-              .main-item-content__icon--report-text
-                不適切な商品の報告
-        = link_to "/" do
-          .main-item-content__icon--safety.clear.clearfix
-            = fa_icon "lock", class: "main-item-content__icon--safety-icon"
-            .main-item-content__icon--safety-text
-              安心安全への取り組み
 
-    %section.user__comment
+    / 出品編集・停止・削除ボタン
+    %section.item--change__box
+      = link_to "/", class: "item--change__box--edit" do
+        商品の編集
+      %p.text--center or
+      %button.item--change__box--stop
+        出品を一旦停止する
+      %button.item--change__box--delete
+        この商品を削除する
+
+    / コメント欄
+    %section.item--change__box
       .user__comment--alart
         相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
       =form_for "" do |f|
-        = f.text_area :comment, type: 'text', rows: 4 , class: 'user__comment--input'
-        = f.submit "コメントする", class:'user__comment--button'
+        = f.text_area :comment, type: "text", rows: 4 , class: "item--change__box__comment"
+        = f.submit "コメントする", class: "user__comment--button"
+
+    / 商品削除モーダル
+    %aside.modal
+      .modal__inner.modal__banner
+        .modal__inner__body
+          .modal__head 確認
+          削除すると二度と復活できません。
+          %br/
+          削除する代わりに停止することもできます。
+          %br/
+          %br/
+          本当に削除しますか？
+        .clearfix
+          .modal__btn.modal__cancel キャンセル
+          = link_to "削除", item_path(@item), method: :delete, class: "modal__btn modal__submit"
 
   = render 'shared/aside'
   = render 'shared/footer'
