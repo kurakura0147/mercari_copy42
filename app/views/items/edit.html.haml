@@ -93,7 +93,7 @@
           本当に削除しますか？
         .clearfix
           .modal__btn.modal__cancel キャンセル
-          = link_to "削除", "/items/#{@item.id}", method: :delete, class: "modal__btn modal__submit"
+          = link_to "削除", item_path, method: :delete, class: "modal__btn modal__submit"
 
   = render 'shared/aside'
   = render 'shared/footer'
