@@ -20,20 +20,19 @@
             = image_tag("bana-migi.png" , alt: "" )
           .slick-prev-icon
             = image_tag("bana-hidari.png" , alt: "" )
-
   %section.pickup__container
     %h2.pickup__head  ピックアップブランド
     %section.items__pickup__container.clearfix
       - @price1_items.first(1).each do |item|
         %h3.items__box__container
           %section.text-center
-            = link_to "/", class: "text-center__name clear-decoration" do
+            = link_to "" ,class: "text-center__name clear-decoration" do
               = "price1_items"
               新着アイテム
           .items__box__content.clearfix
             - @price1_items.each do |item|
               %section.items__box
-                = link_to "/", class: "clear-decoration"  do
+                = link_to "/items/#{item.id}", class: "clear-decoration"  do
                   %figure.items__box__photo
                     = image_tag(item.image, alt: "uniqlo", class: "items__box__photo--size")
                   .items__box__body
@@ -45,18 +44,17 @@
                         = item.price
                         %p.items__box__num__tax (税込)
           .view--all すべての商品を見る
-
     %section.items__pickup__container.clearfix
       - @price2_items.first(1).each do |item|
         %h3.items__box__container
           %section.text-center
-            = link_to "/", class: "text-center__name clear-decoration" do
+            = link_to "", class: "text-center__name clear-decoration" do
               = "price2_items"
               新着アイテム
           .items__box__content.clearfix
             - @price2_items.each do |item|
               %section.items__box
-                = link_to "/", class: "clear-decoration"  do
+                = link_to "/items/#{item.id}", class: "clear-decoration"  do
                   %figure.items__box__photo
                     = image_tag(item.image, alt: "uniqlo", class: "items__box__photo--size")
                   .items__box__body
@@ -68,20 +66,19 @@
                         = item.price
                         %p.items__box__num__tax (税込)
           .view--all すべての商品を見る
-
   %section.pickup__container
     %h2.pickup__head  ピックアップカテゴリ
     %section.items__pickup__container.clearfix
       - @price3_items.first(1).each do |item|
         %h3.items__box__container
           %section.text-center
-            = link_to "/", class: "text-center__name clear-decoration" do
+            = link_to "", class: "text-center__name clear-decoration" do
               = "price3_items"
               新着アイテム
           .items__box__content.clearfix
             - @price3_items.each do |item|
               %section.items__box
-                = link_to "/", class: "clear-decoration"  do
+                = link_to "/items/#{item.id}", class: "clear-decoration"  do
                   %figure.items__box__photo
                     = image_tag(item.image, alt: "uniqlo", class: "items__box__photo--size")
                   .items__box__body
@@ -93,18 +90,17 @@
                         = item.price
                         %p.items__box__num__tax (税込)
           .view--all すべての商品を見る
-
     %section.items__pickup__container.clearfix
       - @price4_items.first(1).each do |item|
         %h3.items__box__container
           %section.text-center
-            = link_to "/", class: "text-center__name clear-decoration" do
+            = link_to "", class: "text-center__name clear-decoration" do
               = "price4_items"
               新着アイテム
           .items__box__content.clearfix
             - @price4_items.each do |item|
               %section.items__box
-                = link_to "/", class: "clear-decoration"  do
+                = link_to "/items/#{item.id}", class: "clear-decoration"  do
                   %figure.items__box__photo
                     = image_tag(item.image, alt: "uniqlo", class: "items__box__photo--size")
                   .items__box__body
