@@ -1,12 +1,7 @@
 .container
   = render 'shared/header'
-  %nav.bread-crumbs
-    %ul.bread-crumbs__rink
-      = link_to "" do
-        メルカリ
-      = fa_icon "angle-right", class: "bread-crumbs__rink--arrow"
-      マイページ
-
+  - breadcrumb :user_profile
+  = breadcrumbs pretext: " ", separator: " › "
 = form_for @user do |f|
   .mypage-body.clearfix
     = render 'shared/user-side'

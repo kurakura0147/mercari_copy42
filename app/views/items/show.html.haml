@@ -1,5 +1,7 @@
 .container
   = render 'shared/header'
+  - breadcrumb :item_show
+  = breadcrumbs pretext: " ", separator: " › "
   .main-item
     %section.main-item-content
       .main-item-content__name
