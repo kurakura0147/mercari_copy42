@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :transactions, only: [:new]
   resources :users, only: [:new , :show, :edit, :update] do
     member do
       get 'signout'

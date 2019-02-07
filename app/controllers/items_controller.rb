@@ -13,6 +13,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
     @user_items = Item.where(user_id: @item.user_id).sample(6)
     #brand_idをテーブルに追加後コメントアウトを外す
     # @brand_items = Item.where(brand_id: @item.brans_id).sample(6)
@@ -31,6 +32,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
 
   def destroy
