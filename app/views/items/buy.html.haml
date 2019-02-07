@@ -8,18 +8,23 @@
         .item__box__list
           %h3.item-image
             = image_tag('m32035439041_1.jpg', class: "buy_photo")
-          %P.item-name リーダブルコード 裁断済み
-          %form{action: "/", method: "post"}
+          %P.item-name
+            = @item.name
+          %div
             .price-box
-              %p.item-price ¥1,500
+              %p.item-price
+                = @item.price
               %p.item-fee 送料込み
             .item-point
               ポイントはありません
             %ul.item-price-table
               .buy-price-call 支払い金額
-              .buy-price-pay ¥1,500
+              .buy-price-pay
+                = @item.price
               %p.has-error-text 配送先と支払い方法の入力を完了してください。
-              %button.btn-default{aciton: "/", type: "submit"} 購入する
+              = form_tag(action: :pay, method: :post) do
+                %script.payjp-button{ "data-key" => ENV["PAYJP_PUBLIC_KEY"], src: "https://checkout.pay.jp", type: "text/javascript" }
+
       %section.user__info
         .buy-container-inner
           %h3.delivery 配送先
