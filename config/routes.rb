@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'items#index'
+  resources :items, only: [:index, :new, :show, :edit, :destroy] do
+    member do
+      get :buy
+      post :pay
+    end
+  end
+
   resources :transactions, only: [:new]
-  resources :items, only: [:index, :new, :show, :edit, :destroy]
+
   resources :users, only: [:new , :show, :edit, :update] do
     member do
       get 'signout'

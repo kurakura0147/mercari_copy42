@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190203040655) do
+ActiveRecord::Schema.define(version: 20190206034523) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "postal_code",   null: false
@@ -67,6 +67,17 @@ ActiveRecord::Schema.define(version: 20190203040655) do
     t.index ["user_id"], name: "index_social_profiles_on_user_id", using: :btree
   end
 
+  create_table "transactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.integer  "buyer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["buyer_id"], name: "index_transactions_on_buyer_id", using: :btree
+    t.index ["item_id"], name: "index_transactions_on_item_id", using: :btree
+    t.index ["user_id"], name: "index_transactions_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "nickname",                            null: false
     t.string   "email",                  default: "", null: false
@@ -90,4 +101,7 @@ ActiveRecord::Schema.define(version: 20190203040655) do
   add_foreign_key "addresses", "users"
   add_foreign_key "items", "users"
   add_foreign_key "social_profiles", "users"
+  add_foreign_key "transactions", "items"
+  add_foreign_key "transactions", "users"
+  add_foreign_key "transactions", "users", column: "buyer_id"
 end
