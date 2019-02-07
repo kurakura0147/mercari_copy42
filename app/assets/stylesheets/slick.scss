@@ -14,7 +14,7 @@
     touch-action: pan-y;
     -webkit-tap-highlight-color: transparent;
     height: 390px;
-    // top: -24px;
+    width: 100%;
 }
 .slick-list {
     position: relative;
@@ -22,11 +22,9 @@
     display: block;
     margin: 0;
     padding: 0;
-
     &:focus {
         outline: none;
     }
-
     &.dragging {
         cursor: pointer;
         cursor: hand;
@@ -40,7 +38,6 @@
     -o-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
 }
-
 .slick-track {
     position: relative;
     left: 0;
@@ -48,17 +45,14 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-
     &:before,
     &:after {
         content: "";
         display: table;
     }
-
     &:after {
         clear: both;
     }
-
     .slick-loading & {
         visibility: hidden;
     }
@@ -76,21 +70,15 @@
     &.slick-loading img {
         display: none;
     }
-
-    display: none;
-
     &.dragging img {
         pointer-events: none;
     }
-
     .slick-initialized & {
         display: block;
     }
-
     .slick-loading & {
         visibility: hidden;
     }
-
     .slick-vertical & {
         display: block;
         height: auto;
@@ -100,8 +88,6 @@
 .slick-arrow.slick-hidden {
     display: inline-block;
 }
-
-
 button.slick-prev {
     z-index:2;
     position: relative;
@@ -112,10 +98,9 @@ button.slick-prev {
 button.slick-next {
         z-index:2;
         position: relative;
-        left: calc(100% - 80px);
+        left: calc(100vw - 80px);
         top: -345px;
         opacity: 0;
-
 }
 .slick-prev-icon {
     position: relative;
@@ -124,10 +109,9 @@ button.slick-next {
 }
 .slick-next-icon {
     position: relative;
-    left: calc(100% - 60px);
+    left: calc(100vw - 60px);
     top: -250px;
 }
-
 #slick_container {
     width:360px;
     margin:0 auto;

@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname, presence: true, length: { maximum: 20 }
-  has_many :items
   has_one :address, dependent: :destroy
   accepts_nested_attributes_for :address
   has_many :transactions, dependent: :destroy
+  has_many :items, dependent: :destroy
 end
