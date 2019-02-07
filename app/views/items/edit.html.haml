@@ -1,0 +1,99 @@
+.container
+  = render 'shared/header'
+  .main-item
+    %section.main-item-content
+      .main-item-content__name
+        = @item.name
+      .main-item-content__profile.clear.clearfix
+        .main-item-content__profile--img
+          .item__imag--main
+          .item__img
+            .item__img--sub1
+            .item__img--sub2
+            .item__img--sub3
+            .item__img--sub4
+        %table.main-item-content__profile--text
+          %tr
+            %th 出品者
+            %td.e1
+              = link_to "" do
+                = @item.user.nickname
+          %tr
+            %th カテゴリー
+            %td.e1
+              = link_to "" do
+                甘い
+          %tr
+            %th ブランド
+            %td.e1
+              = link_to "" do
+                コカコーラ
+          %tr
+            %th 商品の状態
+            %td
+              = @item.state
+          %tr
+            %th 配送料の負担
+            %td
+              = @item.delivery_cost
+          %tr
+            %th 配送の方法
+            %td 手渡し
+          %tr
+            %th 配送元地域
+            %td.e1
+              = link_to "" do
+                = @item.delivery_area
+          %tr
+            %th 発送日の目安
+            %td
+              = @item.delivery_day
+      .main-item-content__price
+        .price__box.clear.clearfix
+          %p.price__box--total
+            = number_to_currency("#{@item.price}", locale: "jp")
+          %p.price__box--tax
+            （税込み）
+          %p.price__box--option
+            送料込み
+
+      / 商品紹介
+      .main-item-content__information
+        .main-item-content__information--text
+          = @item.detail
+
+    / 出品編集・停止・削除ボタン
+    %section.item--change__box
+      = link_to "/", class: "item--change__box--edit" do
+        商品の編集
+      %p.text--center or
+      %button.item--change__box--stop
+        出品を一旦停止する
+      %button.item--change__box--delete
+        この商品を削除する
+
+    / コメント欄
+    %section.item--change__box
+      .user__comment--alart
+        相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      =form_for "" do |f|
+        = f.text_area :comment, type: "text", rows: 4 , class: "item--change__box__comment"
+        = f.submit "コメントする", class: "user__comment--button"
+
+    / 商品削除モーダル
+    %aside.modal
+      .modal__inner.modal__banner
+        .modal__inner__body
+          .modal__head 確認
+          削除すると二度と復活できません。
+          %br/
+          削除する代わりに停止することもできます。
+          %br/
+          %br/
+          本当に削除しますか？
+        .clearfix
+          .modal__btn.modal__cancel キャンセル
+          = link_to "削除", item_path(@item), method: :delete, class: "modal__btn modal__submit"
+
+  = render 'shared/aside'
+  = render 'shared/footer'

@@ -107,3 +107,19 @@
     height: 100%;
 }
 
+@mixin items-comment-btn() {
+  background-color: $item-comment-btn;
+  margin-top: 8px;
+  color: $white;
+  height: 48px;
+  font-size: 14px;
+  width: 652px;
+}
+
+@mixin modal-btn() {
+  line-height: 63px;
+  cursor: pointer;
+  border-top: 1px solid $mail-icon;
+  width: 50%;
+  text-align: center;
+}

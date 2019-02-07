@@ -2,7 +2,7 @@
   height: 100%;
   width: 100%;
   background-color: $off-white;
-  padding-top: 40px;
+  padding: 40px 0;
   &-content {
     margin: 40px 370px 0 370px ;
     background-color: $white;
@@ -106,9 +106,6 @@
         padding-top: 32px;
         &--text {
           font-size: 18px;
-          line-height: 27px;
-          font-weight: 400px;
-          box-sizing: border-box;
         }
       }
     &__name {
@@ -149,7 +146,7 @@
     }
   }
   &__box {
-    margin: 40px 370px 40px 370px;
+    margin: 40px 370px 0 370px;
     &--name {
       margin: 24px 0 8px 0;
       font-size: 24px;
@@ -193,7 +190,7 @@
     margin-top: 8px;
     color: $white;
     height: 48px;
-    font-size: 18px;
+    font-size: 14px;
     width: 652px;
   }
 }
@@ -232,7 +229,6 @@
 }
 table {
   font-size: 14px;
-  // border-color: $off-white;
   tr {
     border-color: $btn-gray;
     border: 1px solid $off-white;
