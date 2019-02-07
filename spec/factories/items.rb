@@ -10,5 +10,6 @@ FactoryGirl.define do
     delivery_day "00"
     size "000"
     user
+
   end
 end
