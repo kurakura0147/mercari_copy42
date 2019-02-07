@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_item, only: [:show, :edit, :destroy]
 
   def index
           @price1_items = Item.where(price: 1).limit(4).order("id DESC")
@@ -14,6 +15,21 @@ class ItemsController < ApplicationController
 
   def show
 
+  end
+
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def destroy
+    @item.destroy if @item.user_id == current_user.id
+    redirect_to items_path
+  end
+
+  private
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
 end
