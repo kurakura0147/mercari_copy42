@@ -1,0 +1,23 @@
+.container
+  = render 'shared/header'
+  //ユーザーサイトのメイン部分
+  .mypage-body.clearfix
+    //左
+    .side__content
+      .seach__content
+    //右のコンテンツ
+    .main__content
+      .seach__result 検索結果 件
+      .seach__items.clearfix
+        - @items.each do |item|
+          %section.seach__item
+            = link_to "/" do
+              %figure
+                = image_tag(item.image, alt: "uniqlo", class: "seach__item--image")
+              .seach__item--body
+                %h3.seach__item--name
+                  = item.name
+                .items__box__num
+                  .items__box__num__price
+                    = "¥ #{item.price}"
+                    %p.items__box__num__tax (税込)

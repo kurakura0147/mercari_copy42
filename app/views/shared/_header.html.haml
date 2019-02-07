@@ -5,9 +5,9 @@
         =link_to root_path do
           = image_tag("logo.svg", alt: "mercari", width: "134", height: "36")
       .header__inner__upper--form
-        %input{ type: "text", placeholder: "キーワードから探す"}
-        = fa_icon "search", class: "keyword__search"
-
+        = form_tag(transactions_path, :method => 'get' ) do
+          = text_field_tag :search
+          = button_tag fa_icon "search"  , type: 'submit', class: 'keyword__search'
     .header__nav.clearfix
       .header__nav__left
         %ul.header__nav__box
