@@ -2,23 +2,18 @@
 @import "./mixin/mixin";
 
 //ルート
-.bread-crumbs {
+.breadcrumbs {
   height: 49px;
   border-top:  solid 1px $off-white;
   padding: 0 210px;
   box-shadow: 0px 100px 0 0;
-  .bread-crumbs__rink {
-    margin: 17px  16px;
-    font-size: 14px;
-    a {
-      color: $black;
-      text-decoration: none;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-    &--arrow {
-      margin: 0 8px;
+  line-height: 49px;
+  font-size: 14px;
+  & a {
+    color: $black;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
     }
   }
 }
