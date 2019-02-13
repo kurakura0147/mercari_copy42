@@ -1,5 +1,7 @@
 .container
   = render 'shared/header'
+  - breadcrumb :item_show
+  = breadcrumbs pretext: " ", separator: " › "
   .main-item
     //商品情報
     %section.main-item-content
