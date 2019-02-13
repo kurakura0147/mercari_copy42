@@ -1,14 +1,8 @@
 .container
   = render 'shared/header'
   //ページのルート表示
-  %nav.bread-crumbs
-    %ul.bread-crumbs__rink
-      = link_to "メルカリ" , "/"
-      = fa_icon "angle-right", class: "bread-crumbs__rink--arrow"
-      = link_to "マイページ" , "/"
-      = fa_icon "angle-right", class: "bread-crumbs__rink--arrow"
-      ログアウト
-
+  - breadcrumb :user_edit
+  = breadcrumbs pretext: " ", separator: " › "
 
   .mypage-body.clearfix
     = render 'shared/user-side'
