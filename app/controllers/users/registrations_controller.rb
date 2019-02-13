@@ -21,7 +21,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-    super
+    current_user.assign_attributes(account_update_params)
+    if current_user.save
+      redirect_back(fallback_location: edit_user_registration_path)
+    else
+      render edit_user_registration_path
+    end
   end
 
   # DELETE /resource
@@ -38,7 +43,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -47,7 +52,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys:  [:last_name, :first_name, :last_name_kana, :first_name_kana, :birthday, address_attributes: [:postal_code, :prefecture, :city, :house_number, :building_name]])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :birthday, address_attributes: [:postal_code, :prefecture, :city, :house_number, :building_name]])
   end
 
   # The path used after sign up.
