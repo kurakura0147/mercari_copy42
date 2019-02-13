@@ -2,7 +2,7 @@
   height: 100%;
   width: 100%;
   background-color: $off-white;
-  padding-top: 40px;
+  padding: 40px 0;
   &-content {
     margin: 40px 370px 0 370px ;
     background-color: $white;
@@ -53,8 +53,6 @@
         }
       }
     }
-
-
     //商品金額
     &__price {
       height: 50px;
@@ -108,9 +106,6 @@
         padding-top: 32px;
         &--text {
           font-size: 18px;
-          line-height: 27px;
-          font-weight: 400px;
-          box-sizing: border-box;
         }
       }
     &__name {
@@ -126,28 +121,20 @@
         .item__imag--main {
           height: 300px;
           width: 300px;
+          line-height: 0;
         }
-        .item__img {
-          font-size: 50px;
-          &--sub1 {
-            width: 75px;
-            height: 75px;
-            float: left;
-          }
-          &--sub2 {
-            height: 75px;
-            width: 75px;
-            float: left;
-          }
-          &--sub3 {
-            height: 75px;
-            float: left;
-            width: 75px;
-          }
-          &--sub4 {
-            float: left;
-            height: 75px;
-            width: 75px;
+        ul.item__img {
+          display:block;
+          overflow:hidden;
+          clear:both;
+          line-height: 0;
+          & li {
+            display:block;
+            float:left;
+            opacity: 0.4;
+            &:hover {
+              opacity: 1.0;
+            }
           }
         }
       }
@@ -158,9 +145,8 @@
       }
     }
   }
-
   &__box {
-    margin: 40px 370px 40px 370px;
+    margin: 40px 370px 0 370px;
     &--name {
       margin: 24px 0 8px 0;
       font-size: 24px;
@@ -183,7 +169,6 @@
     }
   }
 }
-
 .user__comment {
   margin:0 370px;
   background-color: $white;
@@ -197,18 +182,18 @@
     padding: 10px ;
     margin-top: 10px;
     height:auto;
-    width: 630px;
+    min-width:630px ;
+    max-width:630px ;
   }
   &--button {
     background-color: #AAAAAA;
     margin-top: 8px;
     color: $white;
     height: 48px;
-    font-size: 18px;
+    font-size: 14px;
     width: 652px;
   }
 }
-
 .main-users__nav {
   margin:24px 370px;
   &--before {
@@ -222,7 +207,6 @@
     text-decoration: none;
   }
 }
-
 .main-users__sns {
   margin: 24px 370px;
   padding:60px 280px 24px 276px ;
@@ -243,10 +227,8 @@
     float: left;
   }
 }
-
 table {
   font-size: 14px;
-  // border-color: $off-white;
   tr {
     border-color: $btn-gray;
     border: 1px solid $off-white;
@@ -271,7 +253,6 @@ table {
       }
     }
   }
-
 //吹き出しのcss開始。アイテムに対するコメント（2コメからは、  margin-top:60px;）
 .second-comment {
   margin-top:60px;

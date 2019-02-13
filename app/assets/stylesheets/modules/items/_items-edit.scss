@@ -1,0 +1,88 @@
+.item--change__box {
+  background-color: $white;
+  padding: 8px 16px 8px 16px;
+  margin: 24px 370px 0;
+    &--edit {
+      @include btn-default;
+      text-decoration: none;
+      margin: 16px 0 16px 0;
+      color: $white;
+      background-color: $red-btn;
+      border: $red-btn;
+    }
+    &--stop {
+      @include btn-default;
+      background-color: $item-comment-btn;
+      color: $white;
+      margin: 16px 0 16px 0;
+    }
+    &--delete {
+      @include btn-default;
+      background-color: $item-comment-btn;
+      color: $white;
+      margin: 16px 0 16px 0;
+    }
+    &__comment {
+      font-size: 14px;
+      padding: 10px ;
+      margin-top: 10px;
+      width: 630px;
+    }
+}
+
+.text--center {
+  text-align: center;
+}
+
+// モーダル枠部分
+.modal {
+  display: none;
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3000;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color:rgba(0,0,0,0.75);
+    &__banner {
+      text-align: center;
+      max-width: none;
+      width: 600px;
+      margin: 20px auto;
+    }
+    &__inner {
+      position: relative;
+      overflow: hidden;
+      background-color: $white;
+        &__body {
+          font-size: 14px;
+          padding: 64px;
+          line-height: 1.5;
+        }
+    }
+}
+
+// モーダル内文章
+.modal__head {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.modal__btn {
+  @include modal-btn;
+}
+
+.modal__cancel {
+  float: left;
+}
+
+.modal__submit {
+  text-decoration: none;
+  border-left: 1px solid $mail-icon;
+  color: $sky-blue;
+  box-sizing: border-box;
+  float: right;
+}

@@ -3,66 +3,84 @@
   - breadcrumb :item_show
   = breadcrumbs pretext: " ", separator: " › "
   .main-item
+    //商品情報
     %section.main-item-content
       .main-item-content__name
-        あふろまん
+        = @item.name
+      //商品情報
       .main-item-content__profile.clear.clearfix
         .main-item-content__profile--img
           .item__imag--main
-          .item__img
-            .item__img--sub1
-            .item__img--sub2
-            .item__img--sub3
-            .item__img--sub4
+            = image_tag( @item.image , id: "main-image" , alt: "" , width: "300")
+          %ul.item__img
+            %li
+              = image_tag( @item.image , id: "sub-image" , alt: "" , width: "75")
+            %li
+              = image_tag( @item.image , id: "sub-image" ,alt: "" , width: "75")
+            %li
+              = image_tag( @item.image , id: "sub-image" ,alt: "" , width: "75")
+            %li
+              = image_tag( @item.image , id: "sub-image" ,alt: "" , width: "75" )
+        //テーブル（商品情報）
         %table.main-item-content__profile--text
           %tr
             %th 出品者
             %td.e1
               = link_to "" do
-                コーラ
+                =@item.user.nickname
           %tr
             %th カテゴリー
             %td.e1
               = link_to "" do
-                甘い
+                = "@item.category_id"
           %tr
             %th ブランド
             %td.e1
               = link_to "" do
-                コカコーラ
+                = "@item.brand_id"
+          -if @item.size ==""
+          -else
+            %tr
+              %th 商品のサイズ
+              %td
+                = @item.size
           %tr
             %th 商品の状態
-            %td 半分飲みかけ
+            %td
+              = simple_format( @item.state )
           %tr
             %th 配送料の負担
-            %td お気持ち
+            %td
+              = @item.delivery_cost
           %tr
             %th 配送の方法
-            %td 手渡し
+            %td
+              = "@item.delivery"
           %tr
             %th 配送元地域
             %td.e1
               = link_to "" do
-                渋谷
+                = @item.delivery_area
           %tr
             %th 発送日の目安
-            %td 早め
+            %td
+              = @item.delivery_day
       .main-item-content__price
         .price__box.clear.clearfix
           %p.price__box--total
-            ¥ 2,000-
+            ¥
+            = @item.price
           %p.price__box--tax
             （税込み）
           %p.price__box--option
-            送料込み
+            = @item.delivery_cost
       %ul.main-item-content__button
-        = link_to "/" do
+        = link_to new_transaction_path do
           %li.main-item-content__button-buy
             購入画面に進む
       .main-item-content__information
         .main-item-content__information--text
-          「商品の紹介」 <br>飲みかけのコーラです。<br>状態は少しだけ悪いです。<br>
-          飲みかけのため返品は不可です。<br>慎重に注文を御願い致します。渋谷から持っていきます。<br>炭酸は抜けかけで甘みが強いです。
+          = @item.detail
       .main-item-content__icon.clear.clearfix
         = link_to "#" do
           %ul.main-item-content__icon--iine.clear.clearfix
@@ -80,7 +98,8 @@
           .main-item-content__icon--safety.clear.clearfix
             = fa_icon " lock ", class: "main-item-content__icon--safety-icon"
             .main-item-content__icon--safety-text
-              安心安全への取り組み
+              安心・安全への取り組み
+    //アイテム・出品者に対する今までのコメント
     %section.main-item__comments.clear.clearfix
       %ul.items__comments
         .items__comment--name
@@ -105,29 +124,16 @@
               = fa_icon "clock-o", class: "items__comments--time-icon"
               %span
                 90日前
-        .second-comment
-          .items__comment--name
-            ロイヤルミルクティー
-          .items__comment
-            = image_tag("380138525.jpg", class: "items__comment--icon")
-            .items__comments--text
-              こんばんは。ロイヤルミルクティーです。こんばんは。ロイヤルミルクティーです。こんばんは。ロイヤルミルクティーです。
-            .items__comments--time.clear.clearfix
-              = fa_icon "clock-o", class: "items__comments--time-icon"
-              %span
-                90日前
+    //コメントボックス
     %section.user__comment
       .user__comment--alart
         相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
       =form_for "" do |f|
         = f.text_area :comment, type: 'text', rows: 4 , class: 'user__comment--input'
         = f.submit "コメントする", class:'user__comment--button'
-
-
     %nav.main-users__nav.clear.clearfix
       = link_to "アフロ" , "/" , class: "main-users__nav--before"
       = link_to "パンチパーマ" , "/" , class: "main-users__nav--after"
-
     .main-users__sns
       %ul
         %li
@@ -144,62 +150,37 @@
     .main-item__box.clear.clearfix
       %ul.main-item__box--name
         %li
-          = link_to "ばすろまんのその他の出品" , "/"
+          = link_to "#{@item.user.nickname}さんの出品商品" , "/"
+      - @user_items.each do |item|
+        %section.items__box
+          = link_to "/items/#{item.id}", class: "clear-decoration" do
+            %figure.items__box__photo
+              = image_tag( item.image, alt: "uniqlo", class: "items__box__photo--size")
+            .items__box__body
+              %h3.items__box__name
+                = item.name
+              .items__box__num
+                .items__box__num__price
+                  = "¥  #{item.price}"
+                %p.items__box__num__tax (税込)
+    /  brand_idをテーブルに追加後下記のコメントアウトを外す
+    / .main-item__box.clear.clearfix
+    /   %ul.main-item__box--name
+    /     %li
+    /       = link_to "#ブランド その他の商品" , "/"
 
-      %section.items__box
-        = link_to "/", class: "clear-decoration" do
-          %figure.items__box__photo
-            = image_tag("m15186317597_1.jpg", alt: "uniqlo", class: "items__box__photo--size")
-          .items__box__body
-            %h3.items__box__name ユニクロフリース
-            .items__box__num
-              .items__box__num__price ¥4,200
-              %p.items__box__num__tax (税込)
-      %section.items__box
-        = link_to "/", class: "clear-decoration" do
-          %figure.items__box__photo
-            = image_tag("m15186317597_1.jpg", alt: "uniqlo", class: "items__box__photo--size")
-          .items__box__body
-            %h3.items__box__name ユニクロフリース
-            .items__box__num
-              .items__box__num__price ¥4,200
-              %p.items__box__num__tax (税込)
-      %section.items__box
-        = link_to "/", class: "clear-decoration" do
-          %figure.items__box__photo
-            = image_tag("m15186317597_1.jpg", alt: "uniqlo", class: "items__box__photo--size")
-          .items__box__body
-            %h3.items__box__name ユニクロフリース
-            .items__box__num
-              .items__box__num__price ¥4,200
-              %p.items__box__num__tax (税込)
-      %section.items__box
-        = link_to "/", class: "clear-decoration" do
-          %figure.items__box__photo
-            = image_tag("m15186317597_1.jpg", alt: "uniqlo", class: "items__box__photo--size")
-          .items__box__body
-            %h3.items__box__name ユニクロフリース
-            .items__box__num
-              .items__box__num__price ¥4,200
-              %p.items__box__num__tax (税込)
-      %section.items__box
-        = link_to "/", class: "clear-decoration" do
-          %figure.items__box__photo
-            = image_tag("m15186317597_1.jpg", alt: "uniqlo", class: "items__box__photo--size")
-          .items__box__body
-            %h3.items__box__name ユニクロフリース
-            .items__box__num
-              .items__box__num__price ¥4,200
-              %p.items__box__num__tax (税込)
-      %section.items__box
-        = link_to "/", class: "clear-decoration" do
-          %figure.items__box__photo
-            = image_tag("m15186317597_1.jpg", alt: "uniqlo", class: "items__box__photo--size")
-          .items__box__body
-            %h3.items__box__name ユニクロフリース
-            .items__box__num
-              .items__box__num__price ¥4,200
-              %p.items__box__num__tax (税込)
+    /   - @brand_items.each do |item|
+    /     %section.items__box
+    /       = link_to "/", class: "clear-decoration" do
+    /         %figure.items__box__photo
+    /           = image_tag("m15186317597_1.jpg", alt: "uniqlo", class: "items__box__photo--size")
+    /           / = image_tag( item.image, alt: "uniqlo", class: "items__box__photo--size")
+    /         .items__box__body
+    /           %h3.items__box__name
+    /             = item.name
+    /           .items__box__num
+    /             .items__box__num__price
+    /             %p.items__box__num__tax (税込)
 
   = render 'shared/aside'
   = render 'shared/footer'
