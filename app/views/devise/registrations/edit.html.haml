@@ -7,7 +7,7 @@
   .mypage-body.clearfix
     = render 'shared/user-side'
     .main__content
-      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = form_for(current_user, url: user_registration_path) do |f|
         .signup__container
           %h2.signup__container--upper 住所入力
           .signup__inner
