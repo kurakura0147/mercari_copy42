@@ -16,7 +16,7 @@ crumb :user_signout do
   parent :user
 end
 crumb :user_edit do
-  link "本人情報の登録", user_path
+  link "本人情報の登録", edit_user_registration_path
   parent :user
 end
 crumb :user_card do
