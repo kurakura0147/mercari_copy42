@@ -1,6 +1,4 @@
-* {
-  box-sizing: border-box;
-}
+
 
 label {
   font-size: 14px;
@@ -35,6 +33,7 @@ label {
   border: 1px dashed $mail-icon;
   font-size: 0;
   text-align: center;
+  box-sizing: border-box;
   cursor: pointer;
     &__file {
       display: none;
@@ -61,9 +60,11 @@ label {
       }
       &--input {
         @include input-default();
+        box-sizing: border-box;
       }
       &--textarea {
         @include textarea-default();
+        box-sizing: border-box;
       }
     }
 }
@@ -134,11 +135,13 @@ label {
     &--input {
       @include input-default();
       text-align: right;
+      box-sizing: border-box;
     }
     &--margin {
       font-size: 14px;
       padding: 24px 0;
       border-top: 1px solid $mail-icon;
+      box-sizing: border-box;
         &--result {
           float: right;
           font-size: 14px;
