@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     :registrations => 'users/registrations'
   }
   root 'items#index'
-  resources :items, only: [:index, :new, :show, :edit, :destroy] do
+  resources :items, only: %i(index new create show edit destroy) do
     member do
       get :buy
       post :pay
