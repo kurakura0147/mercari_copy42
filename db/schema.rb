@@ -59,15 +59,6 @@ ActiveRecord::Schema.define(version: 20190218055353) do
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end
 
-  create_table "social_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id"
-    t.string   "uid",        null: false
-    t.string   "provider",   null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_social_profiles_on_user_id", using: :btree
-  end
-
   create_table "transactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.integer  "item_id"
@@ -103,7 +94,6 @@ ActiveRecord::Schema.define(version: 20190218055353) do
   add_foreign_key "items", "brands"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users"
-  add_foreign_key "social_profiles", "users"
   add_foreign_key "transactions", "items"
   add_foreign_key "transactions", "users"
   add_foreign_key "transactions", "users", column: "buyer_id"
