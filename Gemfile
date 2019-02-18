@@ -76,3 +76,4 @@ gem 'mini_magick'
 gem 'fog-aws'
 gem "gretel"
 gem 'payjp'
+gem 'ancestry'
