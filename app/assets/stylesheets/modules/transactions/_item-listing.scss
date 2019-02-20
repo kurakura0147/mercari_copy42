@@ -45,6 +45,7 @@ label {
       text-align: center;
       font-size: 14px;
       line-height: 1.5;
+      cursor: pointer;
     }
 }
 
@@ -122,9 +123,18 @@ label {
     }
 }
 
+// カテゴリー
 .category__block__select {
   @include select-default();
   width: 100%;
+}
+
+.medium_categories {
+  margin-top: 24px;
+}
+
+.small_categories {
+  margin-top: 24px;
 }
 
 .sell__price {
