@@ -39,9 +39,11 @@ $(document).on('turbolinks:load', function() {
     if(text === '靴') {
       $('.item_sizes').show();
       $('.size-box').append(shoeSize);
+      $(this).nextAll().remove();
     } else if(val < 470) {
       $('.item_sizes').show();
       $('.size-box').append(size);
+      $(this).nextAll().remove();
     }
   })
 
