@@ -77,3 +77,4 @@ gem 'fog-aws'
 gem "gretel"
 gem 'payjp'
 gem 'ancestry'
+gem 'gon'

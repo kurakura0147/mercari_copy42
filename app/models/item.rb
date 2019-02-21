@@ -1,14 +1,12 @@
 class Item < ApplicationRecord
-
-  mount_uploader :image, ImageUploader
   belongs_to :user
-  belongs_to :brand
+  belongs_to :brand, optional: true
   belongs_to :category
-
   accepts_nested_attributes_for :category
   accepts_nested_attributes_for :brand
   has_many :transactions, dependent: :destroy
   scope :set_items, -> (num){ where(price: num).limit(4).order("id DESC") }
+  mount_uploaders :image, ImageUploader
 
    enum state: {
      "新品、未使用に近い":1, 未使用に近い:2, 目立った傷や汚れなし:3, やや傷や汚れあり:4, 傷や汚れあり:5, 全体的に状態が悪い:6
@@ -16,6 +14,11 @@ class Item < ApplicationRecord
 
     enum cost: {
       "送料込み(出品者持ち)":1, "着払い(購入者持ち)":2
+    }
+
+    enum delivery_mean: {
+      らくらくメルカリ便: 1, ゆうメール: 2, レターパック: 3, "普通郵便(定形、定形外)":4,
+      クロネコヤマト:5, ゆうパック:6, クリックポスト:7, ゆうパケット:8
     }
 
     enum area: {

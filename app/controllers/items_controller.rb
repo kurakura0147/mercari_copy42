@@ -11,9 +11,13 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @brand = Brand.all
   end
 
   def create
+    @item = Item.new(item_params)
+    @item.save!
+    redirect_to root_path
   end
 
   def show
@@ -44,10 +48,21 @@ class ItemsController < ApplicationController
     redirect_to items_path
   end
 
+  def search_brand
+    @brands = Brand.where('name LIKE(?)', "%#{params[:keyword]}%").limit(6)
+    respond_to do |format|
+      format.json { render 'new', json: @brands }
+    end
+  end
+
   private
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def item_params
+    params.require(:item).permit(:name, {image: []}, :detail, :state, :price, :delivery_cost, :delivery_area, :delivery_day, :size, :category_id, :delivery, :brand_id).merge(user_id: current_user.id)
   end
 
 end
