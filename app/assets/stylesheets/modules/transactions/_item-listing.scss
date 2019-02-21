@@ -127,16 +127,36 @@ label {
 .category__block__select {
   @include select-default();
   width: 100%;
+  margin-bottom: 24px;
 }
 
-.medium_categories {
-  margin-top: 24px;
+// ブランド
+.brand__box__suggest {
+  overflow: auto;
+  z-index: 10;
+  max-height: 280px;
+  background-color: $white;
+  border: 1px solid $mail-icon;
+  border-radius: 4px;
+  width: 400px;
+    & ul {
+      list-style: none;
+      & li {
+        cursor: pointer;
+        padding: 16px 8px;
+        font-size: 14px;
+        &:hover {
+          background-color: $sky-blue;
+        }
+        & a {
+          display: inline-block;
+          width: 400px;
+        }
+      }
+    }
 }
 
-.small_categories {
-  margin-top: 24px;
-}
-
+// 売価
 .sell__price {
   float: right;
     &--input {
@@ -171,6 +191,21 @@ label {
 .sell__price-label {
   font-size: 12px;
   font-weight: normal;
+}
+
+.brand-label {
+  background-color: $mail-icon;
+  color: $white;
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  font-size: 12px;
+  vertical-align: top;
+}
+
+.brand__box--input {
+  @include input-default();
+  box-sizing: border-box;
 }
 
 .sell__content__bottom {

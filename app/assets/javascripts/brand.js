@@ -53,7 +53,7 @@ $(document).on('turbolinks:load', function() {
     var brandName = $(this).data('brand-name');
     addBrandId(brandId);
     $('.brand__box--input').val(brandName);
-
+    $('.brand__box__suggest--list').remove();
   });
 
 });
