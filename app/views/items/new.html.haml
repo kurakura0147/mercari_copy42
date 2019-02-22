@@ -5,6 +5,7 @@
     %section.item__container__main__box
       %h2.item__box__header 商品の情報を入力
       %section.sell__form
+      = form_for @item  do |f|
         .sell__upload
           %h3.sell__upload--head
             %label 出品画像
@@ -12,114 +13,119 @@
           %p.picture__limit 最大5枚までアップロードできます
           .sell__dropbox__container
           .sell__upload__dropbox
-            %input.sell__upload__dropbox__file{multiple: "multiple", name: "image1", type: "file"}/
+            = f.fields_for :item_images ,ItemImage.new do |image|
+              %ul.sell-dropbox-items
+              .sell-dropbox-uploader
+                = image.label :image, for: "goods_image" , class: "sell-dropbox-uploader_container" do
+                  =image.file_field :image ,id:"goods_image" , class: "goods_images hidden"
+                  //ここまで
             %pre.sell__upload__dropbox--visible
-              :preserve
               ドラッグアンドドロップ
               またはクリックしてファイルをアップロード
 
         .sell__container
           .sell__container--form
-            %label 商品名
+            = f.label :商品名
             %span.form-require 必須
             %br/
-            %input.sell__container--form--input{placeholder: "商品名（必須 40文字まで)", value: ""}
+            = f.text_field :name, class: "sell__container--form--input", placeholder: "商品名(必須 40文字まで)"
           .sell__container--form
-            %label 商品の説明
+            = f.label :商品の説明
             %span.form-require 必須
             %br/
-            %textarea.sell__container--form--textarea{ placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5"}
+            = f.text_area :detail, class: "sell__container--form--textarea", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: 5
 
-        / 商品の詳細
         .sell__container.clearfix
           %h3.sell-sub-head 商品の詳細
           .sell__form__right
             .sell__form__right-box
-              %label カテゴリー
+              = f.label :カテゴリー
               %span.form-require 必須
               %br/
-              %select.category__block__select
-                %option{value: "01"} ---
-                %option{value: "02"} レディース
-                %option{value: "03"} メンズ
-                %option{value: "04"} ベビー・キッズ
-                %option{value: "05"} インテリア・住まい・小物
-                %option{value: "06"} 本・音楽・ゲーム
-                %option{value: "07"} おもちゃ・ホビー・グッズ
-                %option{value: "08"} コスメ・香水・美容
-                %option{value: "09"} 家電・スマホ・カメラ
-                %option{value: "10"} スポーツ・レジャー
-                %option{value: "11"} ハンドメイド
-                %option{value: "12"} チケット
-                %option{value: "13"} 自転車・オートバイ
-                %option{value: "14"} その他
-                %br/
+              .sell_category
+                = f.collection_select :category_id, Category.roots, :id, :name, {prompt: "---"}, class: "category__block__select select-category"
+
+              - Category.roots.each do |root_category|
+                %template{ id: "category#{root_category.id}" }
+                  = f.collection_select :category_id, root_category.children, :id, :name, {prompt: "---"}, {class: "category__block__select medium_categories"}
+              %br/
+              - Category.roots.each do |roots|
+                - Category.children_of(roots).each do |medium_category|
+                  %template{ id: "category#{medium_category.id}" }
+                    = f.collection_select :category_id, medium_category.children, :id, :name, { prompt: "---" }, {class: "category__block__select small_categories"}
 
             .sell__form__right-box
-              %label 商品の詳細
+              .item_sizes
+                = f.label :サイズ
+                %span.form-require 必須
+                = f.select :size, {}, { prompt: "---" }, class: "category__block__select size-box"
+
+            .sell__form__right-box
+              .brand__box
+                = f.label :ブランド
+                %span.brand-label 任意
+                = f.text_field :brand_id, value: "",placeholder: "例) シャネル", class: "brand__box--input"
+                .brand__box__suggest
+                  %ul.brand__box__suggest--list
+
+            .sell__form__right-box
+              = f.label :商品の詳細
               %span.form-require 必須
               %br/
-              %select.category__block__select
-                %option{value: "01"} ---
-                %option{value: "02"} 新品、未使用
-                %option{value: "03"} 未使用に近い
-                %option{value: "04"} 目立った傷や汚れなし
-                %option{value: "05"} やや傷や汚れあり
-                %option{value: "06"} 傷や汚れあり
-                %option{value: "07"} 全体的に状態が悪い
-                %br/
+              = f.select :state, Item.states.keys, { prompt: "---" }, class: "category__block__select"
 
         / 配送について
         .sell__container.clearfix
           %h3.sell-sub-head 配送について
-          %a.form-question{href: "/"} ?
+          = link_to "?", "/", class: "form-question"
           .sell__form__right
             .sell__form__right-box
-              %label 配送料の負担
+              = f.label :配送料の負担
               %span.form-require 必須
               %br/
-              %select.category__block__select
-                %option{value: "01"} ---
-                %option{value: "02"} 送料込み(出品者負担)
-                %option{value: "03"} 着払い(購入者負担)
-                %br/
+              = f.select :delivery_cost, Item.costs.keys, { prompt: "---" }, class: "category__block__select delivery__box-cost"
+
+          .sell__form__right
             .sell__form__right-box
-              .address__group
-                %label 配送元の地域
+              .delivery__box
+                = f.label :配送の方法
                 %span.form-require 必須
                 %br/
-                %select.category__block__select
+                = f.select :delivery, {}, { prompt: "---" }, class: "category__block__select delivery__option"
 
             .sell__form__right-box
-              %label 配送までの日数
+              = f.label :配送元の地域
               %span.form-require 必須
               %br/
-              %select.category__block__select
-                %option{value: "01"} ---
-                %option{value: "02"} 1~2日で発送
-                %option{value: "03"} 2~3日で発送
-                %option{value: "04"} 4~7日で発送
-                %br/
+              = f.select :delivery_area, Item.areas.keys, { prompt: "---" }, class: "category__block__select"
+
+            .sell__form__right-box
+              = f.label :配送までの日数
+              %span.form-require 必須
+              %br/
+              = f.select :delivery_day, Item.days.keys, { prompt: "---" }, class: "category__block__select"
 
         / 販売価格
         .sell__container.clearfix
           %h3.sell-sub-head
           販売価格(300〜9,999,999)
-          %a.form-question{href: "/"} ?
+          = link_to "?", "/", class: "form-question"
           %ul.sell__form__right
             %li.sell__form__right-box
-              %label 価格
-              %span.form-require 必須
-              .sell__price
-                %input.sell__price--input{placeholder: "例）300", value: ""}
+              .clearfix
+                = f.label :価格
+                %span.form-require 必須
+                .sell__price
+                  = f.label :¥, class: "sell__price-label"
+                  = f.text_field :price, maxlength: "7", placeholder: "例)300", class: "sell__price--input"
             %li.sell__price--margin.clearfix
               販売手数料(10%)
               .sell__price--margin--result
-                %span#margin 10
+                %span#margin
             %li.sell__price--gain.clearfix
               販売利益
               .sell__price--gain--total
-                %span#total 200
+                %span#total
 
         .sell__content__bottom
           .sell__content__bottom__caution
@@ -136,7 +142,7 @@
               = link_to "加盟店規約", "/"
               に同意したことになります。
           .sell__content__bottom-btn
-            %button.btn__default--sell{type: "submit"}出品する
+            = f.submit :出品する, class: "btn__default--sell"
             = link_to "もどる", root_path, class: "btn--back"
 
   = render 'shared/registration/registration-footer'

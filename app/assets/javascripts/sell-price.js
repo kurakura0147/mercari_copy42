@@ -1,24 +1,25 @@
-function update_field(){
-    var result = $('#quantity').val() * 0.9 ;
-    var total = Math.round(result);
-    $('#total').text("¥" + total);
-    var result = $('#quantity').val() * 0.1 ;
-    var margin = Math.round(result);
-    $('#margin').text("¥" + margin);
-}
+$(document).on('turbolinks:load', function() {
 
-function no_field(){
-  $('#total').text("-");
-  $('#margin').text("-");
-}
+  function update_field(input) {
+      var price = $('.sell__price--input').val() * 0.9;
+      var total = Math.round(price);
+      $('#total').text("¥" + total);
 
-$(function(){
-  $('input[value=""]').on('keyup change', function(){
-    var min = $(this).val();
+      var result = $('.sell__price--input').val() * 0.1 ;
+      var margin = Math.round(result);
+      $('#margin').text("¥" + margin);
+  };
 
-      if( min >= 300 && min <= 9999999){
-        update_field();
-      }else {
+  function no_field(){
+    $('#total').text("-");
+    $('#margin').text("-");
+  };
+
+  $('.sell__price--input').on('keyup change', function() {
+    var input = $(this).val();
+      if( input >= 300 && input <= 9999999 ) {
+        update_field(input);
+      } else {
         no_field();
       }
   });

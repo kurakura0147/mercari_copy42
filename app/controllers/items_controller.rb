@@ -10,6 +10,17 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
+    @item.item_images.build
+  end
+
+  def create
+    @item = Item.create(params_item)
+    redirect_to root_path
+  end
+
+  def params_item
+    params.require(:item).permit(:name , :detail , :state , :price, :delivery_cost, :delivery_area, :delivery_day, :size, :category_id ,:delivery, :brand_id, item_images_attributes: [:image ,:id] ).merge(user_id: current_user.id )
   end
 
   def show
@@ -40,10 +51,21 @@ class ItemsController < ApplicationController
     redirect_to items_path
   end
 
+  def search_brand
+    @brands = Brand.where('name LIKE(?)', "%#{params[:keyword]}%").limit(6)
+    respond_to do |format|
+      format.json { render 'new', json: @brands }
+    end
+  end
+
   private
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def item_params
+    params.require(:item).permit(:name, :detail, :state, :price, :delivery_cost, :delivery_area, :delivery_day, :size, :category_id, :delivery, :brand_id, :item_images_attributes [:image[]]).merge(user_id: current_user.id)
   end
 
 end
