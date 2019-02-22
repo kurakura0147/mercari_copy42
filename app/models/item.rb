@@ -5,8 +5,8 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :category
   accepts_nested_attributes_for :brand
   has_many :transactions, dependent: :destroy
+  has_many :item_images, dependent: :destroy
   scope :set_items, -> (num){ where(price: num).limit(4).order("id DESC") }
-  mount_uploaders :image, ImageUploader
 
    enum state: {
      "新品、未使用に近い":1, 未使用に近い:2, 目立った傷や汚れなし:3, やや傷や汚れあり:4, 傷や汚れあり:5, 全体的に状態が悪い:6
