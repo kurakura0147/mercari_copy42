@@ -33,9 +33,6 @@ label {
   text-align: center;
   box-sizing: border-box;
   cursor: pointer;
-    &__file {
-      display: none;
-    }
     &--visible {
       position: absolute;
       top: 50%;
@@ -247,4 +244,87 @@ label {
   line-height: 48px;
   cursor: pointer;
   margin: 24px auto 0;
+}
+
+.sell-dropbox-items {
+  height: 184px;
+  float: left;
+  margin-right: -4px;
+  position: relative;
+  z-index: 5;
+  &_container {
+    display: inline-block;
+    height: 100%;
+    // border: 1px solid $btn-gray;
+    box-sizing:border-box;
+    z-index: 4;
+    vertical-align:top;
+    border-left: 1px dashed $mail-icon;
+    border-right: 1px dashed $mail-icon;
+    &:first-child {
+      border-right: 1px dashed $mail-icon;
+    }
+    &:last-child {
+      border-left: 1px dashed $mail-icon;
+    }
+  }
+  &_tab {
+    display: inline-block;
+    background-color: $white;
+    width: 10px;
+    height: 190px;
+    position: relative;
+    top: -2px;
+    &:last-child {
+      width: 12px;
+    }
+
+  }
+  &-figure {
+    height: calc(100% - 44px);
+    line-height: calc(100% - 44px);
+    .itemimage {
+      height: 100%;
+    }
+  }
+}
+
+
+.sell-dropbox-uploader {
+  width: 620px;
+  height: 184px;
+  float: left;
+  position: absolute;
+  right:0;
+}
+
+label.sell-dropbox-uploader_container {
+  width: 620px;
+  height: 184px;
+  z-index: 0;
+}
+
+// 編集ボタン,削除ボタン
+a.sell-dropbox-items-btn.sell-image_edit ,a.sell-dropbox-items-btn.sell-image_delete {
+  width: 56px;
+  height: 44px;
+  line-height: 44px;
+  float: left;
+  background-color: $off-white;
+  border: 1px solid $btn-gray;
+  box-sizing:border-box;
+  p {
+    color:$sky-blue;
+    font-size: 16px;
+  }
+}
+
+//アップロードのボタン
+input.goods_images.hidden#goods_image {
+  width: 620px;
+  height: 184px;
+  position: absolute;
+  left:0;
+  opacity: 0;
+  z-index: 0;
 }

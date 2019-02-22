@@ -11,13 +11,16 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @brand = Brand.all
+    @item.item_images.build
   end
 
   def create
-    @item = Item.new(item_params)
-    @item.save!
+    @item = Item.create(params_item)
     redirect_to root_path
+  end
+
+  def params_item
+    params.require(:item).permit(:name , :detail , :state , :price, :delivery_cost, :delivery_area, :delivery_day, :size, :category_id ,:delivery, :brand_id, item_images_attributes: [:image ,:id] ).merge(user_id: current_user.id )
   end
 
   def show
@@ -62,7 +65,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, {image: []}, :detail, :state, :price, :delivery_cost, :delivery_area, :delivery_day, :size, :category_id, :delivery, :brand_id).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :detail, :state, :price, :delivery_cost, :delivery_area, :delivery_day, :size, :category_id, :delivery, :brand_id, :item_images_attributes [:image[]]).merge(user_id: current_user.id)
   end
 
 end

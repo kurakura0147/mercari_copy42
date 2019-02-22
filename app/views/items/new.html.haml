@@ -4,15 +4,21 @@
   %main.item__container__main
     %section.item__container__main__box
       %h2.item__box__header 商品の情報を入力
-      = form_for @item, class: "sell__form" do |f|
+      %section.sell__form
+      = form_for @item  do |f|
         .sell__upload
           %h3.sell__upload--head
-            =f.label :出品画像
+            %label 出品画像
             %span.form-require 必須
           %p.picture__limit 最大5枚までアップロードできます
           .sell__dropbox__container
           .sell__upload__dropbox
-            %input.sell__upload__dropbox__file{multiple: "multiple", name: "image1", type: "file"}/
+            = f.fields_for :item_images ,ItemImage.new do |image|
+              %ul.sell-dropbox-items
+              .sell-dropbox-uploader
+                = image.label :image, for: "goods_image" , class: "sell-dropbox-uploader_container" do
+                  =image.file_field :image ,id:"goods_image" , class: "goods_images hidden"
+                  //ここまで
             %pre.sell__upload__dropbox--visible
               ドラッグアンドドロップ
               またはクリックしてファイルをアップロード
@@ -36,7 +42,31 @@
               = f.label :カテゴリー
               %span.form-require 必須
               %br/
-              = f.collection_select :category_id, Category.all, :id, :name, {prompt: "---"}, class: "category__block__select"
+              .sell_category
+                = f.collection_select :category_id, Category.roots, :id, :name, {prompt: "---"}, class: "category__block__select select-category"
+
+              - Category.roots.each do |root_category|
+                %template{ id: "category#{root_category.id}" }
+                  = f.collection_select :category_id, root_category.children, :id, :name, {prompt: "---"}, {class: "category__block__select medium_categories"}
+              %br/
+              - Category.roots.each do |roots|
+                - Category.children_of(roots).each do |medium_category|
+                  %template{ id: "category#{medium_category.id}" }
+                    = f.collection_select :category_id, medium_category.children, :id, :name, { prompt: "---" }, {class: "category__block__select small_categories"}
+
+            .sell__form__right-box
+              .item_sizes
+                = f.label :サイズ
+                %span.form-require 必須
+                = f.select :size, {}, { prompt: "---" }, class: "category__block__select size-box"
+
+            .sell__form__right-box
+              .brand__box
+                = f.label :ブランド
+                %span.brand-label 任意
+                = f.text_field :brand_id, value: "",placeholder: "例) シャネル", class: "brand__box--input"
+                .brand__box__suggest
+                  %ul.brand__box__suggest--list
 
             .sell__form__right-box
               = f.label :商品の詳細
@@ -53,14 +83,21 @@
               = f.label :配送料の負担
               %span.form-require 必須
               %br/
-              = f.select :delivery_cost, Item.costs.keys, { prompt: "---" }, class: "category__block__select"
+              = f.select :delivery_cost, Item.costs.keys, { prompt: "---" }, class: "category__block__select delivery__box-cost"
 
+          .sell__form__right
             .sell__form__right-box
-              .address__group
-                = f.label :配送元の地域
+              .delivery__box
+                = f.label :配送の方法
                 %span.form-require 必須
                 %br/
-                = f.select :delivery_area, Item.areas.keys, { prompt: "---" }, class: "category__block__select"
+                = f.select :delivery, {}, { prompt: "---" }, class: "category__block__select delivery__option"
+
+            .sell__form__right-box
+              = f.label :配送元の地域
+              %span.form-require 必須
+              %br/
+              = f.select :delivery_area, Item.areas.keys, { prompt: "---" }, class: "category__block__select"
 
             .sell__form__right-box
               = f.label :配送までの日数
@@ -84,11 +121,11 @@
             %li.sell__price--margin.clearfix
               販売手数料(10%)
               .sell__price--margin--result
-                %span#margin 10
+                %span#margin
             %li.sell__price--gain.clearfix
               販売利益
               .sell__price--gain--total
-                %span#total 200
+                %span#total
 
         .sell__content__bottom
           .sell__content__bottom__caution
