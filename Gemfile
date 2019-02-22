@@ -78,3 +78,4 @@ gem "gretel"
 gem 'payjp'
 gem 'ancestry'
 gem 'gon'
+gem 'dropzonejs-rails', '0.8.2'
