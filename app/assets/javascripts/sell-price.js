@@ -15,14 +15,12 @@ $(document).on('turbolinks:load', function() {
     $('#margin').text("-");
   };
 
-  $(function(){
-    $('.sell__price--input').on('keyup change', function() {
-      var input = $(this).val();
-        if( input >= 300 && input <= 9999999 ) {
-          update_field(input);
-        } else {
-          no_field();
-        }
-    });
+  $('.sell__price--input').on('keyup change', function() {
+    var input = $(this).val();
+      if( input >= 300 && input <= 9999999 ) {
+        update_field(input);
+      } else {
+        no_field();
+      }
   });
 });
