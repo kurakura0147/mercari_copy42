@@ -27,14 +27,13 @@
         %h3.items__box__container
           %section.text-center
             = link_to "" ,class: "text-center__name clear-decoration" do
-              = "price1_items"
-              新着アイテム
+              = "#{item.category.name} 新着アイテム"
           .items__box__content.clearfix
             - @price1_items.each do |item|
               %section.items__box
                 = link_to "/items/#{item.id}", class: "clear-decoration"  do
                   %figure.items__box__photo
-                    = image_tag(item.image, alt: "uniqlo", class: "items__box__photo--size")
+                    / = image_tag(item.item_images[0].image, alt: "uniqlo", class: "items__box__photo--size")
                   .items__box__body
                     %h3.items__box__name
                       = item.name
@@ -49,14 +48,14 @@
         %h3.items__box__container
           %section.text-center
             = link_to "", class: "text-center__name clear-decoration" do
-              = "price2_items"
+              = "#{item.category.name} 新着アイテム"
               新着アイテム
           .items__box__content.clearfix
             - @price2_items.each do |item|
               %section.items__box
                 = link_to "/items/#{item.id}", class: "clear-decoration"  do
                   %figure.items__box__photo
-                    = image_tag(item.image, alt: "uniqlo", class: "items__box__photo--size")
+                    / = image_tag(item.image, alt: "uniqlo", class: "items__box__photo--size")
                   .items__box__body
                     %h3.items__box__name
                       = item.name
@@ -73,14 +72,13 @@
         %h3.items__box__container
           %section.text-center
             = link_to "", class: "text-center__name clear-decoration" do
-              = "price3_items"
-              新着アイテム
+              = "#{item.brand.name} 新着アイテム"
           .items__box__content.clearfix
             - @price3_items.each do |item|
               %section.items__box
                 = link_to "/items/#{item.id}", class: "clear-decoration"  do
                   %figure.items__box__photo
-                    = image_tag(item.image, alt: "uniqlo", class: "items__box__photo--size")
+                    / = image_tag(item.image, alt: "uniqlo", class: "items__box__photo--size")
                   .items__box__body
                     %h3.items__box__name
                       = item.name
@@ -95,14 +93,13 @@
         %h3.items__box__container
           %section.text-center
             = link_to "", class: "text-center__name clear-decoration" do
-              = "price4_items"
-              新着アイテム
+              = "#{item.brand.name} 新着アイテム"
           .items__box__content.clearfix
             - @price4_items.each do |item|
               %section.items__box
                 = link_to "/items/#{item.id}", class: "clear-decoration"  do
                   %figure.items__box__photo
-                    = image_tag(item.image, alt: "uniqlo", class: "items__box__photo--size")
+                    / = image_tag(item.image, alt: "uniqlo", class: "items__box__photo--size")
                   .items__box__body
                     %h3.items__box__name
                       = item.name
