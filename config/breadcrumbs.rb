@@ -4,7 +4,7 @@ crumb :root do
 end
 # => アイテム詳細(items/id)
 crumb :item_show do |item|
-  link "#{item.name}", new_transaction_path
+  link "#{item.name}", item_path
   parent :root
 end
 crumb :user do
