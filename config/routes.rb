@@ -6,10 +6,11 @@ Rails.application.routes.draw do
 
   root 'items#index'
 
-  resources :items, only: %i(index new create show edit destroy) do
+  resources :items, only: %i(index new create show edit destroy edit update) do
     member do
       get :buy
       post :pay
+      get :check
     end
 
     collection do
@@ -21,7 +22,8 @@ Rails.application.routes.draw do
 
   resources :users, only: %i(new show edit update) do
     member do
-      get 'signout'
+      get :signout
+      get :listing
     end
   end
 
