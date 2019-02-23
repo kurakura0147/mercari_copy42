@@ -1,6 +1,6 @@
 .container
   = render 'shared/header'
-  - breadcrumb :item_show
+  - breadcrumb :item_show , @item
   = breadcrumbs pretext: " ", separator: " › "
   .main-item
     //商品情報
@@ -11,16 +11,16 @@
       .main-item-content__profile.clear.clearfix
         .main-item-content__profile--img
           .item__imag--main
-            = image_tag( @item.image , id: "main-image" , alt: "" , width: "300")
-          %ul.item__img
-            %li
-              = image_tag( @item.image , id: "sub-image" , alt: "" , width: "75")
-            %li
-              = image_tag( @item.image , id: "sub-image" ,alt: "" , width: "75")
-            %li
-              = image_tag( @item.image , id: "sub-image" ,alt: "" , width: "75")
-            %li
-              = image_tag( @item.image , id: "sub-image" ,alt: "" , width: "75" )
+          /   = image_tag( @item.image , id: "main-image" , alt: "" , width: "300")
+          / %ul.item__img
+          /   %li
+          /     = image_tag( @item.image , id: "sub-image" , alt: "" , width: "75")
+          /   %li
+          /     = image_tag( @item.image , id: "sub-image" ,alt: "" , width: "75")
+          /   %li
+          /     = image_tag( @item.image , id: "sub-image" ,alt: "" , width: "75")
+          /   %li
+          /     = image_tag( @item.image , id: "sub-image" ,alt: "" , width: "75" )
         //テーブル（商品情報）
         %table.main-item-content__profile--text
           %tr
@@ -32,12 +32,14 @@
             %th カテゴリー
             %td.e1
               = link_to "" do
-                = "@item.category_id"
+                = @item.category.name
           %tr
             %th ブランド
             %td.e1
-              = link_to "" do
-                = "@item.brand_id"
+              - if @item.brand == nil
+              - else
+                = @item.brand.name
+
           -if @item.size ==""
           -else
             %tr
@@ -47,7 +49,7 @@
           %tr
             %th 商品の状態
             %td
-              = simple_format( @item.state )
+              = @item.state
           %tr
             %th 配送料の負担
             %td
@@ -55,7 +57,7 @@
           %tr
             %th 配送の方法
             %td
-              = "@item.delivery"
+              = @item.delivery
           %tr
             %th 配送元地域
             %td.e1
@@ -155,7 +157,7 @@
         %section.items__box
           = link_to "/items/#{item.id}", class: "clear-decoration" do
             %figure.items__box__photo
-              = image_tag( item.image, alt: "uniqlo", class: "items__box__photo--size")
+              / = image_tag( item.image, alt: "uniqlo", class: "items__box__photo--size")
             .items__box__body
               %h3.items__box__name
                 = item.name
@@ -163,24 +165,24 @@
                 .items__box__num__price
                   = "¥  #{item.price}"
                 %p.items__box__num__tax (税込)
-    /  brand_idをテーブルに追加後下記のコメントアウトを外す
-    / .main-item__box.clear.clearfix
-    /   %ul.main-item__box--name
-    /     %li
-    /       = link_to "#ブランド その他の商品" , "/"
-
-    /   - @brand_items.each do |item|
-    /     %section.items__box
-    /       = link_to "/", class: "clear-decoration" do
-    /         %figure.items__box__photo
-    /           = image_tag("m15186317597_1.jpg", alt: "uniqlo", class: "items__box__photo--size")
-    /           / = image_tag( item.image, alt: "uniqlo", class: "items__box__photo--size")
-    /         .items__box__body
-    /           %h3.items__box__name
-    /             = item.name
-    /           .items__box__num
-    /             .items__box__num__price
-    /             %p.items__box__num__tax (税込)
+    .main-item__box.clear.clearfix
+      - if @item.brand == nil
+      - else
+        %ul.main-item__box--name
+          %li
+            = link_to "#{@item.brand.name} その他の商品" , "/"
+        - @brand_items.each do |item|
+          %section.items__box
+            = link_to item_path, class: "clear-decoration" do
+              %figure.items__box__photo
+                = image_tag("m15186317597_1.jpg", alt: "uniqlo", class: "items__box__photo--size")
+                / = image_tag( item.image, alt: "uniqlo", class: "items__box__photo--size")
+              .items__box__body
+                %h3.items__box__name
+                  = item.name
+                .items__box__num
+                  .items__box__num__price
+                  %p.items__box__num__tax (税込)
 
   = render 'shared/aside'
   = render 'shared/footer'
