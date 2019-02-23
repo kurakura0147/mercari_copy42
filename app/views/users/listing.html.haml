@@ -1,0 +1,23 @@
+.container
+  = render 'shared/header'
+  .mypage-body.clearfix
+    = render 'shared/user-side'
+    .main__content
+      //タブの開始
+      .tabs
+        %input#notice{:checked => "checked", :name => "tab_user", :type => "radio"}/
+        %label.tab_user{:for => "notice"}
+          出品中
+        %input#todo{:name => "tab_user", :type => "radio"}/
+        %label.tab_user{:for => "todo"}
+          売却済み
+        #notice_content.tab_content
+          //タブ-リストの開始
+          = render 'shared/edit_tab'
+          //タブ-リスト（やることリスト）
+        #todo_content.tab_content
+          = image_tag("user-joukyo.png" , class: "tab-content__list--image" )
+
+  = render 'shared/aside'
+  = render 'shared/footer'
+  = render 'shared/sell-btn'

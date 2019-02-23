@@ -1,99 +1,145 @@
-.container
-  = render 'shared/header'
-  .main-item
-    %section.main-item-content
-      .main-item-content__name
-        = @item.name
-      .main-item-content__profile.clear.clearfix
-        .main-item-content__profile--img
-          .item__imag--main
-          .item__img
-            .item__img--sub1
-            .item__img--sub2
-            .item__img--sub3
-            .item__img--sub4
-        %table.main-item-content__profile--text
-          %tr
-            %th 出品者
-            %td.e1
-              = link_to "" do
-                = @item.user.nickname
-          %tr
-            %th カテゴリー
-            %td.e1
-              = link_to "" do
-                甘い
-          %tr
-            %th ブランド
-            %td.e1
-              = link_to "" do
-                コカコーラ
-          %tr
-            %th 商品の状態
-            %td
-              = @item.state
-          %tr
-            %th 配送料の負担
-            %td
-              = @item.delivery_cost
-          %tr
-            %th 配送の方法
-            %td 手渡し
-          %tr
-            %th 配送元地域
-            %td.e1
-              = link_to "" do
-                = @item.delivery_area
-          %tr
-            %th 発送日の目安
-            %td
-              = @item.delivery_day
-      .main-item-content__price
-        .price__box.clear.clearfix
-          %p.price__box--total
-            = number_to_currency("#{@item.price}", locale: "jp")
-          %p.price__box--tax
-            （税込み）
-          %p.price__box--option
-            送料込み
+.item__container
+  =render 'shared/registration/registration-header'
+  %main.item__container__main
+    %section.item__container__main__box
+      %h2.item__box__header 商品の情報を入力
+      %section.sell__form
+      //変更点
+      = form_for @item do |f|
+        .sell__upload
+          %h3.sell__upload--head
+            %label 出品画像
+            %span.form-require 必須
+          %p.picture__limit 最大5枚までアップロードできます
+          .sell__dropbox__container
+          .sell__upload__dropbox
+            = f.fields_for :item_images ,ItemImage.new do |image|
+              %ul.sell-dropbox-items
+              .sell-dropbox-uploader
+                = image.label :image, for: "goods_image" , class: "sell-dropbox-uploader_container" do
+                  =image.file_field :image ,id:"goods_image" , class: "goods_images hidden"
+                  //ここまで
 
-      / 商品紹介
-      .main-item-content__information
-        .main-item-content__information--text
-          = @item.detail
+        .sell__container
+          .sell__container--form
+            = f.label :商品名
+            %span.form-require 必須
+            %br/
+            = f.text_field :name, class: "sell__container--form--input", placeholder: "商品名(必須 40文字まで)"
+          .sell__container--form
+            = f.label :商品の説明
+            %span.form-require 必須
+            %br/
+            = f.text_area :detail, class: "sell__container--form--textarea", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: 5
 
-    / 出品編集・停止・削除ボタン
-    %section.item--change__box
-      = link_to "/", class: "item--change__box--edit" do
-        商品の編集
-      %p.text--center or
-      %button.item--change__box--stop
-        出品を一旦停止する
-      %button.item--change__box--delete
-        この商品を削除する
+        .sell__container.clearfix
+          %h3.sell-sub-head 商品の詳細
+          .sell__form__right
+            .sell__form__right-box
+              = f.label :カテゴリー
+              %span.form-require 必須
+              %br/
+              .sell_category
+                = f.collection_select :category_id, Category.roots, :id, :name, {prompt: "---"}, class: "category__block__select select-category"
 
-    / コメント欄
-    %section.item--change__box
-      .user__comment--alart
-        相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      =form_for "" do |f|
-        = f.text_area :comment, type: "text", rows: 4 , class: "item--change__box__comment"
-        = f.submit "コメントする", class: "user__comment--button"
+              - Category.roots.each do |root_category|
+                %template{ id: "category#{root_category.id}" }
+                  = f.collection_select :category_id, root_category.children, :id, :name, {prompt: "---"}, {class: "category__block__select medium_categories"}
+              %br/
+              - Category.roots.each do |roots|
+                - Category.children_of(roots).each do |medium_category|
+                  %template{ id: "category#{medium_category.id}" }
+                    = f.collection_select :category_id, medium_category.children, :id, :name, { prompt: "---" }, {class: "category__block__select small_categories"}
 
-    / 商品削除モーダル
-    %aside.modal
-      .modal__inner.modal__banner
-        .modal__inner__body
-          .modal__head 確認
-          削除すると二度と復活できません。
-          %br/
-          削除する代わりに停止することもできます。
-          %br/
-          %br/
-          本当に削除しますか？
-        .clearfix
-          .modal__btn.modal__cancel キャンセル
-          = link_to "削除", item_path(@item), method: :delete, class: "modal__btn modal__submit"
+            .sell__form__right-box
+              .item_sizes
+                = f.label :サイズ
+                %span.form-require 必須
+                = f.select :size, {}, { prompt: "---" }, class: "category__block__select size-box"
 
-  = render 'shared/aside'
-  = render 'shared/footer'
+            .sell__form__right-box
+              .brand__box
+                = f.label :ブランド
+                %span.brand-label 任意
+                = f.text_field :brand_id, value: "",placeholder: "例) シャネル", class: "brand__box--input"
+                .brand__box__suggest
+                  %ul.brand__box__suggest--list
+
+            .sell__form__right-box
+              = f.label :商品の詳細
+              %span.form-require 必須
+              %br/
+              = f.select :state, Item.states.keys, { prompt: "---" }, class: "category__block__select"
+
+        / 配送について
+        .sell__container.clearfix
+          %h3.sell-sub-head 配送について
+          = link_to "?", "/", class: "form-question"
+          .sell__form__right
+            .sell__form__right-box
+              = f.label :配送料の負担
+              %span.form-require 必須
+              %br/
+              = f.select :delivery_cost, Item.costs.keys, { prompt: "---" }, class: "category__block__select delivery__box-cost"
+
+          .sell__form__right
+            .sell__form__right-box
+              .delivery__box
+                = f.label :配送の方法
+                %span.form-require 必須
+                %br/
+                = f.select :delivery, {}, { prompt: "---" }, class: "category__block__select delivery__option"
+
+            .sell__form__right-box
+              = f.label :配送元の地域
+              %span.form-require 必須
+              %br/
+              = f.select :delivery_area, Item.areas.keys, { prompt: "---" }, class: "category__block__select"
+
+            .sell__form__right-box
+              = f.label :配送までの日数
+              %span.form-require 必須
+              %br/
+              = f.select :delivery_day, Item.days.keys, { prompt: "---" }, class: "category__block__select"
+
+        / 販売価格
+        .sell__container.clearfix
+          %h3.sell-sub-head
+          販売価格(300〜9,999,999)
+          = link_to "?", "/", class: "form-question"
+          %ul.sell__form__right
+            %li.sell__form__right-box
+              .clearfix
+                = f.label :価格
+                %span.form-require 必須
+                .sell__price
+                  = f.label :¥, class: "sell__price-label"
+                  = f.text_field :price, maxlength: "7", placeholder: "例)300", class: "sell__price--input"
+            %li.sell__price--margin.clearfix
+              販売手数料(10%)
+              .sell__price--margin--result
+                %span#margin
+            %li.sell__price--gain.clearfix
+              販売利益
+              .sell__price--gain--total
+                %span#total
+
+        .sell__content__bottom
+          .sell__content__bottom__caution
+            %p.caution__text
+              = link_to "禁止されている出品、", "/"
+              = link_to "行為", "/"
+              を必ずご確認ください。
+            %p.caution__text
+              またブランド品でシリアルナンバー等がある場合はご記載ください。
+              = link_to "偽ブランドの販売", "/"
+              は犯罪であり処罰される可能性があります。
+            %p.caution__text
+              また、出品をもちまして
+              = link_to "加盟店規約", "/"
+              に同意したことになります。
+          .sell__content__bottom-btn
+            = f.submit :編集する, class: "btn__default--sell"
+            = link_to "もどる", root_path, class: "btn--back"
+
+  = render 'shared/registration/registration-footer'
