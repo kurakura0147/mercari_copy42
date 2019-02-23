@@ -7,7 +7,9 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :category
   accepts_nested_attributes_for :brand
   accepts_nested_attributes_for :item_images, allow_destroy: true
-  scope :set_items, -> (num){ where(price: num).limit(4).order("id DESC") }
+  scope :set_brand, -> (num){ where(brand_id: num).limit(4).order("id DESC") }
+  scope :set_category, -> (num){ where(category_id: num).limit(4).order("id DESC") }
+
 
    enum state: {
      "新品、未使用に近い":1, 未使用に近い:2, 目立った傷や汚れなし:3, やや傷や汚れあり:4, 傷や汚れあり:5, 全体的に状態が悪い:6

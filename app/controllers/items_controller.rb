@@ -3,10 +3,10 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :destroy, :buy, :pay]
 
   def index
-    @price1_items = Item.set_items(1)
-    @price2_items = Item.set_items(2)
-    @price3_items = Item.set_items(3)
-    @price4_items = Item.set_items(4)
+    @price1_items = Item.set_category(1)
+    @price2_items = Item.set_category(2)
+    @price3_items = Item.set_brand(1)
+    @price4_items = Item.set_brand(2)
   end
 
   def new
@@ -15,7 +15,8 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.create(params_item)
+    @item = Item.new(params_item)
+    @item = Item.save!
     redirect_to root_path
   end
 
@@ -27,7 +28,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @user_items = Item.where(user_id: @item.user_id).sample(6)
     #brand_idをテーブルに追加後コメントアウトを外す
-    # @brand_items = Item.where(brand_id: @item.brans_id).sample(6)
+    @brand_items = Item.where(brand_id: @item.brand_id).sample(6)
   end
 
   def buy
