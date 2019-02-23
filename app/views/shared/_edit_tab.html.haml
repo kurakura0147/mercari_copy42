@@ -1,0 +1,10 @@
+%ul.tab-content
+  %li.notice_content
+    - @items.each do |item|
+      = link_to check_item_path , class: "tab-content__list"  do
+        = image_tag item.item_images[0].image, class: "tab-content__list--mercari"
+        = fa_icon "angle-right", class: "tab-content__list--arrow"
+        .tab-content__list--body
+          .tab-content__list--body-text
+            = item.name
+

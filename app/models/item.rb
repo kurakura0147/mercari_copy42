@@ -7,8 +7,8 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :category
   accepts_nested_attributes_for :brand
   accepts_nested_attributes_for :item_images, allow_destroy: true
-  scope :set_brand, -> (num){ where(brand_id: num).limit(4).order("id DESC") }
-  scope :set_category, -> (num){ where(category_id: num).limit(4).order("id DESC") }
+  scope :set_brand, -> (num){ where(brand_id: num).limit(4).order("RAND()") }
+  scope :set_category, -> (num){ where(category_id: num).order("RAND()").limit(4) }
 
 
    enum state: {
