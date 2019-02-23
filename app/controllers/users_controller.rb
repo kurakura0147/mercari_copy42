@@ -22,6 +22,10 @@ class UsersController < ApplicationController
   def signout
   end
 
+  def listing
+    @items = Item.where(user_id: current_user.id)
+  end
+
   private
 
   def set_user

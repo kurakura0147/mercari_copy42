@@ -3,10 +3,14 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :destroy, :buy, :pay]
 
   def index
-    @price1_items = Item.set_category(1)
-    @price2_items = Item.set_category(2)
-    @price3_items = Item.set_brand(1)
-    @price4_items = Item.set_brand(2)
+    @category1 = Category.find(1)
+    @category2 = Category.find(2)
+    @category3 = Category.find(3)
+    @brand1 = Brand.find(1)
+    @items1 = Item.where(category_id: 119).order("id DESC")
+    @items2 = Item.where(category_id: 302).order("id DESC")
+    @items3 = Item.where(category_id: 431).order("id DESC")
+    @item_brand = Item.where(brand_id: 1).order("id DESC")
   end
 
   def new
@@ -15,14 +19,10 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(params_item)
-    @item = Item.save!
+    @item = Item.create(params_item)
     redirect_to root_path
   end
 
-  def params_item
-    params.require(:item).permit(:name , :detail , :state , :price, :delivery_cost, :delivery_area, :delivery_day, :size, :category_id ,:delivery, :brand_id, item_images_attributes: [:image ,:id] ).merge(user_id: current_user.id )
-  end
 
   def show
     @item = Item.find(params[:id])
@@ -43,8 +43,18 @@ class ItemsController < ApplicationController
     )
   end
 
+  def check
+    @item = Item.find(params[:id])
+  end
+
   def edit
     @item = Item.find(params[:id])
+  end
+
+  def update
+    item = Item.find(params[:id])
+    item.update(params_item)
+    redirect_to check_item_path
   end
 
   def destroy
@@ -65,8 +75,8 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def item_params
-    params.require(:item).permit(:name, :detail, :state, :price, :delivery_cost, :delivery_area, :delivery_day, :size, :category_id, :delivery, :brand_id, :item_images_attributes [:image[]]).merge(user_id: current_user.id)
+  def params_item
+    params.require(:item).permit(:name , :detail , :state , :price, :delivery_cost, :delivery_area, :delivery_day, :size, :category_id ,:delivery, :brand_id, item_images_attributes: [:image ,:id] ).merge(user_id: current_user.id )
   end
 
 end
