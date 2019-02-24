@@ -10,11 +10,6 @@ class Item < ApplicationRecord
   scope :set_brand, -> (num){ where(brand_id: num).limit(4).order("RAND()") }
   scope :set_category, -> (num){ where(category_id: num).order("RAND()").limit(4) }
 
-
-   enum state: {
-     "新品、未使用に近い":1, 未使用に近い:2, 目立った傷や汚れなし:3, やや傷や汚れあり:4, 傷や汚れあり:5, 全体的に状態が悪い:6
-    }
-
     enum cost: {
       "送料込み(出品者持ち)":1, "着払い(購入者持ち)":2
     }
