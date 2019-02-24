@@ -6,11 +6,12 @@
     = render 'shared/user-side'
     .main__content
       %section.user-information
+        / = image_tag("user-bg.jpg")
         =link_to "#" , class: "user-information__link" do
           .user-information__figure
-            = image_tag("", size: "60*60" , class: "user-information__figure--icon")
+            = image_tag("user.jpg", size: "60" , class: "user-information__figure--icon")
             %h3.user-information__name
-              ユーザーの名前
+              = @user.nickname
             .user-information__number
               .user-information__number--review
                 評価
