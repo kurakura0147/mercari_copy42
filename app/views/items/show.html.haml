@@ -12,15 +12,7 @@
         .main-item-content__profile--img
           .item__imag--main
             = image_tag( @item.item_images[0].image , id: "main-image" , alt: "" , width: "300")
-          / %ul.item__img
-          /   %li
-          /     = image_tag( @item.image , id: "sub-image" , alt: "" , width: "75")
-          /   %li
-          /     = image_tag( @item.image , id: "sub-image" ,alt: "" , width: "75")
-          /   %li
-          /     = image_tag( @item.image , id: "sub-image" ,alt: "" , width: "75")
-          /   %li
-          /     = image_tag( @item.image , id: "sub-image" ,alt: "" , width: "75" )
+
         //テーブル（商品情報）
         %table.main-item-content__profile--text
           %tr

@@ -31,6 +31,7 @@ class ItemsController < ApplicationController
   end
 
   def buy
+    @user = current_user
   end
 
   def pay
