@@ -70,8 +70,7 @@
       .main-item-content__price
         .price__box.clear.clearfix
           %p.price__box--total
-            ¥
-            = @item.price
+            = number_to_currency("#{@item.price}", locale: "jp")
           %p.price__box--tax
             （税込み）
           %p.price__box--option
