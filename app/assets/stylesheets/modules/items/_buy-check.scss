@@ -170,3 +170,13 @@ h3.payment {
   font-size: 14px;
   font-weight: bold;
 }
+
+.payjp__btn {
+  background-color: $red-btn;
+  @include btn-default();
+  color: $white;
+}
+
+#payjp_checkout_box {
+  display: none;
+}

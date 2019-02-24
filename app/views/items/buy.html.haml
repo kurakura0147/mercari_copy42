@@ -22,8 +22,10 @@
               .buy-price-pay
                 = number_to_currency( "#{@item.price}", locale: 'jp')
               %p.has-error-text 配送先と支払い方法の入力を完了してください。
-              = form_tag(action: :pay, method: :post) do
-                %script.payjp-button{ "data-key" => ENV["PAYJP_PUBLIC_KEY"], src: "https://checkout.pay.jp", type: "text/javascript" }
+              %label.payjp__btn
+                購入する
+                = form_tag(action: :pay, method: :post) do
+                  %script.payjp-button{ "data-key" => ENV["PAYJP_PUBLIC_KEY"], src: "https://checkout.pay.jp", type: "text/javascript" }
 
       %section.user__info
         .buy-container-inner
