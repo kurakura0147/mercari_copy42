@@ -38,8 +38,7 @@
                     = item.name
                   .items__box__num
                     .items__box__num__price
-                      ¥
-                      = item.price
+                      = number_to_currency("#{item.price}", locale: "jp")
                       %p.items__box__num__tax (税込)
         .view--all すべての商品を見る
 
@@ -59,8 +58,7 @@
                     = item.name
                   .items__box__num
                     .items__box__num__price
-                      ¥
-                      = item.price
+                      = number_to_currency("#{item.price}", locale: "jp")
                       %p.items__box__num__tax (税込)
         .view--all すべての商品を見る
 
@@ -80,8 +78,7 @@
                     = item.name
                   .items__box__num
                     .items__box__num__price
-                      ¥
-                      = item.price
+                      = number_to_currency("#{item.price}", locale: "jp")
                       %p.items__box__num__tax (税込)
         .view--all すべての商品を見る
 
@@ -101,7 +98,6 @@
                     = item.name
                   .items__box__num
                     .items__box__num__price
-                      ¥
-                      = item.price
+                      = number_to_currency("#{item.price}", locale: "jp")
                       %p.items__box__num__tax (税込)
         .view--all すべての商品を見る
