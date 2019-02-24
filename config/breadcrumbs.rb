@@ -7,6 +7,10 @@ crumb :item_show do |item|
   link "#{item.name}", item_path
   parent :root
 end
+crumb :item_check do |item|
+  link "出品商品画面", check_item_path
+  parent :user_item
+end
 crumb :user do
   link "マイページ", user_path(id: current_user.id)
   parent :root
@@ -31,3 +35,8 @@ crumb :user_profile do
   link "プロフィール", user_path
   parent :user
 end
+crumb :user_item do
+  link "出品した商品", listing_user_path
+  parent :user
+end
+

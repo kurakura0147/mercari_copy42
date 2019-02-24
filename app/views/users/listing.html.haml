@@ -1,5 +1,8 @@
 .container
   = render 'shared/header'
+  - breadcrumb :user_item
+  = breadcrumbs pretext: " ", separator: " › "
+
   .mypage-body.clearfix
     = render 'shared/user-side'
     .main__content
