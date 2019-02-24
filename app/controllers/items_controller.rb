@@ -31,6 +31,8 @@ class ItemsController < ApplicationController
   end
 
   def buy
+    @buyer = current_user
+    @seller = @item.user
   end
 
   def pay
@@ -66,7 +68,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def puchase
+  def purchase
   end
 
   private

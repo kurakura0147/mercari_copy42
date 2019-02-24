@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       post :pay
       get :check
     end
-    resources :transactions, only: %i(index)
+
     collection do
       get :search_brand
     end
