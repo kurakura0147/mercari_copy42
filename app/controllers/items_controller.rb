@@ -31,7 +31,6 @@ class ItemsController < ApplicationController
   end
 
   def buy
-    @user = current_user
   end
 
   def pay
@@ -41,6 +40,7 @@ class ItemsController < ApplicationController
           :card => params['payjp-token'],
           :currency => 'jpy',
     )
+    redirect_to root_path
   end
 
   def check
@@ -64,6 +64,9 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.json { render 'new', json: @brands }
     end
+  end
+
+  def puchase
   end
 
   private

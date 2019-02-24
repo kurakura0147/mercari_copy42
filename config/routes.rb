@@ -12,18 +12,17 @@ Rails.application.routes.draw do
       post :pay
       get :check
     end
-
+    resources :transactions, only: %i(index)
     collection do
       get :search_brand
     end
   end
 
-  resources :transactions, only: %i(new)
-
   resources :users, only: %i(new show edit update) do
     member do
       get :signout
       get :listing
+      get :purchase
     end
   end
 
