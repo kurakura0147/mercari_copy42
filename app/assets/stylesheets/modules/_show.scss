@@ -33,15 +33,13 @@
     // ユーザー名、評価表示部分
     .user-information {
       height: 160px;
-      width: 658px;
+      width: 660px;
+      background-image: url("user-bg.jpg");
       padding: 20px;
-      background-color: $white;
       &__link {
-        height: 111px;
-        width: 700px;
+        width:660px;
         text-decoration: none;
-        position: relative;
-        top:15px;
+        display: inline-block;
         //アイコン周りにカーソルが乗ったときに反応
         &:hover {
           opacity: 0.6;
@@ -50,34 +48,41 @@
           }
         }
       }
+
       &__figure {
         text-align: center;
+        height: 140px;
+          position: relative;
+          top: 20px;
         &--icon {
           border-radius: 50%;
           width: 60px;
         }
+        &--icons {
+          border-radius: 50%;
+          width: 60px;
+          position: relative;
+          top: 40px;
+        }
       }
           //ログインユーザーの名前
         &__name {
-          margin: 8px 0;
           font-size: 14px;
-          text-align: center;
           color: $black;
         }
           //評価(review)・出品(exhibit)
         &__number {
           height:16px;
           font-size: 14px;
-          text-align: center;
+          margin:0 auto;
+
           color: $black;
+          width: 140px;
           &--review {
             float: left;
-            position: relative;
-            left: 260px;
           }
           &--exhibit {
-            position: relative;
-            left:20px;
+            float: right;
           }
             span.bold {
               font-size: 16px;
