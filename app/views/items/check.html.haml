@@ -7,11 +7,8 @@
       .main-item-content__profile.clear.clearfix
         .main-item-content__profile--img
           .item__imag--main
-          .item__img
-            .item__img--sub1
-            .item__img--sub2
-            .item__img--sub3
-            .item__img--sub4
+            = image_tag( @item.item_images[0].image , id: "main-image" , alt: "" , width: "300")
+
         %table.main-item-content__profile--text
           %tr
             %th 出品者
