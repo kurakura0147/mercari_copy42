@@ -74,11 +74,10 @@
                   %ul.brand__box__suggest--list
 
             .sell__form__right-box
-              = f.label :商品の詳細
+              = f.label :商品の状態
               %span.form-require 必須
               %br/
-              = f.select :state, Item.states.keys, { prompt: "---" }, class: "category__block__select"
-
+              = f.select :state , ["新品,未使用","未使用に近い","目立った傷や汚れなし","やや傷や汚れあり","傷や汚れあり","全体的に状態が悪い"] ,{ prompt: "---"} , {class: "category__block__select" }
         / 配送について
         .sell__container.clearfix
           %h3.sell-sub-head 配送について
