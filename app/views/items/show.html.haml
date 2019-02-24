@@ -40,6 +40,7 @@
           %tr
             %th 商品の状態
             %td
+              / = @item.state_before_type_cast
               = @item.state
           %tr
             %th 配送料の負担
@@ -95,23 +96,23 @@
     %section.main-item__comments.clear.clearfix
       %ul.items__comments
         .items__comment--name
-          ロイヤルミルクティー
+          新規ユーザー
         //コメントは２つ目以降は、margin-top:60px;
         .items__comment
-          = image_tag("380138525.jpg", class: "items__comment--icon")
+          = image_tag("user.jpg", class: "items__comment--icon")
           .items__comments--text
-            こんばんは。ロイヤルミルクティーです。こんばんは。ロイヤルミルクティーです。こんばんは。ロイヤルミルクティーです。
+            こんばんは。値下げは可能でしょうか？
           .items__comments--time.clear.clearfix
             = fa_icon "clock-o", class: "items__comments--time-icon"
             %span
               90日前
         .second-comment
           .items__comment--name
-            ロイヤルミルクティー
+            出品太郎
           .items__comment
-            = image_tag("380138525.jpg", class: "items__comment--icon")
+            = image_tag("user.jpg", class: "items__comment--icon")
             .items__comments--text
-              こんばんは。ロイヤルミルクティーです。こんばんは。ロイヤルミルクティーです。こんばんは。ロイヤルミルクティーです。
+              商品の状態についてもう少し詳細の画像をいただけますでしょうか。
             .items__comments--time.clear.clearfix
               = fa_icon "clock-o", class: "items__comments--time-icon"
               %span
@@ -124,8 +125,10 @@
         = f.text_area :comment, type: 'text', rows: 4 , class: 'user__comment--input'
         = f.submit "コメントする", class:'user__comment--button'
     %nav.main-users__nav.clear.clearfix
-      = link_to "アフロ" , "/" , class: "main-users__nav--before"
-      = link_to "パンチパーマ" , "/" , class: "main-users__nav--after"
+      -if Item.exists?(id: @item.id - 1)
+        = link_to "< 前の出品商品" , item_path(id: (@item.id-1)) , class: "main-users__nav--before"
+      -if Item.exists?(id: @item.id + 1)
+        = link_to "次の出品商品 >" , item_path(id: (@item.id+1)) , class: "main-users__nav--after"
     .main-users__sns
       %ul
         %li
