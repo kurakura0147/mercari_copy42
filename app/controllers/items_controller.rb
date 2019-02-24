@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_item, only: [:show, :edit, :destroy, :buy, :pay]
+  before_action :set_item, only: [:show, :edit, :destroy, :buy, :pay, :check, :update]
   before_action :set_category, only: :index
 
   def index
@@ -26,9 +26,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     @user_items = Item.where(user_id: @item.user_id).sample(6)
-    #brand_idをテーブルに追加後コメントアウトを外す
     @brand_items = Item.where(brand_id: @item.brand_id).sample(6)
   end
 
@@ -45,16 +43,13 @@ class ItemsController < ApplicationController
   end
 
   def check
-    @item = Item.find(params[:id])
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    item = Item.find(params[:id])
-    item.update(params_item)
+    @item.update(params_item)
     redirect_to check_item_path
   end
 
