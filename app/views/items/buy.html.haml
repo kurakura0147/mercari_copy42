@@ -7,33 +7,35 @@
       %section.item__box__inner
         .item__box__list
           %h3.item-image
-            = image_tag('m32035439041_1.jpg', class: "buy_photo")
+            = image_tag @item.item_images[0].image, class: "buy_photo"
           %P.item-name
             = @item.name
           %div
             .price-box
               %p.item-price
-                = @item.price
+                = number_to_currency( "#{@item.price}", locale: 'jp')
               %p.item-fee 送料込み
             .item-point
               ポイントはありません
             %ul.item-price-table
               .buy-price-call 支払い金額
               .buy-price-pay
-                = @item.price
+                = number_to_currency( "#{@item.price}", locale: 'jp')
               %p.has-error-text 配送先と支払い方法の入力を完了してください。
-              = form_tag(action: :pay, method: :post) do
-                %script.payjp-button{ "data-key" => ENV["PAYJP_PUBLIC_KEY"], src: "https://checkout.pay.jp", type: "text/javascript" }
+              %label.payjp__btn
+                購入する
+                = form_tag(action: :pay, method: :post) do
+                  %script.payjp-button{ "data-key" => ENV["PAYJP_PUBLIC_KEY"], src: "https://checkout.pay.jp", type: "text/javascript" }
 
       %section.user__info
         .buy-container-inner
           %h3.delivery 配送先
           %p.adress-user-info
-            〒150−0041
+            = "〒#{current_user.address.postal_code}"
             %br
-            東京都渋谷区神南1丁目12−16アジアビル8F
+            = user_address #ヘルパーメソッド
             %br
-            株式会社div
+            = current_user.nickname
           %a.buy-user-info-fix{href: "/"}変更する >
       %section.user__footer
         .buy-footer-inner

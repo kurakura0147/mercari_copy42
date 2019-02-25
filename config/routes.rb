@@ -19,12 +19,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :transactions, only: %i(new)
-
   resources :users, only: %i(new show edit update) do
     member do
       get :signout
       get :listing
+      get :purchase
     end
   end
 
