@@ -37,7 +37,7 @@
       .seach__items.clearfix
         - @item.each do |item|
           %section.seach__item
-            = link_to item_path(:user_id) do
+            = link_to item_path(id: item.id) do
               %figure
                 = image_tag(item.item_images[0].image, size: "60" , class: "seach__item--image")
               .seach__item--body
