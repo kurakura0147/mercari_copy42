@@ -33,7 +33,7 @@
         .mypage-nav__list--item
           出品した商品-売却済み
           = fa_icon "angle-right", class: "mypage-nav__list--arrow"
-      = link_to "" do
+      = link_to purchase_user_path(id: current_user.id) do
         .mypage-nav__list--item
           購入した商品-取引中
           = fa_icon "angle-right", class: "mypage-nav__list--arrow"

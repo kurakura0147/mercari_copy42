@@ -41,6 +41,9 @@
                     .items__box__num__price
                       = number_to_currency("#{item.price}", locale: "jp")
                       %p.items__box__num__tax (税込)
+                      - if item.buyer_id.present?
+                        .item__box--sold
+                          .item__box--sold--after
         .view--all すべての商品を見る
 
     %section.items__pickup__container.clearfix
@@ -61,6 +64,9 @@
                     .items__box__num__price
                       = number_to_currency("#{item.price}", locale: "jp")
                       %p.items__box__num__tax (税込)
+                      - if item.buyer_id.present?
+                        .item__box--sold
+                          .item__box--sold--after
         .view--all すべての商品を見る
 
     %section.items__pickup__container.clearfix
@@ -81,6 +87,9 @@
                     .items__box__num__price
                       = number_to_currency("#{item.price}", locale: "jp")
                       %p.items__box__num__tax (税込)
+                      - if item.buyer_id.present?
+                        .item__box--sold
+                          .item__box--sold--after
         .view--all すべての商品を見る
 
   %section.pickup__container
@@ -103,4 +112,7 @@
                     .items__box__num__price
                       = number_to_currency("#{item.price}", locale: "jp")
                       %p.items__box__num__tax (税込)
+                      - if item.buyer_id.present?
+                        .item__box--sold
+                          .item__box--sold--after
         .view--all すべての商品を見る

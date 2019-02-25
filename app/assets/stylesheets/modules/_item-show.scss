@@ -115,6 +115,7 @@
     //上の商品紹介
     &__profile {
       margin-top: 16px;
+      position: relative;
       &--img {
         float: left;
         background-color: $off-white;
@@ -298,4 +299,36 @@ table {
   border-top: 2px solid transparent;
   border-bottom: 25px solid transparent;
   }
+}
+
+.main-item-content__profile--sold {
+  position: absolute;
+  color: $red-btn;
+  border-top: 50px solid $red-btn;
+  border-right: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+  border-left: 50px solid $red-btn;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  &::after {
+    content: "SOLD";
+    font-weight: bold;
+    display: inline-block;
+    position: absolute;
+    top: -20px;
+    left: -40px;
+    transform: rotate(-45deg);
+    color: $white;
+    z-index: 2;
+  }
+}
+
+.main-item-content__button-sold {
+  background-color: $mail-icon;
+  color: $white;
+  @include btn-default();
+  font-size: 24px;
+  margin-top: 24px;
+  cursor: normal;
 }

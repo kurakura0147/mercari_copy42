@@ -12,6 +12,8 @@
         .main-item-content__profile--img
           .item__imag--main
             = image_tag( @item.item_images[0].image , id: "main-image" , alt: "" , width: "300")
+            - if @item.buyer_id.present?
+              .main-item-content__profile--sold
         //テーブル（商品情報）
         %table.main-item-content__profile--text
           %tr
@@ -71,6 +73,8 @@
         = link_to buy_item_path do
           %li.main-item-content__button-buy
             購入画面に進む
+      .main-item-content__button-sold
+        売り切れました。
       .main-item-content__information
         .main-item-content__information--text
           = @item.detail
