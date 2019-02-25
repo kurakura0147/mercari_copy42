@@ -156,7 +156,7 @@
                 = item.name
               .items__box__num
                 .items__box__num__price
-                  = "¥  #{item.price}"
+                  = number_to_currency("#{item.price}", locale: "jp")
                 %p.items__box__num__tax (税込)
     .main-item__box.clear.clearfix
       - if @item.brand == nil
@@ -169,12 +169,12 @@
             = link_to item_path, class: "clear-decoration" do
               %figure.items__box__photo
                 = image_tag( item.item_images[0].image , alt: "uniqlo", class: "items__box__photo--size")
-                / = image_tag( item.image, alt: "uniqlo", class: "items__box__photo--size")
               .items__box__body
                 %h3.items__box__name
                   = item.name
                 .items__box__num
                   .items__box__num__price
+                    = number_to_currency("#{@item.price}", locale: "jp")
                   %p.items__box__num__tax (税込)
 
   = render 'shared/aside'

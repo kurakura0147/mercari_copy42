@@ -1,6 +1,5 @@
 .item__container
   =render 'shared/registration/registration-header'
-
   %main.item__container__main
     %section.item__container__main__box
       %h2.item__box__header 商品の情報を入力
@@ -18,11 +17,9 @@
               .sell-dropbox-uploader
                 = image.label :image, for: "goods_image" , class: "sell-dropbox-uploader_container" do
                   =image.file_field :image ,id:"goods_image" , class: "goods_images hidden"
-                  //ここまで
             %pre.sell__upload__dropbox--visible
               ドラッグアンドドロップ
               またはクリックしてファイルをアップロード
-
         .sell__container
           .sell__container--form
             = f.label :商品名
