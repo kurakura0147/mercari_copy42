@@ -27,6 +27,11 @@ class UsersController < ApplicationController
     @items = Item.where(user_id: current_user.id)
   end
 
+  def purchase
+    #buyer_idとuser.idが一致する商品 設定の記述はuserモデル
+    @items = current_user.buyed_items
+  end
+
   private
 
   def set_user

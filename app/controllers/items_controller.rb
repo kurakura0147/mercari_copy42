@@ -64,6 +64,8 @@ class ItemsController < ApplicationController
   end
 
   def buy
+    @buyer = current_user
+    @seller = @item.user
   end
 
   def pay
@@ -73,6 +75,8 @@ class ItemsController < ApplicationController
           :card => params['payjp-token'],
           :currency => 'jpy',
     )
+    @item.update(buyer_id: current_user.id)
+    redirect_to root_path
   end
 
   def check
