@@ -1,0 +1,86 @@
+.seach__content {
+  float: left;
+  width: 280px;
+  height:1400px;
+}
+.seach__result {
+  height:30px;
+  margin-bottom: 8px;
+  font-size:22px;
+  width: 700px;
+}
+.seach__items {
+  margin-right: -22px;
+}
+.seach__item {
+  max-width: 160px;
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  background-color: $white;
+  &--body {
+    height: 78px;
+    max-height: 78px;
+    padding: 16px;
+  }
+  &--image {
+    min-width: 160px;
+    min-height: 160px;
+  }
+  &--name {
+    overflow: hidden;
+    height: 48px;
+  }
+}
+
+.search {
+  &__sort {
+  }
+  &__list {
+    margin-top: 40px;
+    padding:16px;
+    background-color: $white;
+    &--text {
+    }
+    &--add {
+      margin-top:24px;
+      & input {
+        height: 46px;
+        width: 212px;
+        padding:0 16px;
+      }
+    }
+    &--category {
+      margin-top:24px;
+    }
+    &--brand {
+      margin-top:24px;
+    }
+    &--size {
+      margin-top:24px;
+    }
+    &--price {
+      margin-top:24px;
+    }
+    &--state {
+      margin-top:24px;
+    }
+    &--submit {
+      padding-top: 40px;
+      & button {
+      height: 48px;
+      background-color: red;
+      color: $white;
+      width: 110px;
+      font-size: 14px;
+      float: right;
+      }
+    }
+  }
+}
+select#range {
+  height: 46px;
+  width: 248px;
+  padding:0 16px;
+
+}
