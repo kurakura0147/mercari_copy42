@@ -25,7 +25,13 @@
             %th カテゴリー
             %td.e1
               = link_to "" do
-                = @item.category.name
+                = @middle_category.parent.name
+              %br
+              = link_to "" do
+                = ">   #{@middle_category.name}"
+              %br
+              = link_to "" do
+                = ">   #{@item.category.name}"
           %tr
             %th ブランド
             %td.e1

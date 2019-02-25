@@ -61,6 +61,7 @@ class ItemsController < ApplicationController
   def show
     @user_items = Item.where(user_id: @item.user_id).sample(6)
     @brand_items = Item.where(brand_id: @item.brand_id).sample(6)
+    @middle_category = Category.find(@item.category.parent)
   end
 
   def buy
