@@ -1,17 +1,50 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search ]
   before_action :set_item, only: [:show, :edit, :destroy, :buy, :pay, :check, :update]
   before_action :set_category, only: :index
 
   def index
-    @category1 = Category.find(1)
-    @category2 = Category.find(2)
-    @category3 = Category.find(3)
+
+    # 表示する大カテゴリーのid:1を指定
+    category_num = 1
+    # => カテゴリーからid:1の大カテゴリーのデータを所得
+    @category1 = Category.find(category_num)
+    # => あいまい検索にてancestryから "(category_num) / = 1/"を検索
+    @category = Category.search_ancestry(category_num)
+    # => array で配列の定義をし上記よりcategory.idを代入する
+    array = []
+    array << @category.ids
+    # => category_id,array[]より検索する。
+    array.each do |num|
+      @items1 = Item.search_category(num)
+    end
+
+    category_num = 2
+    @category2 = Category.find(category_num)
+    @category = Category.search_ancestry(category_num)
+    array = []
+    array << @category.ids
+    array.each do |num|
+      @items2 = Item.search_category(num)
+    end
+
+    category_num = 3
+    @category3 = Category.find(category_num)
+    @category = Category.search_ancestry(category_num)
+    array = []
+    array << @category.ids
+    array.each do |num|
+      @items3 = Item.search_category(num)
+    end
+
     @brand1 = Brand.find(1)
-    @items1 = Item.where(category_id: 119).order("id DESC")
-    @items2 = Item.where(category_id: 302).order("id DESC")
-    @items3 = Item.where(category_id: 431).order("id DESC")
-    @item_brand = Item.where(brand_id: 1).order("id DESC")
+    @item_brand = Item.search_brand(1)
+
+  end
+
+  def search
+    @item = Item
+    @item = Item.where('name LIKE(?)', "%#{params[:search]}%")
   end
 
   def new

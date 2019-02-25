@@ -7,8 +7,6 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :category
   accepts_nested_attributes_for :brand
   accepts_nested_attributes_for :item_images, allow_destroy: true
-  scope :set_brand, -> (num){ where(brand_id: num).limit(4).order("RAND()") }
-  scope :set_category, -> (num){ where(category_id: num).order("RAND()").limit(4) }
 
     enum cost: {
       "送料込み(出品者持ち)":1, "着払い(購入者持ち)":2
@@ -28,4 +26,11 @@ class Item < ApplicationRecord
     enum day: {
       "1~2日で発送":1, "2~3日で発送":2, "4~7日で発送":3
     }
+
+  scope :set_brand, -> (num){ where(brand_id: num).limit(4).order("RAND()") }
+  scope :set_category, -> (num){ where(category_id: num).order("RAND()").limit(4) }
+  scope :search_category, -> num{where(category_id: num ).order("id DESC").limit(4)}
+  scope :search_brand, -> brand{where(brand_id: brand).order("id DESC").limit(4)}
+
 end
+

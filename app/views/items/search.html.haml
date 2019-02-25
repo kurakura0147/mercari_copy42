@@ -1,0 +1,49 @@
+.container
+  = render 'shared/header'
+  //ユーザーサイトのメイン部分
+  .mypage-body.clearfix
+    //左
+    .side__content
+      .seach__content
+        .search__sort
+          並び替え
+        .search__list
+          .search__list--text
+            詳細検索
+            = form_tag( search_items_path , :method => 'get') do
+              .search__list--add
+                キーワードを追加する
+                = form_tag( search_items_path ,class: "text-range" , :method => 'get' ) do
+                  = text_field_tag :search
+              .search__list--category
+                カテゴリーを選択する
+                %select#range{:category => "range"}
+                  %option{:value => "1"} メンズ
+              .search__list--brand
+                ブランドを選択する
+                %select#range{:brand => "range"}
+                  %option{:value => "1"} ナイキ
+              .search__list--size
+                / サイズを指定する
+              / .search__list--price
+              /   価格
+              / .search__list--state
+              /   商品の状態
+              .search__list--submit.clearfix
+                = button_tag "完了"
+    //右のコンテンツ
+    .main__content
+      .seach__result 検索結果 件
+      .seach__items.clearfix
+        - @item.each do |item|
+          %section.seach__item
+            = link_to item_path(:user_id) do
+              %figure
+                = image_tag(item.item_images[0].image, size: "60" , class: "seach__item--image")
+              .seach__item--body
+                %h3.seach__item--name
+                  = item.name
+                .items__box__num
+                  .items__box__num__price
+                    = "¥ #{item.price}"
+                    %p.items__box__num__tax (税込)
