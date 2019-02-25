@@ -20,6 +20,7 @@
             = image_tag("bana-migi.png" , alt: "" )
           .slick-prev-icon
             = image_tag("bana-hidari.png" , alt: "" )
+
   %section.pickup__container
     %h2.pickup__head  ピックアップカテゴリー
     %section.items__pickup__container.clearfix
@@ -28,7 +29,7 @@
           = link_to "" ,class: "text-center__name clear-decoration" do
             = "#{@category1.name} 新着アイテム"
         .items__box__content.clearfix
-          - @items1.first(4).each do |item|
+          - @items1.each do |item|
             %section.items__box
               = link_to "/items/#{item.id}", class: "clear-decoration" do
                 %figure.items__box__photo
@@ -48,7 +49,7 @@
           = link_to "" ,class: "text-center__name clear-decoration" do
             = "#{@category2.name} 新着アイテム"
         .items__box__content.clearfix
-          - @items2.first(4).each do |item|
+          - @items2.each do |item|
             %section.items__box
               = link_to "/items/#{item.id}", class: "clear-decoration" do
                 %figure.items__box__photo
@@ -68,7 +69,7 @@
           = link_to "" ,class: "text-center__name clear-decoration" do
             = "#{@category3.name} 新着アイテム"
         .items__box__content.clearfix
-          - @items3.first(4).each do |item|
+          - @items3.each do |item|
             %section.items__box
               = link_to "/items/#{item.id}", class: "clear-decoration" do
                 %figure.items__box__photo
@@ -82,13 +83,15 @@
                       %p.items__box__num__tax (税込)
         .view--all すべての商品を見る
 
+  %section.pickup__container
+    %h2.pickup__head  ピックアップブランド
     %section.items__pickup__container.clearfix
       %h3.items__box__container
         %section.text-center
           = link_to "" ,class: "text-center__name clear-decoration" do
             = "#{@brand1.name} 新着アイテム"
         .items__box__content.clearfix
-          - @item_brand.first(4).each do |item|
+          - @item_brand.each do |item|
             %section.items__box
               = link_to "/items/#{item.id}", class: "clear-decoration" do
                 %figure.items__box__photo
