@@ -63,6 +63,7 @@
   background-color: $white;
   margin: 0 0 0 20px;
   max-width:213px;
+  position: relative;
     &__photo {
       height: 220px;
         &--size {
@@ -75,6 +76,28 @@
       box-sizing: border-box;
       padding: 16px;
     }
+}
+
+.item__box--sold--after {
+  position: absolute;
+  color: $red-btn;
+  border-top: 50px solid $red-btn;
+  border-right: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+  border-left: 50px solid $red-btn;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  &::after {
+    content: "SOLD";
+    display: inline-block;
+    position: absolute;
+    top: -30px;
+    left: -45px;
+    transform: rotate(-45deg);
+    color: $white;
+    z-index: 2;
+  }
 }
 
 .items__box__name {
